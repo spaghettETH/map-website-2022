@@ -1,17 +1,33 @@
 <script>
-import { defineComponent} from 'vue'
-import Map from './atoms/Map.vue'
+import { defineComponent, ref, watchEffect } from "vue";
+import MapPage from "./pages/MapPage.vue";
+import Navbar from "./atoms/Navbar.vue";
 export default defineComponent({
-    name: "App",
-    components: { Map }
-})
+  name: "App",
+  components: { MapPage, Navbar },
+  setup() {
+    const navbarVisible = ref(false)
+    watchEffect(() => {
+      console.log(navbarVisible.value);
+    })
+    return {
+      navbarVisible
+    };
+  }
+});
 </script>
 
 <template>
-<Map />
+  <div class="main-wrapper relative">
+    <Navbar :isVisible="navbarVisible" />
+    <MapPage @show-navbar="navbarVisible = $event" />
+  </div>
 </template>
 
 <style scoped>
+.main-wrapper {
+  background: black;
+}
 @font-face {
   font-family: MonsterratThin;
   src: url("./assets/fonts/Monsterrat/Montserrat-Thin.ttf");
@@ -29,7 +45,7 @@ export default defineComponent({
   src: url("./assets/fonts/Monsterrat/Montserrat-Black.ttf");
 }
 
-html{
+html {
   scroll-behavior: smooth;
   background: black;
   font-family: MonsterratRegular;
