@@ -11,14 +11,14 @@ export default defineComponent({
   name: "MapPage",
   components: { ItalianMap },
   emits: ["showNavbar"],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
     const currentRegion = ref("ITALIAN MAP");
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
         ".italian-map-label",
         { x: -25, opacity: 0 },
-        { x: 0, opacity: .8, data: 0.3, ease: "power3.inOut" }
+        { x: 0, opacity: 0.8, data: 0.3, ease: "power3.inOut" }
       );
     };
 
@@ -26,8 +26,8 @@ export default defineComponent({
       const animation = gsap.timeline();
       animation.fromTo(
         ".welcome-label",
-        {  opacity: 1 },
-        {  opacity: 0, duration: 0.01, ease: "power3.inOut" }
+        { opacity: 1 },
+        { opacity: 0, duration: 0.01, ease: "power3.inOut" }
       );
       animation.fromTo(
         ".welcome-label-first",
@@ -37,7 +37,7 @@ export default defineComponent({
       animation.fromTo(
         ".welcome-label-first",
         { y: 0, opacity: 1 },
-        { y: -25, opacity: 0, duration: 0.3, ease: "power3.inOut", },
+        { y: -25, opacity: 0, duration: 0.3, ease: "power3.inOut" },
         ">+=2"
       );
       animation.fromTo(
@@ -49,15 +49,21 @@ export default defineComponent({
       animation.fromTo(
         ".welcome-label-second",
         { y: 0, opacity: 1 },
-        { y: -25, opacity: 0, duration: 0.3, ease: "power3.inOut", onComplete: () => {
-          emit("showNavbar", true)
-        } },
+        {
+          y: -25,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power3.inOut",
+          onComplete: () => {
+            emit("showNavbar", true);
+          },
+        },
         ">+=2"
       );
       animation.fromTo(
         ".italian-map-label",
         { y: 0, opacity: 0 },
-        { y: -25, opacity: 1, duration: 0.3, ease: "power3.inOut", },
+        { y: -25, opacity: 1, duration: 0.3, ease: "power3.inOut" },
         ">"
       );
       animation.fromTo(
@@ -71,12 +77,14 @@ export default defineComponent({
           clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100% )",
           scale: 1,
           onComplete: () => {
-            document.querySelector(".welcome-labels-wrapper").classList.add('cancel')
-          }
+            document
+              .querySelector(".welcome-labels-wrapper")
+              .classList.add("cancel");
+          },
         },
         ">"
       );
-      animation.fromTo(".barchetta", {opacity:0}, {opacity:1})
+      animation.fromTo(".barchetta", { opacity: 0 }, { opacity: 1 });
     });
 
     const { normalizedX, normalizedY } = useMouseParallax();
@@ -107,16 +115,7 @@ export default defineComponent({
         <p v-if="data.name === currentRegion">{{ data.data }}</p>
       </li>
     </ul> -->
-    <div
-      class="
-        h-full
-        w-full
-        flex
-        items-center
-        justify-center
-        svg-wrapper
-      "
-    >
+    <div class="h-full w-full flex items-center justify-center svg-wrapper">
       <!-- BARCHETTA SINISTRA -->
       <svg
         width="91"
@@ -671,7 +670,9 @@ export default defineComponent({
         />
       </svg>
 
-      <h1 class="italian-map-label absolute uppercase opacity-80">{{ currentRegion }}</h1>
+      <h1 class="italian-map-label absolute uppercase opacity-80">
+        {{ currentRegion }}
+      </h1>
 
       <!-- MAPPA -->
       <svg
@@ -2908,15 +2909,22 @@ export default defineComponent({
         />
       </svg>
       <div class="welcome-labels-wrapper absolute w-[50%] z-90">
-        <div class="welcome-labels-wrapper-two relative w-full h-full flex items-center justify-center pb-32">
-          <p
-            class="welcome-label welcome-label-first absolute"
-          >
+        <div
+          class="
+            welcome-labels-wrapper-two
+            relative
+            w-full
+            h-full
+            flex
+            items-center
+            justify-center
+            pb-32
+          "
+        >
+          <p class="welcome-label welcome-label-first absolute">
             Welcome to the SpaghettETH website!
           </p>
-          <p
-            class="welcome-label welcome-label-second absolute flex"
-          >
+          <p class="welcome-label welcome-label-second absolute flex">
             Hover
             <span
               ><img class="intro-icon" src="../assets/images/hoverIcon.png"
@@ -2972,7 +2980,7 @@ section {
   font-size: 2rem;
 }
 
-.welcome-label-second{
+.welcome-label-second {
   opacity: 0;
 }
 
