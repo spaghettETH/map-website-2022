@@ -70,6 +70,9 @@ export default defineComponent({
           duration: 1,
           clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100% )",
           scale: 1,
+          onComplete: () => {
+            document.querySelector(".welcome-labels-wrapper").classList.add('cancel')
+          }
         },
         ">"
       );
@@ -2939,6 +2942,10 @@ section {
   & p {
     color: white;
   }
+}
+
+.cancel {
+  display: none;
 }
 
 .region {
