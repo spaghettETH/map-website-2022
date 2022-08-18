@@ -18,7 +18,7 @@ export default defineComponent({
       gsap.fromTo(
         ".italian-map-label",
         { x: -25, opacity: 0 },
-        { x: 0, opacity: 1, data: 0.3, ease: "power3.inOut" }
+        { x: 0, opacity: .8, data: 0.3, ease: "power3.inOut" }
       );
     };
 
@@ -56,25 +56,18 @@ export default defineComponent({
       );
       animation.fromTo(
         ".italian-map-label",
-        {
-          clipPath: "polygon(0% 100%, 100% 100%,100% 100%, 0% 100% )",
-          scale: 0.8,
-        },
-        {
-          duration: 1.4,
-          clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100% )",
-          scale: 1,
-        },
+        { y: 0, opacity: 0 },
+        { y: -25, opacity: 1, duration: 0.3, ease: "power3.inOut", },
         ">"
       );
       animation.fromTo(
         ".map",
         {
           clipPath: "polygon(0% 100%, 100% 100%,100% 100%, 0% 100% )",
-          scale: 0.8,
+          scale: 0.9,
         },
         {
-          duration: 1.4,
+          duration: 1,
           clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100% )",
           scale: 1,
         },
@@ -104,7 +97,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="map-section w-full relative">
+  <section class="map-section w-full h-full top-[10%] absolute">
     <!-- <p v-if="regionsData[0].name === currentRegion">{{regionsData[0].data}}</p> -->
     <!-- <ul>
       <li v-for="data in regionsData" :key="data.name">
@@ -118,9 +111,6 @@ export default defineComponent({
         flex
         items-center
         justify-center
-        absolute
-        left-0
-        top-0
         svg-wrapper
       "
     >
@@ -131,7 +121,7 @@ export default defineComponent({
         viewBox="0 0 91 107"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="barchetta barchett-sx absolute left-[45%] top-[50%]"
+        class="barchetta barchett-sx absolute left-[40%] top-[45%]"
       >
         <path
           d="M53.0977 1V13.3L60.2977 17.9L53.0977 1Z"
@@ -396,7 +386,7 @@ export default defineComponent({
         viewBox="0 0 50 93"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="barchetta barchett-dx absolute top-[30%] right-[40%]"
+        class="barchetta barchett-dx absolute top-[20%] right-[40%]"
       >
         <path
           d="M22.9 67C22.9 67 27.7 72.3 26.1 77.7H24.6C24.6 77.7 25.7 71.1 21.6 67.5L22.9 67Z"
@@ -678,7 +668,7 @@ export default defineComponent({
         />
       </svg>
 
-      <h1 class="italian-map-label absolute uppercase">{{ currentRegion }}</h1>
+      <h1 class="italian-map-label absolute uppercase opacity-80">{{ currentRegion }}</h1>
 
       <!-- MAPPA -->
       <svg
@@ -2915,7 +2905,7 @@ export default defineComponent({
         />
       </svg>
       <div class="welcome-labels-wrapper absolute w-[50%] z-90">
-        <div class="welcome-labels-wrapper-two relative w-full h-full flex items-center justify-center">
+        <div class="welcome-labels-wrapper-two relative w-full h-full flex items-center justify-center pb-32">
           <p
             class="welcome-label welcome-label-first absolute"
           >
@@ -2942,10 +2932,9 @@ export default defineComponent({
 
 <style scoped lang="scss">
 //global variables
-$header-height: 8rem;
 section {
+  overflow: hidden;
   background-color: transparent;
-  height: 100vh;
 
   & p {
     color: white;
@@ -2968,8 +2957,7 @@ section {
   position: absolute;
   max-width: 90%;
   text-align: center;
-  opacity: 0.8;
-  top: 35%;
+  top: 25%;
 }
 
 .welcome-label {

@@ -2,31 +2,39 @@
 import { defineComponent, ref, watchEffect } from "vue";
 import MapPage from "./pages/MapPage.vue";
 import Navbar from "./atoms/Navbar.vue";
+import Menu from "./organisms/Menu.vue"
+import MenuSlider from "./atoms/MenuSlider.vue"
 export default defineComponent({
   name: "App",
-  components: { MapPage, Navbar },
+  components: { MapPage, Navbar, Menu, MenuSlider },
   setup() {
     const navbarVisible = ref(false)
+    const sidemenuVisible = ref(false)
+    const menuVisible = ref(false)
     watchEffect(() => {
-      console.log(navbarVisible.value);
+      console.log(menuVisible.value);
     })
     return {
-      navbarVisible
+      navbarVisible,
+      menuVisible
     };
   }
 });
 </script>
 
 <template>
-  <div class="main-wrapper relative">
-    <Navbar :isVisible="navbarVisible" />
-    <MapPage @show-navbar="navbarVisible = $event" />
+  <div class="main-wrapper relative h-screen w-full">
+    <Navbar :isVisible="navbarVisible" class="z-2" />
+    <Menu v-if="menuVisible" @close-menu="menuVisible = $event" class="z-3" />
+    <MapPage @show-navbar="navbarVisible = $event" class="z-1" />
+    <MenuSlider :isVisible="navbarVisible" />
   </div>
 </template>
 
 <style scoped>
 .main-wrapper {
   background: black;
+  overflow: hidden;
 }
 @font-face {
   font-family: MonsterratThin;
