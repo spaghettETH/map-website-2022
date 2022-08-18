@@ -4,9 +4,13 @@ export default defineComponent({
   name: "MenuSlider",
   props: { isVisible: { type: Boolean, default: false } },
   emits: ["openMenu"],
-  setup(props) {
+  setup(props, { emit }) {
+    const openMenu = () => {
+      emit("openMenu", true);
+    };
     return {
       props,
+      openMenu,
     };
   },
 });
@@ -16,6 +20,7 @@ export default defineComponent({
   <div
     v-if="props.isVisible"
     class="menu-slider-wrapper absolute top-0 right-0 z-4"
+    @click="openMenu()"
   >
     <h2 class="menu-labels flex">
       <span>MENU</span>

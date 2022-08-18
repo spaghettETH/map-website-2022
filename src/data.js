@@ -1,10 +1,10 @@
 export const regionsData = [
-    { name: "valle-d-aosta", data: "formaggio ed eth" },
-    { name: "piemonte", data: "i più cool sono qua" },
-    { name: "liguria", data: "qui ETH costa il 20% in più rispetto ad ogni mercato globale" },
-    { name: "lombardia", data: "figa, eth noi ce l'avevamo già nel 2002, figa" },
-    { name: "veneto", data: "ma chi è quel mona che compra Solana?! Dio..." },
-    { name: "molise", data: "ho scoperto la sua posizione geografica con questa bounty" },
-    { name: "sardegna", data: "entriamo al billionaire pagando in UST" },
-    { name: "sicilia", data: "qui la mail non è arrivata" },
+    { name: "valle-d-aosta", data: { name: "Valle d'Aosta", lat: 45.766, lng: 7.3 } },
+    { name: "piemonte", data: { name: "Piemonte", lat: 45.766, lng: 7.3 } },
+    { name: "liguria", data: { name: "Liguria", lat: 45.766, lng: 7.3 } },
+    { name: "lombardia", data: { name: "Lombardia", lat: 45.766, lng: 7.3 } },
+    { name: "veneto", data: { name: "Veneto", lat: 45.766, lng: 7.3 } },
+    { name: "molise", data: { name: "Molise", lat: 45.766, lng: 7.3 } },
+    { name: "sardegna", data: { name: "Sardegna", lat: 45.766, lng: 7.3 } },
+    { name: "sicilia", data: { name: "Sicilia", lat: 45.766, lng: 7.3 } },
 ]
