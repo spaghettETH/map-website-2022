@@ -10,7 +10,7 @@ export default defineComponent({
   setup() {
     const navbarVisible = ref(false);
     const sidemenuVisible = ref(false);
-    const menuVisible = ref(true);
+    const menuVisible = ref(false);
     watchEffect(() => {
       console.log(menuVisible.value);
     });

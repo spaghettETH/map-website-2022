@@ -1,12 +1,37 @@
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+import gsap from "gsap";
+
 export default defineComponent({
   name: "Menu",
   emits: ["closeMenu"],
   setup(props, { emit }) {
+    const animation = gsap.timeline({ paused: true });
+
     const closeMenu = () => {
       emit("closeMenu", false);
     };
+
+    onMounted(() => {
+      animation.fromTo(
+        ".menu-wrapper",
+        {
+          x: 0,
+          // clipPath: "polygon(0 0, 100% 0, 100% 80%, 0 95% )",
+        },
+        {
+          x: "100%",
+          // clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          duration: 1.3,
+          ease: "expo",
+        }
+      );
+      animation.from(
+        ".close-icon",
+        { y: 10, opacity: 1, duration: 0.2 },
+        "<.1"
+      );
+    });
     return {
       closeMenu,
     };
