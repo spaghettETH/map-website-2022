@@ -7,6 +7,7 @@ import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
 import MobileMap from "../molecules/MobileMap.vue";
+import communities from "../communitiesData.json"
 
 export default defineComponent({
   name: "MapPage",
@@ -15,6 +16,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
+    console.log(communities);
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
@@ -120,12 +122,6 @@ export default defineComponent({
 
 <template>
   <section class="map-section w-full h-full top-[10%] absolute">
-    <!-- <p v-if="regionsData[0].name === currentRegion">{{regionsData[0].data}}</p> -->
-    <!-- <ul>
-      <li v-for="data in regionsData" :key="data.name">
-        <p v-if="data.name === currentRegion">{{ data.data }}</p>
-      </li>
-    </ul> -->
     <div class="h-full w-full flex items-center justify-center svg-wrapper">
       <!-- BARCHETTA SINISTRA -->
       <svg
