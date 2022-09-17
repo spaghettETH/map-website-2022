@@ -8,7 +8,7 @@ export default defineComponent({
   setup(props, {emit}) {
     const expandMap = () => {
         console.log("expand");
-        emit("expandMap", true)
+        emit("expandMap", false)
     }
     return {
         expandMap
@@ -19,11 +19,11 @@ export default defineComponent({
 
 <template>
   <div class="mobile-map-wrapper">
-    <div class="h-full w-full relative">
+    <div class="h-full w-full relative" @click="expandMap()">
       <img
         class="top-0 right-0 absolute cursor-pointer z-10"
         src="../assets/svg/expandIcon.svg"
-        @click="expandMap()"
+
       />
       <svg
         width="543"
@@ -2224,7 +2224,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .mobile-map-wrapper {
-  height: 40vh;
+  height: 300px;
+  width: 300px;
   position: absolute;
   bottom: 11%;
   left: 2%;
@@ -2234,12 +2235,20 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  border-style: dotted;
+  border-radius: 50vw;
+  overflow: hidden;
+  cursor: url('../assets/svg/expandIcon.svg') 20 20, auto;
+  transition: all .4s ease-in;
 
   & svg {
     height: 100%;
     opacity: 0.5;
     width: 100%;
+    transition: all .3s ease-in;
+
+    &:hover{
+    transform: scale(1.1);
+  }
   }
 }
 </style>
