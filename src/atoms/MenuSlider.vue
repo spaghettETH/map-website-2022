@@ -20,18 +20,17 @@ export default defineComponent({
   <div
     v-if="props.isVisible"
     class="menu-slider-wrapper absolute top-0 right-0 z-4"
-    @click="openMenu()"
   >
     <h2 class="menu-labels flex">
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
-      <span>MENU</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
+      <span>COMING SOON</span>
     </h2>
   </div>
 </template>yarn 
@@ -46,6 +45,7 @@ export default defineComponent({
 }
 
 .menu-labels {
+  white-space: nowrap;
   font-size: 2rem;
   letter-spacing: 5px;
   color: #f2f2f2;
