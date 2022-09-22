@@ -1,13 +1,13 @@
 <script>
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
-import { defineComponent, onMounted, ref, watch } from "vue";
+import { defineComponent, onMounted, ref, watch, watchEffect } from "vue";
 import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
 import MobileMap from "../molecules/MobileMap.vue";
-import communities from "../communitiesData.json"
+import communities from "../communitiesData.json";
 
 export default defineComponent({
   name: "MapPage",
@@ -16,7 +16,6 @@ export default defineComponent({
   setup(props, { emit }) {
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
-    console.log(communities);
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
@@ -115,6 +114,7 @@ export default defineComponent({
       currentRegion,
       selectRegion,
       miniMap,
+      communities,
     };
   },
 });
@@ -123,6 +123,9 @@ export default defineComponent({
 <template>
   <section class="map-section w-full h-full top-[10%] absolute">
     <div class="h-full w-full flex items-center justify-center svg-wrapper">
+      <div class="w-full h-full">
+        <ul class="communities-wrapper w-[100%] h-[100%]"></ul>
+      </div>
       <!-- BARCHETTA SINISTRA -->
       <svg
         width="91"
@@ -679,7 +682,7 @@ export default defineComponent({
         />
       </svg>
 
-      <h1 class="italian-map-label absolute uppercase opacity-80">
+      <h1 class="italian-map-label absolute uppercase opacity-80" :class="{active : miniMap}">
         {{ currentRegion }}
       </h1>
 
@@ -2994,8 +2997,20 @@ section {
   transition: all .6s ease-in;
 } */
 
+.active{
+  opacity: 1 !important;
+  color: white !important;
+}
 .cancel {
   display: none;
+}
+
+.svg-wrapper {
+  outline: auto;
+}
+
+.communities-wrapper {
+  outline: auto;
 }
 
 .region {
