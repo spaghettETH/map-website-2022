@@ -113,15 +113,13 @@ export default defineComponent({
       });
     });
 
-
-
     watchEffect(() => {
       communities.forEach((el) => {
         if (el.regione === currentRegion.value) {
           communitiesToDisplay.value.push(el);
           console.log(communitiesToDisplay.value, "<< communities to display");
         }
-        if(communitiesToDisplay.value.includes(el)) {
+        if (communitiesToDisplay.value.includes(el)) {
           console.log(el.città);
         }
       });
@@ -171,6 +169,13 @@ export default defineComponent({
             :key="community.nome"
             :name="community.nome"
             :focus="community.focus"
+            :meet="community.meet"
+            :format="community.format"
+            :progetti="community.progetti"
+            :membri="community.membri"
+            :telegram="community.telegram"
+            :discord="community.discord"
+            :twitter="community.twitter"
           />
         </ul>
       </div>
@@ -3084,5 +3089,12 @@ section {
 .hidden {
   display: none;
   transition: all 0.3s ease-in-out;
+}
+
+.communities-wrapper {
+  margin-bottom: 10%;
+  & li:not(:first-child) {
+    margin-left: 15px;
+  }
 }
 </style>

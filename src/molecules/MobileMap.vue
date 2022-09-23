@@ -2224,8 +2224,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .mobile-map-wrapper {
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px !important;
   position: absolute;
   bottom: 11%;
   left: 2%;
@@ -2235,7 +2235,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  border-radius: 50vw;
+  border-radius: 1000px;
   overflow: hidden;
   cursor: url('../assets/svg/expandIcon.svg') 20 20, auto;
   transition: all .4s ease-in;
