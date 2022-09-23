@@ -1,7 +1,7 @@
 [
   {
     "città": "Milano",
-    "regione": "Lombardia",
+    "regione": "lombardia",
     "nome": "Web3Mi",
     "membri": 300,
     "meet": "Incontri IRL a cadenza",
@@ -18,7 +18,7 @@
   },
   {
     "città": "Roma",
-    "regione": "Lazio",
+    "regione": "lazio",
     "nome": "urbe.eth",
     "membri": 150,
     "meet": "Incontri IRL a cadenza;Incontri virtuali a cadenza",
@@ -35,7 +35,7 @@
   },
   {
     "città": "Milano",
-    "regione": "Lombardia",
+    "regione": "lombardia",
     "nome": "Ethereum Milano",
     "membri": 2200,
     "meet": "Incontri virtuali a cadenza",
@@ -52,7 +52,7 @@
   },
   {
     "città": "Venezia",
-    "regione": "Veneto",
+    "regione": "veneto",
     "nome": "ETHVenice",
     "membri": "~30",
     "meet": "Incontri IRL a cadenza;Incontri virtuali a cadenza",
@@ -69,7 +69,7 @@
   },
   {
     "città": "Torino",
-    "regione": "Piemonte",
+    "regione": "piemonte",
     "nome": "Torino Legal Hackers",
     "membri": 200,
     "meet": "Incontri saltuari in presenza;Incontri saltuari virtuali",
@@ -86,7 +86,7 @@
   },
   {
     "città": "Civitanova Marche",
-    "regione": "Marche",
+    "regione": "marche",
     "nome": "Legal Hackers Civitanova Marche",
     "membri": 6,
     "meet": "sia virtualmente sia in presenza a cadenza",
@@ -103,7 +103,7 @@
   },
   {
     "città": "Cagliari",
-    "regione": "Sardegna",
+    "regione": "sardegna",
     "nome": "Cagliari Ethereum Lab",
     "membri": 35,
     "meet": "Incontri saltuari in presenza",
@@ -120,7 +120,7 @@
   },
   {
     "città": "Torino",
-    "regione": "Piemonte",
+    "regione": "piemonte",
     "nome": "ethTurin",
     "membri": 10,
     "meet": "Incontri saltuari in presenza;Incontri saltuari virtuali",

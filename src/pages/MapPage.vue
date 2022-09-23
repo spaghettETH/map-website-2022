@@ -1,21 +1,31 @@
 <script>
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
-import { defineComponent, onMounted, ref, watch, watchEffect } from "vue";
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+  watchEffect,
+} from "vue";
 import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
 import MobileMap from "../molecules/MobileMap.vue";
 import communities from "../communitiesData.json";
+import CommunitiesCard from "../molecules/CommunitiesCard.vue";
 
 export default defineComponent({
   name: "MapPage",
-  components: { ItalianMap, MobileMap },
+  components: { ItalianMap, MobileMap, CommunitiesCard },
   emits: ["showNavbar"],
   setup(props, { emit }) {
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
+    const communitiesToDisplay = ref([]);
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
@@ -103,7 +113,19 @@ export default defineComponent({
       });
     });
 
-    //animation for a reion's selection
+
+
+    watchEffect(() => {
+      communities.forEach((el) => {
+        if (el.regione === currentRegion.value) {
+          communitiesToDisplay.value.push(el);
+          console.log(communitiesToDisplay.value, "<< communities to display");
+        }
+        if(communitiesToDisplay.value.includes(el)) {
+          console.log(el.città);
+        }
+      });
+    });
 
     const selectRegion = () => {
       miniMap.value = !miniMap.value;
@@ -115,6 +137,7 @@ export default defineComponent({
       selectRegion,
       miniMap,
       communities,
+      communitiesToDisplay,
     };
   },
 });
@@ -123,8 +146,33 @@ export default defineComponent({
 <template>
   <section class="map-section w-full h-full top-[10%] absolute">
     <div class="h-full w-full flex items-center justify-center svg-wrapper">
-      <div class="w-full h-full">
-        <ul class="communities-wrapper w-[100%] h-[100%]"></ul>
+      <h1
+        class="italian-map-label absolute uppercase opacity-80"
+        :class="{ active: miniMap }"
+      >
+        {{ currentRegion }}
+      </h1>
+      <div
+        class="w-full h-full flex items-center justify-center z-100 absolute"
+      >
+        <ul
+          v-if="miniMap"
+          class="
+            communities-wrapper
+            w-[75%]
+            h-[50%]
+            flex
+            items-center
+            justify-center
+          "
+        >
+          <CommunitiesCard
+            v-for="community in communitiesToDisplay"
+            :key="community.nome"
+            :name="community.nome"
+            :focus="community.focus"
+          />
+        </ul>
       </div>
       <!-- BARCHETTA SINISTRA -->
       <svg
@@ -681,10 +729,6 @@ export default defineComponent({
           class="ondina"
         />
       </svg>
-
-      <h1 class="italian-map-label absolute uppercase opacity-80" :class="{active : miniMap}">
-        {{ currentRegion }}
-      </h1>
 
       <!-- MAPPA -->
       <svg
@@ -2985,7 +3029,6 @@ section {
     color: white;
   }
 }
-
 /* .map-position {
   opacity: 0.3;
   position: absolute;
@@ -2997,20 +3040,12 @@ section {
   transition: all .6s ease-in;
 } */
 
-.active{
+.active {
   opacity: 1 !important;
   color: white !important;
 }
 .cancel {
   display: none;
-}
-
-.svg-wrapper {
-  outline: auto;
-}
-
-.communities-wrapper {
-  outline: auto;
 }
 
 .region {
