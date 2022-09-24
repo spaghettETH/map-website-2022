@@ -113,16 +113,31 @@ export default defineComponent({
       });
     });
 
-    watchEffect(() => {
-      communities.forEach((el) => {
-        if (el.regione === currentRegion.value) {
-          communitiesToDisplay.value.push(el);
-          console.log(communitiesToDisplay.value, "<< communities to display");
+    watch(currentRegion, () => {
+      console.log(currentRegion.value);
+      communities.forEach((c, i) => {
+        if (c.regione === currentRegion.value) {
+          communitiesToDisplay.value.push(c);
         }
-        if (communitiesToDisplay.value.includes(el)) {
-          console.log(el.città);
+        if (
+          communitiesToDisplay.value.includes(c) &&
+          c.regione !== currentRegion.value
+        ) {
+          let index = communitiesToDisplay.value.indexOf(c.nome)
+          communitiesToDisplay.value.splice(index)
         }
       });
+    });
+
+    watchEffect(() => {
+      console.log(communitiesToDisplay.value, "<<< comm to display");
+      // communities.forEach((el) => {
+      //   if (el.regione === currentRegion.value) {
+      //     communitiesToDisplay.value.push(el);
+      //   }
+      //   if (communitiesToDisplay.value.includes(el)) {
+      //   }
+      // });
     });
 
     const selectRegion = () => {
