@@ -5,10 +5,8 @@ import {
   computed,
   defineComponent,
   onMounted,
-  reactive,
   ref,
   watch,
-  watchEffect,
 } from "vue";
 import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
@@ -124,20 +122,11 @@ export default defineComponent({
           c.regione !== currentRegion.value
         ) {
           let index = communitiesToDisplay.value.indexOf(c.nome)
-          communitiesToDisplay.value.splice(index)
+          communitiesToDisplay.value.forEach((c) => {
+            communitiesToDisplay.value.splice(c[index])
+          })
         }
       });
-    });
-
-    watchEffect(() => {
-      console.log(communitiesToDisplay.value, "<<< comm to display");
-      // communities.forEach((el) => {
-      //   if (el.regione === currentRegion.value) {
-      //     communitiesToDisplay.value.push(el);
-      //   }
-      //   if (communitiesToDisplay.value.includes(el)) {
-      //   }
-      // });
     });
 
     const selectRegion = () => {
