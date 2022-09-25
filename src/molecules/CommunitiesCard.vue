@@ -9,9 +9,9 @@ export default defineComponent({
     format: { type: String, default: "Eth Turin" },
     progetti: { type: String, default: "Eth Turin" },
     membri: { type: Number, default: 1 },
-    telegram: { type: String, require:true },
-    discord: { type: String, require:true },
-    twitter: { type: String, require:true },
+    telegram: { type: String, require: true },
+    discord: { type: String, require: true },
+    twitter: { type: String, require: true },
   },
   setup(props) {
     return {
@@ -24,21 +24,21 @@ export default defineComponent({
 <template>
   <li class="community-card p-4">
     <div class="content w-full h-full flex flex-col justify-between">
-      <h1 class="community-name">{{ name }}</h1>
-      <p class="community-focus">Membri: {{ membri }}</p>
-      <p class="community-focus">Focus: {{ focus }}</p>
-      <p class="community-focus">Meet: {{ meet }}</p>
-      <p class="community-focus">Format: {{ format }}</p>
-      <p class="community-focus">Progetti: {{ progetti }}</p>
+      <h1 class="community-name capitalize">{{ name }}</h1>
+      <p class="community-focus capitalize">Membri: {{ membri }}</p>
+      <p class="community-focus capitalize">Focus: {{ focus }}</p>
+      <p class="community-focus capitalize">Meet: {{ meet }}</p>
+      <p class="community-focus capitalize">Format: {{ format }}</p>
+      <p class="community-focus capitalize">Progetti: {{ progetti }}</p>
       <div class="social-wrapper w-[50%] mt-[4%] flex justify-between">
         <a v-if="discord.length > 1" :href="discord" target="_blank">
-            <img src="../assets/svg/discordIcon.svg" />
+          <img class="discord-icon" src="../assets/svg/discordIcon.svg" />
         </a>
         <a v-if="telegram.length > 1" :href="telegram" target="_blank">
-            <img src="../assets/svg/telegramIcon.svg" />
+          <img src="../assets/svg/telegramIcon.svg" />
         </a>
-        <a v-if="twitter.length > 1" :href='twitter' target="_blank">
-            <img src="../assets/svg/twitterIcon.svg" />
+        <a v-if="twitter.length > 1" :href="twitter" target="_blank">
+          <img src="../assets/svg/twitterIcon.svg" />
         </a>
         <img src="../assets/svg/websiteIcon.svg" />
       </div>
@@ -54,6 +54,7 @@ export default defineComponent({
   min-height: 350px;
   border-radius: 10px;
   color: white;
+  overflow: hidden;
 }
 
 .community-name {
@@ -69,12 +70,32 @@ export default defineComponent({
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-size: 1.5rem;
+
+  @keyframes gradient {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  animation: gradient 3s linear infinite;
 }
 
 .social-wrapper {
   & img {
     cursor: pointer;
     height: 25px;
+    transition: all .1s ease-in;
+
+    &:hover{
+      opacity: .7;
+    }
   }
 }
 </style>
