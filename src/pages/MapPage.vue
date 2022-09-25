@@ -128,6 +128,8 @@ export default defineComponent({
         }
       });
     });
+    
+    //test for the push
 
     const selectRegion = () => {
       miniMap.value = !miniMap.value;
