@@ -4,11 +4,11 @@ import ExpandIcon from "../assets/svg/expandIcon.svg";
 export default defineComponent({
   name: "MobileMap",
   components: { ExpandIcon },
-  emits: ["expandMap"],
+  emits: ["expandMap", "resetArray"],
   setup(props, {emit}) {
     const expandMap = () => {
-        console.log("expand");
         emit("expandMap", false)
+        emit("resetArray", [])
     }
     return {
         expandMap

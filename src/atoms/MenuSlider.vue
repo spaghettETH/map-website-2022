@@ -22,15 +22,15 @@ export default defineComponent({
     class="menu-slider-wrapper absolute top-0 right-0 z-4"
   >
     <h2 class="menu-labels flex">
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
-      <span>COMING SOON</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
+      <span>REGISTER COMMUNITY</span>
     </h2>
   </div>
 </template>yarn 

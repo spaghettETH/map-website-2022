@@ -7,6 +7,7 @@ import {
   onMounted,
   ref,
   watch,
+  watchEffect,
 } from "vue";
 import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
@@ -112,7 +113,6 @@ export default defineComponent({
     });
 
     watch(currentRegion, () => {
-      console.log(currentRegion.value);
       communities.forEach((c, i) => {
         if (c.regione === currentRegion.value) {
           communitiesToDisplay.value.push(c);
@@ -2994,7 +2994,7 @@ export default defineComponent({
           stroke-linejoin="round"
         />
       </svg>
-      <MobileMap v-if="miniMap" @expand-map="miniMap = $event" />
+      <MobileMap v-if="miniMap" @expand-map="miniMap = $event" @reset-array="communitiesToDisplay = $event" />
       <div class="welcome-labels-wrapper absolute w-[50%] z-90">
         <div
           class="
@@ -3038,16 +3038,6 @@ section {
     color: white;
   }
 }
-/* .map-position {
-  opacity: 0.3;
-  position: absolute;
-  bottom: 10%;
-  left: 3%;
-  height: 350px;
-  border: 1px solid white;
-  border-style: dashed;
-  transition: all .6s ease-in;
-} */
 
 .active {
   opacity: 1 !important;
