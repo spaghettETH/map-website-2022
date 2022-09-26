@@ -66,8 +66,8 @@ export default defineComponent({
   overflow: hidden;
 
   @media (max-width: 640px) {
-    max-width: 300px;
-    min-width: 300px;
+    max-width: 275px;
+    min-width: 275px;
   }
 }
 
