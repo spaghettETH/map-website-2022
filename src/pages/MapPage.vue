@@ -31,12 +31,12 @@ export default defineComponent({
       swiper.value = instance;
     }
 
-    function next () {
-      swiper.value?.slideNext()
+    function next() {
+      swiper.value?.slideNext();
     }
 
-    function prev () {
-      swiper.value?.slidePrev()
+    function prev() {
+      swiper.value?.slidePrev();
     }
 
     const testFunction = (id) => {
@@ -161,7 +161,7 @@ export default defineComponent({
       isMobile,
       init,
       next,
-      prev
+      prev,
     };
   },
 });
@@ -223,9 +223,16 @@ export default defineComponent({
               />
             </SwiperSlide>
           </Swiper>
-          <div v-if="communitiesToDisplay.length >= 3" class="absolute bottom-[5%] right-[10%]">
-            <button class="bg-red-600" @click="prev">prev</button>
-            <button class="bg-red-600" @click="next">next</button>
+          <div
+            v-if="communitiesToDisplay.length >= 2"
+            class="swiper-btns-wrapper w-[7%] flex items-center justify-between absolute bottom-[5%] right-[10%]"
+          >
+            <button class="swiper-btn" @click="prev">
+              <img src="../assets/svg/prevIcon.svg" />
+            </button>
+            <button class="swiper-btn" @click="next">
+              <img src="../assets/svg/nextIcon.svg" />
+            </button>
           </div>
           <h1
             v-if="communitiesToDisplay.length === 0 && miniMap"
@@ -3227,5 +3234,20 @@ section {
   & li:not(:first-child) {
     margin-left: 15px;
   }
+}
+
+.swiper-btns-wrapper{
+  @media (max-width: 1023) {
+    width: 10%;
+  }
+  @media (max-width: 640px) {
+    width: 25%;
+  }
+}
+
+.swiper-btn{
+  padding: .3rem;
+  border-radius: 100px;
+  border: 1px solid #f2f2f2;
 }
 </style>
