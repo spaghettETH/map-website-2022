@@ -2250,5 +2250,10 @@ export default defineComponent({
     transform: scale(1.1);
   }
   }
+
+  @media(max-width:640px){
+    height: 125px;
+  width: 125px !important;
+  }
 }
 </style>
