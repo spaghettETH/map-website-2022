@@ -2,12 +2,11 @@
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
 import {
-  computed,
   defineComponent,
   onMounted,
   ref,
   watch,
-  watchEffect,
+  computed
 } from "vue";
 import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
@@ -16,6 +15,7 @@ import { useMouseParallax } from "../utils/useMouseParallax.js";
 import MobileMap from "../molecules/MobileMap.vue";
 import communities from "../communitiesData.json";
 import CommunitiesCard from "../molecules/CommunitiesCard.vue";
+import { useBreakpoint } from "../functions/useBreakpoint";
 
 export default defineComponent({
   name: "MapPage",
@@ -25,6 +25,9 @@ export default defineComponent({
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
     const communitiesToDisplay = ref([]);
+
+    const matches = useBreakpoint()
+    const isMobile = computed(() => matches.value?.beforeSm)
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
@@ -140,6 +143,7 @@ export default defineComponent({
       miniMap,
       communities,
       communitiesToDisplay,
+      isMobile
     };
   },
 });
