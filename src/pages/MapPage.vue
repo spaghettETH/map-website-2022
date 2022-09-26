@@ -136,6 +136,7 @@ export default defineComponent({
     });
 
     const selectRegion = () => {
+      emit("showNavbar", false)
       miniMap.value = !miniMap.value;
     };
     return {
@@ -189,7 +190,7 @@ export default defineComponent({
             <SwiperSlide
               v-for="community in communitiesToDisplay"
               :key="community.nome"
-              class="flex items-center justify-center"
+              class="flex items-center justify-center pointer-events-none"
             >
               <CommunitiesCard
                 :name="community.nome"
@@ -3123,9 +3124,12 @@ export default defineComponent({
 section {
   overflow: hidden;
   background-color: transparent;
-
   & p {
     color: white;
+  }
+
+  @media (max-width: 640px) {
+    overflow: scroll;
   }
 }
 
