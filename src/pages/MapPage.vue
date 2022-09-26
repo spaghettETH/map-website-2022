@@ -136,7 +136,6 @@ export default defineComponent({
     });
 
     const selectRegion = () => {
-      emit("showNavbar", false)
       miniMap.value = !miniMap.value;
     };
     return {
@@ -3100,18 +3099,19 @@ export default defineComponent({
             Welcome to the SpaghettETH website!
           </p>
           <p
-            v-if="!isMobile"
             class="welcome-label welcome-label-second absolute flex text-center"
           >
+          <span v-if="!isMobile">
             Hover
+          </span>
             <span
-              ><img class="intro-icon" src="../assets/images/hoverIcon.png"
+              ><img v-if="!isMobile" class="intro-icon" src="../assets/images/hoverIcon.png"
             /></span>
-            to discover, Tap
+           <span v-if="!isMobile">to discover,</span>  <span>Tap</span>
             <span
               ><img class="intro-icon" src="../assets/images/tapIcon.png"
             /></span>
-            to choose!
+            <span>to choose!</span>
           </p>
         </div>
       </div>
@@ -3196,7 +3196,7 @@ section {
 }
 
 .communities-wrapper {
-  margin-bottom: 10%;
+  margin-bottom: 15%;
   & li:not(:first-child) {
     margin-left: 15px;
   }
