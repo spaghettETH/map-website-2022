@@ -207,7 +207,7 @@ export default defineComponent({
             <SwiperSlide
               v-for="community in communitiesToDisplay"
               :key="community.nome"
-              class="flex items-center justify-center pointer-events-none"
+              class="flex items-center justify-center"
             >
               <CommunitiesCard
                 :name="community.nome"
