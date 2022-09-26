@@ -27,7 +27,8 @@ export default defineComponent({
     const communitiesToDisplay = ref([]);
 
     const matches = useBreakpoint()
-    const isMobile = computed(() => matches.value?.beforeSm)
+    const isMobile = computed(() => matches.value?.beforeLg)
+
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
@@ -196,7 +197,7 @@ export default defineComponent({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         class="barchetta barchett-sx absolute left-[40%] top-[45%]"
-        v-if="!miniMap"
+        v-if="!miniMap && !isMobile"
       >
         <path
           d="M53.0977 1V13.3L60.2977 17.9L53.0977 1Z"
@@ -462,7 +463,7 @@ export default defineComponent({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         class="barchetta barchett-dx absolute top-[20%] right-[40%]"
-        v-if="!miniMap"
+        v-if="!miniMap && !isMobile"
       >
         <path
           d="M22.9 67C22.9 67 27.7 72.3 26.1 77.7H24.6C24.6 77.7 25.7 71.1 21.6 67.5L22.9 67Z"
@@ -752,7 +753,7 @@ export default defineComponent({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         class="map absolute z-3"
-        v-if="!miniMap"
+        v-if="!miniMap && !isMobile"
       >
         <path
           d="M327.9 266.2L329.1 271.7L331.1 276.5L336.6 286.3L342.7 293L349.9 298.4L350.7 300.4L353.9 303.5L354.2 304.7L359.1 307.9L363.6 309.5L363.8 313.7L366.8 315.8L365.8 317.4L366.6 318.1L364.1 319.8L362.1 322.3L361.4 325L359.3 326.5L357.8 329.8L353.6 334.3L351.8 334L352.5 333.4L351.6 329.7L350.6 328.8L348.5 327.4L347.6 328.6L347.1 328.4L346.2 326.5L345.1 326.6L344.3 325.5L341.8 327.6L340.6 329.5L338.7 329.6L338.3 330.4L339.4 333.5L340.7 334.3L340.3 335.2L339.6 335.1L339.4 334.2L338.8 335.3H337.1L336.6 337.6L335.9 335.8L334.9 335.9L334.1 338H332.9L332.7 339.3L331.1 338.4L329.3 338.9L327.1 336L325.4 336.2L323.3 335L322.4 335.6L321.2 335.2L319.7 332.3L318.5 332.9L317.6 331.9L316 331.5L315.1 333.3L311.6 334.5L310.3 333.7L309.7 332.1L308.1 331.7L306.8 330.5L305.3 329.9L304.1 331.1L303.2 327.9L304.3 325.9L303.4 324.7L302.5 324.9L300.8 322.9L300 323.2L293.3 319.3L291.5 318.7V319.8L289.4 319.2L288.2 317.2L288.3 312.9L289 313.2L290.8 311.6V309.5L292.3 309.4L298 312.5L299.1 311.8L300.6 312.3L301.5 310.4L302.8 310.1L302.3 309.5L303.9 309.2L302.2 308.1L301.9 306.7L299.8 306L297.5 303.8L296.9 300.9L293.6 298.7L295.4 296.7L291.9 293.4L294.7 291.3L294.6 289.2L293.7 287.6L294.6 287.1L295.3 284.7L297.7 285.6L298.2 285H299.4L299.9 285.9L301.2 285.2L303.2 285.5L304.4 284.5L305.1 281.5L303.4 280.9L302.4 279.7L302.9 278.2L304.4 278.6L306 277.4L306.5 277.8L307 275.7L309.1 275.4L309.4 273.2L310.6 271.9L310.8 270.6L312.6 271.6L314.7 270.6L315.3 271.4L316.5 271.3L318.3 270.5L318.7 268.6L319.3 268.3L321.7 268.1L323.5 266.9L327.9 266V266.2Z"

@@ -1,5 +1,6 @@
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
+import { useBreakpoint } from "../functions/useBreakpoint";
 export default defineComponent({
   name: "Navbar",
   props: { isVisible: { type: Boolean, default: false } },
@@ -7,9 +8,13 @@ export default defineComponent({
     const openMenu = () => {
       emit("openMenu", true);
     };
+
+     const matches = useBreakpoint()
+    const isMobile = computed(() => matches.value?.beforeLg)
     return {
       props,
       openMenu,
+      isMobile
     };
   },
 });
@@ -34,6 +39,7 @@ export default defineComponent({
         class="absolute top-0 left-0 w-full h-full"
       />
     </div>
+    <button v-if="isMobile" class="submit-com-btn">Register Community</button>
   </nav>
 </template>
 
@@ -54,5 +60,23 @@ export default defineComponent({
   height: 2.5rem;
   width: auto;
   cursor: pointer;
+}
+
+.submit-com-btn{
+  background-color: #f99bc0;
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  transition: opacity .2s ease-in-out;
+
+  @media(max-width:640px){
+    padding: .7rem;
+    font-size: .8em;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
 }
 </style>

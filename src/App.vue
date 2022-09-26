@@ -1,22 +1,27 @@
 <script>
-import { defineComponent, ref, watchEffect } from "vue";
+import { defineComponent, ref, watchEffect, computed } from "vue";
 import MapPage from "./pages/MapPage.vue";
 import Navbar from "./atoms/Navbar.vue";
 import Menu from "./organisms/Menu.vue";
 import MenuSlider from "./atoms/MenuSlider.vue";
+import { useBreakpoint } from "./functions/useBreakpoint";
+
 export default defineComponent({
   name: "App",
   components: { MapPage, Navbar, Menu, MenuSlider },
   setup() {
     const navbarVisible = ref(false);
-    const sidemenuVisible = ref(false);
     const menuVisible = ref(false);
+
+    const matches = useBreakpoint();
+    const isMobile = computed(() => matches.value?.beforeLg);
     watchEffect(() => {
       console.log(menuVisible.value);
     });
     return {
       navbarVisible,
       menuVisible,
+      isMobile,
     };
   },
 });
@@ -27,7 +32,11 @@ export default defineComponent({
     <Navbar :isVisible="navbarVisible" class="z-2" />
     <Menu v-if="menuVisible" @close-menu="menuVisible = $event" class="z-3" />
     <MapPage @show-navbar="navbarVisible = $event" class="z-1" />
-    <MenuSlider :isVisible="navbarVisible" @openMenu="menuVisible = $event" />
+    <MenuSlider
+      v-if="!isMobile"
+      :isVisible="navbarVisible"
+      @openMenu="menuVisible = $event"
+    />
   </div>
 </template>
 
