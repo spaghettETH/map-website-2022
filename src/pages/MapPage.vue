@@ -128,8 +128,6 @@ export default defineComponent({
         }
       });
     });
-    
-    //test for the push
 
     const selectRegion = () => {
       miniMap.value = !miniMap.value;
@@ -182,6 +180,7 @@ export default defineComponent({
             :telegram="community.telegram"
             :discord="community.discord"
             :twitter="community.twitter"
+            :website="community.website"
           />
         </ul>
       </div>

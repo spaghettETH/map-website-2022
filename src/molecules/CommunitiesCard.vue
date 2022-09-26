@@ -12,6 +12,7 @@ export default defineComponent({
     telegram: { type: String, require: true },
     discord: { type: String, require: true },
     twitter: { type: String, require: true },
+    website: { type: String, require: true },
   },
   setup(props) {
     return {
@@ -25,12 +26,12 @@ export default defineComponent({
   <li class="community-card p-4">
     <div class="content w-full h-full flex flex-col justify-between">
       <h1 class="community-name capitalize">{{ name }}</h1>
-      <p class="community-focus capitalize">Membri: {{ membri }}</p>
-      <p class="community-focus capitalize">Focus: {{ focus }}</p>
-      <p class="community-focus capitalize">Meet: {{ meet }}</p>
-      <p class="community-focus capitalize">Format: {{ format }}</p>
-      <p class="community-focus capitalize">Progetti: {{ progetti }}</p>
-      <div class="social-wrapper w-[50%] mt-[4%] flex justify-between">
+      <p class="community-focus capitalize"><span>Membri:</span> {{ membri }}</p>
+      <p class="community-focus capitalize"><span>Focus:</span> {{ focus }}</p>
+      <p class="community-focus capitalize"><span>Meet:</span> {{ meet }}</p>
+      <p class="community-focus capitalize"><span>Format:</span> {{ format }}</p>
+      <p class="community-focus capitalize"><span>Progetti:</span> {{ progetti }}</p>
+      <div class="social-wrapper mt-[4%] flex justify-between">
         <a v-if="discord.length > 1" :href="discord" target="_blank">
           <img class="discord-icon" src="../assets/svg/discordIcon.svg" />
         </a>
@@ -40,7 +41,9 @@ export default defineComponent({
         <a v-if="twitter.length > 1" :href="twitter" target="_blank">
           <img src="../assets/svg/twitterIcon.svg" />
         </a>
-        <img src="../assets/svg/websiteIcon.svg" />
+        <a v-if="website.length > 1" :href="website" target="_blank">
+          <img src="../assets/svg/websiteIcon.svg" />
+        </a>
       </div>
     </div>
   </li>
@@ -51,7 +54,7 @@ export default defineComponent({
   background-color: rgb(58, 58, 58);
   max-width: 350px;
   min-width: 350px;
-  min-height: 350px;
+  min-height: 450px;
   border-radius: 10px;
   color: white;
   overflow: hidden;
@@ -71,6 +74,7 @@ export default defineComponent({
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-size: 1.5rem;
+  animation: gradient 3s linear infinite;
 
   @keyframes gradient {
     0% {
@@ -83,8 +87,6 @@ export default defineComponent({
       background-position: 0 50%;
     }
   }
-
-  animation: gradient 3s linear infinite;
 }
 
 .social-wrapper {
@@ -95,6 +97,20 @@ export default defineComponent({
 
     &:hover{
       opacity: .7;
+    }
+
+    /* & a :not(:last-child){
+      margin-right: .3rem;
+    } */
+  }
+}
+
+.content {
+  & p {
+    & span {
+      font-size: 1.2em;
+      color: #f99bc0;
+      font-weight: bold;
     }
   }
 }
