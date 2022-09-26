@@ -138,6 +138,10 @@ export default defineComponent({
     const selectRegion = () => {
       miniMap.value = !miniMap.value;
     };
+
+    watch(miniMap, () => {
+      miniMap.value ? emit("showNavbar", false) : emit("showNavbar", true);
+    });
     return {
       testFunction,
       regionsData,
@@ -154,7 +158,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="map-section w-full h-full top-[10%] absolute">
+  <section
+    class="map-section w-full h-full top-[10%] absolute"
+    :class="{ expand: miniMap }"
+  >
     <div class="h-full w-full flex items-center justify-center svg-wrapper">
       <h1
         class="italian-map-label absolute uppercase opacity-80"
@@ -3101,13 +3108,14 @@ export default defineComponent({
           <p
             class="welcome-label welcome-label-second absolute flex text-center"
           >
-          <span v-if="!isMobile">
-            Hover
-          </span>
+            <span v-if="!isMobile"> Hover </span>
             <span
-              ><img v-if="!isMobile" class="intro-icon" src="../assets/images/hoverIcon.png"
+              ><img
+                v-if="!isMobile"
+                class="intro-icon"
+                src="../assets/images/hoverIcon.png"
             /></span>
-           <span v-if="!isMobile">to discover,</span>  <span>Tap</span>
+            <span v-if="!isMobile">to discover,</span> <span>Tap</span>
             <span
               ><img class="intro-icon" src="../assets/images/tapIcon.png"
             /></span>
@@ -3142,6 +3150,10 @@ section {
 .active {
   opacity: 1 !important;
   color: white !important;
+}
+
+.expand {
+  top: 0;
 }
 .cancel {
   display: none;
@@ -3196,7 +3208,7 @@ section {
 }
 
 .communities-wrapper {
-  margin-bottom: 15%;
+  margin-bottom: 10%;
   & li:not(:first-child) {
     margin-left: 15px;
   }

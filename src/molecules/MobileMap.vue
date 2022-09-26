@@ -2227,7 +2227,7 @@ export default defineComponent({
   height: 250px;
   width: 250px !important;
   position: absolute;
-  bottom: 11%;
+  bottom: 1%;
   left: 2%;
   transition: all 0.6s ease-in;
   width: 20%;
@@ -2254,6 +2254,7 @@ export default defineComponent({
   @media(max-width:640px){
     height: 125px;
   width: 125px !important;
+  cursor: pointer;
   }
 }
 </style>
