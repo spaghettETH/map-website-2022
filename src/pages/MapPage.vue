@@ -31,6 +31,14 @@ export default defineComponent({
       swiper.value = instance;
     }
 
+    function next () {
+      swiper.value?.slideNext()
+    }
+
+    function prev () {
+      swiper.value?.slidePrev()
+    }
+
     const testFunction = (id) => {
       currentRegion.value = id;
       gsap.fromTo(
@@ -152,6 +160,8 @@ export default defineComponent({
       communitiesToDisplay,
       isMobile,
       init,
+      next,
+      prev
     };
   },
 });
@@ -176,6 +186,7 @@ export default defineComponent({
           v-if="miniMap && communitiesToDisplay"
           class="
             communities-wrapper
+            relaitve
             w-[75%]
             h-[50%]
             flex
@@ -189,7 +200,7 @@ export default defineComponent({
             update-on-window-resize
             navigation
             :pagination="{ clickable: true }"
-            :scrollbar="{ draggable: true }"
+            scrollbar
             :slides-per-view="isMobile ? 1 : 2"
             @swiper="init"
           >
@@ -212,6 +223,10 @@ export default defineComponent({
               />
             </SwiperSlide>
           </Swiper>
+          <div v-if="communitiesToDisplay.length >= 3" class="absolute bottom-[5%] right-[10%]">
+            <button class="bg-red-600" @click="prev">prev</button>
+            <button class="bg-red-600" @click="next">next</button>
+          </div>
           <h1
             v-if="communitiesToDisplay.length === 0 && miniMap"
             class="bg-red-600"
