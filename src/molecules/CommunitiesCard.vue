@@ -101,10 +101,12 @@ export default defineComponent({
 }
 
 .social-wrapper {
+  width: fit-content;
   & img {
     cursor: pointer;
     height: 25px;
     transition: all 0.1s ease-in;
+    margin-right: .4rem;
 
     &:hover {
       opacity: 0.7;
