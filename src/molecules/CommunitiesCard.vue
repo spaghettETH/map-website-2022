@@ -26,11 +26,17 @@ export default defineComponent({
   <li class="community-card p-4">
     <div class="content w-full h-full flex flex-col justify-between">
       <h1 class="community-name capitalize">{{ name }}</h1>
-      <p class="community-focus capitalize"><span>Membri:</span> {{ membri }}</p>
+      <p class="community-focus capitalize">
+        <span>Membri:</span> {{ membri }}
+      </p>
       <p class="community-focus capitalize"><span>Focus:</span> {{ focus }}</p>
       <p class="community-focus capitalize"><span>Meet:</span> {{ meet }}</p>
-      <p class="community-focus capitalize"><span>Format:</span> {{ format }}</p>
-      <p class="community-focus capitalize"><span>Progetti:</span> {{ progetti }}</p>
+      <p class="community-focus capitalize">
+        <span>Format:</span> {{ format }}
+      </p>
+      <p class="community-focus capitalize">
+        <span>Progetti:</span> {{ progetti }}
+      </p>
       <div class="social-wrapper mt-[4%] flex justify-between">
         <a v-if="discord.length > 1" :href="discord" target="_blank">
           <img class="discord-icon" src="../assets/svg/discordIcon.svg" />
@@ -58,6 +64,11 @@ export default defineComponent({
   border-radius: 10px;
   color: white;
   overflow: hidden;
+
+  @media (max-width: 640px) {
+    max-width: 300px;
+    min-width: 300px;
+  }
 }
 
 .community-name {
@@ -93,10 +104,10 @@ export default defineComponent({
   & img {
     cursor: pointer;
     height: 25px;
-    transition: all .1s ease-in;
+    transition: all 0.1s ease-in;
 
-    &:hover{
-      opacity: .7;
+    &:hover {
+      opacity: 0.7;
     }
 
     /* & a :not(:last-child){

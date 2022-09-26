@@ -1,13 +1,7 @@
 <script>
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
-import {
-  defineComponent,
-  onMounted,
-  ref,
-  watch,
-  computed
-} from "vue";
+import { defineComponent, onMounted, ref, watch, computed } from "vue";
 import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
@@ -17,17 +11,25 @@ import communities from "../communitiesData.json";
 import CommunitiesCard from "../molecules/CommunitiesCard.vue";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+
 export default defineComponent({
   name: "MapPage",
-  components: { ItalianMap, MobileMap, CommunitiesCard },
+  components: { ItalianMap, MobileMap, CommunitiesCard, Swiper, SwiperSlide },
   emits: ["showNavbar"],
   setup(props, { emit }) {
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
     const communitiesToDisplay = ref([]);
 
-    const matches = useBreakpoint()
-    const isMobile = computed(() => matches.value?.beforeLg)
+    const matches = useBreakpoint();
+    const isMobile = computed(() => matches.value?.beforeLg);
+
+    const swiper = ref();
+    function init(instance) {
+      swiper.value = instance;
+    }
 
     const testFunction = (id) => {
       currentRegion.value = id;
@@ -57,12 +59,12 @@ export default defineComponent({
         { y: -25, opacity: 0, duration: 0.3, ease: "power3.inOut" },
         ">+=2"
       );
-        animation.fromTo(
-          ".welcome-label-second",
-          { y: 25, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.3, ease: "power3.inOut" },
-          ">"
-        );
+      animation.fromTo(
+        ".welcome-label-second",
+        { y: 25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.3, ease: "power3.inOut" },
+        ">"
+      );
       animation.fromTo(
         ".welcome-label-second",
         { y: 0, opacity: 1 },
@@ -125,10 +127,10 @@ export default defineComponent({
           communitiesToDisplay.value.includes(c) &&
           c.regione !== currentRegion.value
         ) {
-          let index = communitiesToDisplay.value.indexOf(c.nome)
+          let index = communitiesToDisplay.value.indexOf(c.nome);
           communitiesToDisplay.value.forEach((c) => {
-            communitiesToDisplay.value.splice(c[index])
-          })
+            communitiesToDisplay.value.splice(c[index]);
+          });
         }
       });
     });
@@ -144,7 +146,8 @@ export default defineComponent({
       miniMap,
       communities,
       communitiesToDisplay,
-      isMobile
+      isMobile,
+      init,
     };
   },
 });
@@ -173,21 +176,41 @@ export default defineComponent({
             justify-center
           "
         >
-          <CommunitiesCard
-            v-for="community in communitiesToDisplay"
-            :key="community.nome"
-            :name="community.nome"
-            :focus="community.focus"
-            :meet="community.meet"
-            :format="community.format"
-            :progetti="community.progetti"
-            :membri="community.membri"
-            :telegram="community.telegram"
-            :discord="community.discord"
-            :twitter="community.twitter"
-            :website="community.website"
-          />
-          <h1 v-if="communitiesToDisplay.length === 0 && miniMap" class="bg-red-600">NO COMMUNITIES HERE</h1>
+          <Swiper
+            class="w-full flex items-center justify-center"
+            grab-cursor
+            update-on-window-resize
+            navigation
+            :pagination="{ clickable: true }"
+            :scrollbar="{ draggable: true }"
+            :slides-per-view="isMobile ? 1 : 2"
+            @swiper="init"
+          >
+            <SwiperSlide
+              v-for="community in communitiesToDisplay"
+              :key="community.nome"
+              class="flex items-center justify-center"
+            >
+              <CommunitiesCard
+                :name="community.nome"
+                :focus="community.focus"
+                :meet="community.meet"
+                :format="community.format"
+                :progetti="community.progetti"
+                :membri="community.membri"
+                :telegram="community.telegram"
+                :discord="community.discord"
+                :twitter="community.twitter"
+                :website="community.website"
+              />
+            </SwiperSlide>
+          </Swiper>
+          <h1
+            v-if="communitiesToDisplay.length === 0 && miniMap"
+            class="bg-red-600"
+          >
+            NO COMMUNITIES HERE
+          </h1>
         </ul>
       </div>
       <!-- BARCHETTA SINISTRA -->
@@ -3054,7 +3077,11 @@ export default defineComponent({
           stroke-linejoin="round"
         />
       </svg>
-      <MobileMap v-if="miniMap" @expand-map="miniMap = $event" @reset-array="communitiesToDisplay = $event" />
+      <MobileMap
+        v-if="miniMap"
+        @expand-map="miniMap = $event"
+        @reset-array="communitiesToDisplay = $event"
+      />
       <div class="welcome-labels-wrapper absolute w-[50%] z-90">
         <div
           class="
@@ -3071,7 +3098,10 @@ export default defineComponent({
           <p class="welcome-label welcome-label-first absolute text-center">
             Welcome to the SpaghettETH website!
           </p>
-          <p v-if="!isMobile" class="welcome-label welcome-label-second absolute flex text-center">
+          <p
+            v-if="!isMobile"
+            class="welcome-label welcome-label-second absolute flex text-center"
+          >
             Hover
             <span
               ><img class="intro-icon" src="../assets/images/hoverIcon.png"
@@ -3099,8 +3129,8 @@ section {
   }
 }
 
-.map{
-  @media(max-width:640px){
+.map {
+  @media (max-width: 640px) {
     width: 90%;
   }
 }
@@ -3131,10 +3161,10 @@ section {
   text-align: center;
   top: 25%;
 
-  @media(max-width:1023px){
+  @media (max-width: 1023px) {
     font-size: 6rem;
   }
-  @media(max-width:640px){
+  @media (max-width: 640px) {
     font-size: 3rem;
   }
 }
@@ -3142,6 +3172,9 @@ section {
 .welcome-label {
   font-family: MonsterratRegular;
   font-size: 2rem;
+  @media (max-width: 640px) {
+    font-size: 1rem;
+  }
 }
 
 .welcome-label-second {

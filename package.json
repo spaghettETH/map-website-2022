@@ -11,6 +11,7 @@
     "@vueuse/core": "^9.3.0",
     "gsap": "^3.10.4",
     "scss": "^0.2.4",
+    "swiper": "^8.4.2",
     "vue": "^3.2.25"
   },
   "devDependencies": {
