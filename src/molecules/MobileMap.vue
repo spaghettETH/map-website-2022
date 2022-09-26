@@ -1,29 +1,32 @@
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import ExpandIcon from "../assets/svg/expandIcon.svg";
+import { useBreakpoint } from "../functions/useBreakpoint";
 export default defineComponent({
   name: "MobileMap",
   components: { ExpandIcon },
   emits: ["expandMap", "resetArray"],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
+    const matches = useBreakpoint();
+    const isMobile = computed(() => matches.value?.beforeSm);
     const expandMap = () => {
-        emit("expandMap", false)
-        emit("resetArray", [])
-    }
+      emit("expandMap", false);
+      emit("resetArray", []);
+    };
     return {
-        expandMap
+      expandMap,
+      isMobile,
     };
   },
 });
 </script>
 
 <template>
-  <div class="mobile-map-wrapper">
+  <div v-if="!isMobile" class="resized-map-wrapper">
     <div class="h-full w-full relative" @click="expandMap()">
       <img
         class="top-0 right-0 absolute cursor-pointer z-10"
         src="../assets/svg/expandIcon.svg"
-
       />
       <svg
         width="543"
@@ -2220,10 +2223,18 @@ export default defineComponent({
       </svg>
     </div>
   </div>
+  <div v-if="isMobile">
+    <button
+      @click="expandMap()"
+      class="back-btn absolute bottom-[5%] left-[5%]"
+    >
+      Mappa 🇮🇹
+    </button>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.mobile-map-wrapper {
+.resized-map-wrapper {
   height: 250px;
   width: 250px !important;
   position: absolute;
@@ -2237,24 +2248,30 @@ export default defineComponent({
   border: 2px solid white;
   border-radius: 1000px;
   overflow: hidden;
-  cursor: url('../assets/svg/expandIcon.svg') 20 20, auto;
-  transition: all .4s ease-in;
+  cursor: url("../assets/svg/expandIcon.svg") 20 20, auto;
+  transition: all 0.4s ease-in;
 
   & svg {
     height: 100%;
     opacity: 0.5;
     width: 100%;
-    transition: all .3s ease-in;
+    transition: all 0.3s ease-in;
 
-    &:hover{
-    transform: scale(1.1);
-  }
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
-  @media(max-width:640px){
+  @media (max-width: 640px) {
     height: 125px;
-  width: 125px !important;
-  cursor: pointer;
+    width: 125px !important;
+    cursor: pointer;
   }
+}
+
+.back-btn{
+  color: #f2f2f2;
+  font-weight: bold;
+  text-decoration: underline;
 }
 </style>
