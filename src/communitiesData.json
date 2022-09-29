@@ -140,22 +140,5 @@
     "website": "ethturin.com",
     "partnership": "Legal Hackers Torino, UniTO",
     "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba"
-  },
-  {
-    "città": "Torino",
-    "regione": "piemonte",
-    "nome": "test",
-    "membri": 10,
-    "meet": "Incontri saltuari in presenza - Incontri saltuari virtuali",
-    "format": "Ricerca e Sviluppo - Educazione",
-    "focus": "Public Goods & Registries - Smart Contract Programming - NFTs - Legal, Adoption, Regulators",
-    "progetti": "ETHTurin2020, SpaghettETH, On-chain music copyright management Dapp, Crypto Open Mic",
-    "twitter": "https://twitter.com/ethturin",
-    "github": "https://github.com/ethturin",
-    "telegram": "/",
-    "discord": "https://discord.gg/GEhgmxkrAZ",
-    "website": "ethturin.com",
-    "partnership": "Legal Hackers Torino, UniTO",
-    "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba"
   }
 ]

@@ -2,17 +2,15 @@
 
 Al momento il processo per aggiungere una community non è automatizzato e sarà revisionato da parte del team di SpaghettETH
 
-**Clona la repo**
-
-Clicca il bottone verde "Code" in alto a destra e scegli l'opzione *SSH*
-
-``` cmd
-git clone git@github.com:spaghettETH/map-website-2022.git
-```
-
-**Edita il file**
+**Seleziona il file**
 
 Il file per aggiungere una community si trova nella cartella `src` ed ha il nome di `communitiesData.json`
+
+Una volta all'interno del file cliccare sull'icona della penna in alto a destra.
+
+![edit](/editFile.png)
+
+**Edita il file**
 
 Per aggiungere la propria community basta aggiungere una entry al file json personalizzandola con i propri dati.
 
