@@ -225,7 +225,16 @@ export default defineComponent({
           </Swiper>
           <div
             v-if="communitiesToDisplay.length >= 2"
-            class="swiper-btns-wrapper w-[7%] flex items-center justify-between absolute bottom-[5%] right-[10%]"
+            class="
+              swiper-btns-wrapper
+              w-[7%]
+              flex
+              items-center
+              justify-between
+              absolute
+              bottom-[5%]
+              right-[10%]
+            "
           >
             <button class="swiper-btn" @click="prev">
               <img src="../assets/svg/prevIcon.svg" />
@@ -234,13 +243,217 @@ export default defineComponent({
               <img src="../assets/svg/nextIcon.svg" />
             </button>
           </div>
-          <h1
-            v-if="communitiesToDisplay.length === 0 && miniMap"
-            class="bg-red-600"
-          >
-            NO COMMUNITIES HERE
-          </h1>
         </ul>
+        <div
+          v-if="communitiesToDisplay.length === 0 && miniMap"
+          class="no-communities-wrapper w-full"
+        >
+          <svg
+          class="w-[50%] h-[50%]"
+            version="1.1"
+            id="Livello_1"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0"
+            y="0"
+            viewBox="0 0 193.9 180.9"
+            xml:space="preserve"
+          >
+            <path
+              class="st0"
+              fill="#fba6c3"
+              stroke="#ffffff"
+              stroke-width="0.5"
+              d="M60.9 74.2c0-5.8-6.7-10.6-14.9-10.6-2.2 0-4.3.4-6.2 1-1.8-3.3-5.9-5.5-10.6-5.5-5 0-9.3 2.5-10.9 6.1h-.8C8 65.2.2 69.6.2 75c0 5 6.6 9.1 15.1 9.7 1 7.1 9.3 12.7 19.4 12.7 10.8 0 19.5-6.3 19.5-14.1v-.2c4.1-2 6.7-5.2 6.7-8.9z"
+            />
+            <path class="st1"
+            fill="#ff9c23"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+            d="m90.7 104-2.1 40.4 12.1 7.9 20.3-6.5V102z" />
+            <path
+              class="st2"
+              fill="#7474f4"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M76.7 51.1s25.8-57.7 29.5-49.6c0 0 1.7-14.1 32.3 58.8l-61.8-9.2z"
+            />
+            <path
+              d="M54.3 73.6s-1.7-10.7 13.5-21.5 46.7-20.1 74.2-2c0 0 15 4.7 15.7 23.5"
+              fill="#8888E5"
+              stroke="#000"
+              stroke-width=".75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+            />
+            <path
+              class="st2"
+              fill="#7474f4"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M59.2 80.7s-8.9-6.7 4.4-22.2 41.7-16.5 45.3-16.2c3.6.2 52.5 7.3 46.6 36 0 0-9 13.6-49.8 13.1S59.2 80.7 59.2 80.7z"
+            />
+            <path
+              class="st4"
+              fill="#00f0c1"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+              d="M68.6 73.4s-20.4 34-17.4 38.7c2.9 4.7 11.2 19.4 30.9-4.2L68.6 73.4zM144.3 73.4s20.4 34 17.4 38.7c-2.9 4.7-11.2 19.4-30.9-4.2l13.5-34.5z"
+            />
+            <ellipse class="st4"
+            fill="#00f0c1"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+            cx="105.8" cy="80.7" rx="39.7" ry="36" />
+            <path
+              class="st1"
+              fill="#ff9c23"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M43.3 94.7c0-3-1.8-3.5-1.8-3.3s-.7 3.3-.7 3.3.5 5.5 1.5 7.7c1 2.1 12.8 1.8 15.8.3"
+            />
+            <path
+              class="st1"
+              fill="#ff9c23"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M47.6 100.7s-2.5-5.1-.9-9.9-3.2-4.6-3.2-4.6v2.4s-1.7 6.6-1.1 9c.6 2.4 1.8 4 2.5 4.5"
+            />
+            <path
+              class="st1"
+              fill="#ff9c23"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="m58.1 102.7 5.5-4-2.5-6.5s-.4-2.6-5.7-1.5-7.4.4-7.8.1c0 0-1.7 3.5.8 4.4 2.4.8 4.6.1 4.6.1l-4 3.4s-.8-2-1.7-4.4c-.6-1.7-.3-2.9-1.6-4.7 0 0-1.3-1.1-2.2-1.1l-1.7-.3s1.7 2.8 1.9 5.1c.2 2.3 1 5.9 1.5 6.4s1.5 1.2 1.5 1.2M168.1 94.7c0-3 1.8-3.5 1.8-3.3s.7 3.3.7 3.3-.5 5.5-1.5 7.7c-1 2.1-12.8 1.8-15.8.3"
+            />
+            <path
+              class="st1"
+              fill="#ff9c23"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M163.8 100.7s2.5-5.1.9-9.9c-1.6-4.8 3.2-4.6 3.2-4.6v2.4s1.7 6.6 1.1 9c-.6 2.4-1.8 4-2.5 4.5"
+            />
+            <path
+              class="st1"
+              fill="#ff9c23"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="m153.4 102.7-5.5-4 2.5-6.5s.4-2.6 5.7-1.5 7.4.4 7.8.1c0 0 1.7 3.5-.8 4.4-2.4.8-4.6.1-4.6.1l3.9 3.5s.8-2 1.7-4.4c.6-1.7.3-2.9 1.6-4.7 0 0 1.3-1.1 2.2-1.1l1.7-.3s-1.7 2.8-1.9 5.1c-.2 2.3-1 5.9-1.5 6.4s-1.5 1.2-1.5 1.2"
+            />
+            <path
+              class="st5"
+              fill="#ffffff"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              d="M76.1 74.1s-3.6-5.3.7-10.5 12.5-2.9 12.5-2.9 4.9 2 4.3 7.7-4.6 6.7-4.6 6.7-8.6 3.3-12.9-1z"
+            />
+            <path
+              class="st6"
+              fill="#00cfff"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              d="M71.1 79.3s1.5-5.6 8.6-5.7c7-.1 2.9.6 6.1 1.1s5.2 1.2 5 3.6c-.2 2.4-2.5 2.6-5.1 2.1s-6.5.1-7.1.8c-.6.7-3.1.7-3.1.7s-2.4 3.3-4.3 1-.1-3.6-.1-3.6z"
+            />
+            <path
+              class="st5"
+              fill="#ffffff"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              d="M118.3 70s-1.5-6.3 4.3-8.8c5.8-2.5 11.5.4 12.4 2 .8 1.7 3.1 8 1.3 10.8-1.9 2.9-16.6 3.8-18-4z"
+            />
+            <path class="st7"
+            fill="none"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+            d="M97.4 86.7c3.8-5.5 14.6-5 16.8 0" />
+            <path
+              class="st7"
+              fill="none"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              d="M102.6 83.8c0 .5-.4.9-.9.9s-.9-.4-.9-.9M110.8 83.8c0 .5-.4.9-.9.9s-.9-.4-.9-.9"
+            />
+            <circle cx="84.9" cy="67.4" r=".8" />
+            <circle cx="127.5" cy="67.2" r=".8" />
+            <path
+              class="st2"
+              fill="#7474f4"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M105.9 152.3c-11 4.2-22.9-9.1-22.9-9.1l5.9-18.2c-16.8 8.4-24.8 1.5-26.5-8.4s-4.3-11.1-4.3-11.1l8-4.9S72 118.5 80.5 118s7.2-3.4 7.2-3.4c-1.4 4.1-16.4-6.4-17.5-17.2 8.1 9.2 18.3 11.2 26.2 11l3.1 17.6"
+            />
+            <path
+              class="st2"
+              fill="#7474f4"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M105.1 152.3c11 4.2 22.9-9.1 22.9-9.1l-5.9-18.2c16.8 8.4 24.8 1.5 26.5-8.4s4.3-11.1 4.3-11.1l-8-4.9s-5.9 17.9-14.4 17.4-7.2-3.4-7.2-3.4c1.4 4.1 16.4-6.4 17.5-17.2-8.1 9.2-18.3 11.2-26.2 11l-3.1 17.6"
+            />
+            <path
+              class="st6"
+              fill="#00cfff"
+                stroke="#000000"
+                stroke-width="0.75"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              d="M121.2 77.5s.5-2.5 5.9-2.9c0 0 8-4.4 13.1 2.9 5.1 7.3-2.1 5.7-4.5 4.5-2.4-1.2-5-1.8-5-1.8s-3.3 1.1-7.1.1c-3.8-.9-2.4-2.8-2.4-2.8z"
+            />
+            <path
+              class="st0"
+              fill="#fba6c3"
+              stroke="#ffffff"
+              stroke-width="0.5"
+              d="M184.6 131.2c-.6 0-1.2 0-1.8.1-1.2-1.2-3.2-2.2-5.6-2.8.3-.7.4-1.4.4-2.1 0-3-2.4-5.4-5.4-5.4-3 0-5.4 2.4-5.4 5.4 0 .7.1 1.4.4 2-4.5 1-7.6 3.3-7.6 6v.3c-.4-.2-.9-.3-1.4-.3-2.3 0-4.1 1.9-4.1 4.1 0 2.3 1.9 4.1 4.1 4.1 2.3 0 4.1-1.9 4.1-4.1v-.1c1.7 1.1 3.9 1.8 6.6 2.2.9 2.9 3.6 4.9 6.8 4.9 3.9 0 7.1-3.2 7.1-7.1v-.1c.6.1 1.2.1 1.9.1 5 0 9-1.6 9-3.6s-4.1-3.6-9.1-3.6zM138.5 147.4c-1 0-2 .2-2.9.6-2.6-6.7-9.2-11.5-16.8-11.5-3 0-5.9.8-8.4 2.1-1.8-.9-3.8-1.4-6-1.4-3.7 0-7 1.5-9.5 3.8-4.4-5.1-10.9-8.3-18.2-8.3-5.9 0-11.2 2.1-15.4 5.6-2.3-3-6.1-5.1-10.6-5.5-.3-4.1-3.8-7.4-8-7.4-4.4 0-8 3.6-8 8 0 2 .8 3.9 2 5.3-1.3 1.8-2 3.8-2 6.1 0 6.6 6.4 12 14.4 12 1.2 0 2.4-.1 3.5-.4v.4c0 13.3 10.7 24 24 24C82 180.8 87 179 91 176c2.2 2.9 5.7 4.8 9.7 4.8 5.7 0 10.5-3.9 11.8-9.2 1.9.7 4 1.1 6.2 1.1 7.8 0 14.4-4.9 16.9-11.9.8.4 1.8.6 2.7.6 3.9 0 7-3.1 7-7 .2-3.9-2.9-7-6.8-7z"
+            />
+          </svg>
+          <button>Registra community</button>
+        </div>
       </div>
       <!-- BARCHETTA SINISTRA -->
       <svg
@@ -3150,7 +3363,6 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-//global variables
 section {
   overflow: hidden;
   background-color: transparent;
@@ -3163,6 +3375,31 @@ section {
   }
 }
 
+.no-communities-wrapper{
+  transform: translateX(-30%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & button {
+     background-color: #f99bc0;
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  transition: opacity .2s ease-in-out;
+
+  @media(max-width:640px){
+    padding: .7rem;
+    font-size: .8em;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+  }
+}
 .map {
   @media (max-width: 640px) {
     width: 90%;
@@ -3236,7 +3473,7 @@ section {
   }
 }
 
-.swiper-btns-wrapper{
+.swiper-btns-wrapper {
   @media (max-width: 1023) {
     width: 10%;
   }
@@ -3245,8 +3482,8 @@ section {
   }
 }
 
-.swiper-btn{
-  padding: .3rem;
+.swiper-btn {
+  padding: 0.3rem;
   border-radius: 100px;
   border: 1px solid #f2f2f2;
 }
