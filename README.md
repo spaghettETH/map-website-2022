@@ -2,13 +2,15 @@
 
 Al momento il processo per aggiungere una community non è automatizzato e sarà revisionato da parte del team di SpaghettETH
 
-**Seleziona il file**
+## Seleziona il file
 
 Il file per aggiungere una community si trova nella cartella `src` ed ha il nome di `communitiesData.json`
 
 Una volta all'interno del file cliccare sull'icona della penna in alto a destra.
 
 ![edit](./src/assets/images/editFile.png)
+
+e procedere con *Edit this file*
 
 **Edita il file**
 
@@ -57,6 +59,8 @@ Per aggiungere la propria community basta aggiungere una entry al file json pers
     "multisig": ""
   }
   ```
+
+  ##
 
 ## Nota bene
 
