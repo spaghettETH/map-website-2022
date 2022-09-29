@@ -60,7 +60,13 @@ Per aggiungere la propria community basta aggiungere una entry al file json pers
   }
   ```
 
-  ##
+  ## Apri una Pull Request
+
+  Una volta editato il file, in fondo alla pagina esegui il *commit* delle modifiche apportate
+
+  ![upload](./src/assets/images/addCommunity.png)
+
+  Nella pagina successiva apri la Pull Request ed il gioco è fatto!
 
 ## Nota bene
 
