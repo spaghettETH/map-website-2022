@@ -66,5 +66,6 @@ Prendendo ad esempio la community sopra (non quella vuota) attieniti alle seguen
 * **regione**: inserisci il nome della regione minuscolo
 * **Link e social vari**: inserisci sempre l'URL completo, non il nome del social precedeuto da @ (es: **SI** https://twitter.com/ethturin **NO** @ethturin)
 * **Spazi**: Per questioni di stile (e spazio) separa ciò che scrivi con "-" e non tramite "," o ";"
+* **buon senso**: sii sintetico e vai dritto al punto. Alla gente non gliene frega un cazzo dei progetti che non realizzerai mai o del tuo ego smisurato che metti in piazza perché sei milanese, dio Boia. 
 
 
