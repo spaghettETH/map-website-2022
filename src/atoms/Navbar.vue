@@ -39,7 +39,7 @@ export default defineComponent({
         class="absolute top-0 left-0 w-full h-full"
       />
     </div>
-    <button v-if="isMobile" class="submit-com-btn">Register Community</button>
+    <button v-if="isMobile" class="submit-com-btn">Registra Community</button>
   </nav>
 </template>
 
