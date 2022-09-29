@@ -8,7 +8,7 @@ Il file per aggiungere una community si trova nella cartella `src` ed ha il nome
 
 Una volta all'interno del file cliccare sull'icona della penna in alto a destra.
 
-![edit](/editFile.png)
+![edit](./src/assets/images/editFile.png)
 
 **Edita il file**
 
