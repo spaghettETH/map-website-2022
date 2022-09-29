@@ -1,6 +1,7 @@
 # Come aggiungere una nuova community
 
 Al momento il processo per aggiungere una community non è automatizzato e sarà revisionato da parte del team di SpaghettETH.
+g
 
 **Clona la repo**
 
@@ -10,5 +11,30 @@ Clicca il bottone verde "Code" in alto a sinsitra e scegli l'opzione *SSH*
 git clone git@github.com:spaghettETH/map-website-2022.git
 ```
 
+**Edita il file**
 
+Il file per aggiungere una community si trova nella cartella `src` ed ha il nome di `communitiesData.json`
+
+Per aggiungere la propria community basta aggiungere una entry al file json personalizzandola con i propri dati.
+
+``` json
+{
+    "città": "Torino",
+    "regione": "piemonte",
+    "nome": "ethTurin",
+    "membri": 10,
+    "meet": "Incontri saltuari in presenza - Incontri saltuari virtuali",
+    "format": "Ricerca e Sviluppo - Educazione",
+    "focus": "Public Goods & Registries - Smart Contract Programming - NFTs - Legal, Adoption, Regulators",
+    "progetti": "ETHTurin2020, SpaghettETH, On-chain music copyright management Dapp, Crypto Open Mic",
+    "twitter": "https://twitter.com/ethturin",
+    "github": "https://github.com/ethturin",
+    "telegram": "/",
+    "discord": "https://discord.gg/GEhgmxkrAZ",
+    "website": "ethturin.com",
+    "partnership": "Legal Hackers Torino, UniTO",
+    "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba"
+  }
+  ```
+  >esempio di una community
 
