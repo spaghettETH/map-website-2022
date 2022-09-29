@@ -11,10 +11,15 @@ export default defineComponent({
 
      const matches = useBreakpoint()
     const isMobile = computed(() => matches.value?.beforeLg)
+
+    const registerCommunity = () => {
+      window.location.assign("https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity")
+    }
     return {
       props,
       openMenu,
-      isMobile
+      isMobile,
+      registerCommunity
     };
   },
 });
@@ -39,7 +44,7 @@ export default defineComponent({
         class="absolute top-0 left-0 w-full h-full"
       />
     </div>
-    <button v-if="isMobile" class="submit-com-btn">Registra Community</button>
+    <button v-if="isMobile" class="submit-com-btn" @click="registerCommunity()">Registra Community</button>
   </nav>
 </template>
 

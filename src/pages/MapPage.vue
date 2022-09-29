@@ -150,6 +150,10 @@ export default defineComponent({
     watch(miniMap, () => {
       miniMap.value ? emit("showNavbar", false) : emit("showNavbar", true);
     });
+
+    const registerCommunity = () => {
+      window.location.assign("https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity")
+    }
     return {
       testFunction,
       regionsData,
@@ -162,6 +166,7 @@ export default defineComponent({
       init,
       next,
       prev,
+      registerCommunity
     };
   },
 });
@@ -247,6 +252,8 @@ export default defineComponent({
         <div
           v-if="communitiesToDisplay.length === 0 && miniMap"
           class="no-communities-wrapper"
+          @click="registerCommunity()"
+          target="_blank"
         >
           <svg
           class="w-full h-full"
