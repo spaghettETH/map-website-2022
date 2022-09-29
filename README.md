@@ -26,7 +26,7 @@ Per aggiungere la propria community basta aggiungere una entry al file json pers
     "meet": "Incontri saltuari in presenza - Incontri saltuari virtuali",
     "format": "Ricerca e Sviluppo - Educazione",
     "focus": "Public Goods & Registries - Smart Contract Programming - NFTs - Legal, Adoption, Regulators",
-    "progetti": "ETHTurin2020, SpaghettETH, On-chain music copyright management Dapp, Crypto Open Mic",
+    "progetti": "ETHTurin2020 - SpaghettETH - On-chain music copyright management Dapp - Crypto Open Mic",
     "twitter": "https://twitter.com/ethturin",
     "github": "https://github.com/ethturin",
     "telegram": "/",
@@ -37,4 +37,35 @@ Per aggiungere la propria community basta aggiungere una entry al file json pers
   }
   ```
   >esempio di una community
+
+  Copia e incolla (ricordati di separare sul codice la entry precendente con una virgola)
+
+
+``` json
+{
+    "città": "",
+    "regione": "",
+    "nome": "",
+    "membri": ,
+    "meet": "",
+    "format": "",
+    "focus": "",
+    "progetti": "",
+    "twitter": "",
+    "github": "",
+    "telegram": "",
+    "discord": "",
+    "website": "",
+    "partnership": "",
+    "multisig": ""
+  }
+  ```
+
+## Nota bene
+
+Prendendo ad esempio la community sopra (non quella vuota) attieniti alle seguenti guidlines
+* **regione**: inserisci il nome della regione minuscolo
+* **Link e social vari**: inserisci sempre l'URL completo, non il nome del social precedeuto da @ (es: **SI** https://twitter.com/ethturin **NO** @ethturin)
+* **Spazi**: Per questioni di stile (e spazio) separa ciò che scrivi con "-" e non tramite "," o ";"
+
 
