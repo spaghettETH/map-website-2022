@@ -2,7 +2,6 @@
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
 import { defineComponent, onMounted, ref, watch, computed } from "vue";
-import { regionsData } from "../data";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
@@ -156,7 +155,6 @@ export default defineComponent({
     }
     return {
       testFunction,
-      regionsData,
       currentRegion,
       selectRegion,
       miniMap,
