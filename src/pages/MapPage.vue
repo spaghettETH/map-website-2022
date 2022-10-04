@@ -1,7 +1,13 @@
 <script>
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
-import { defineComponent, onMounted, ref, watch, computed } from "vue";
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  computed,
+} from "vue";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
@@ -11,7 +17,7 @@ import CommunitiesCard from "../molecules/CommunitiesCard.vue";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { EffectCreative } from 'swiper'
+import { EffectCreative } from "swiper";
 import "swiper/css";
 
 export default defineComponent({
@@ -168,7 +174,7 @@ export default defineComponent({
       next,
       prev,
       registerCommunity,
-      EffectCreative
+      EffectCreative,
     };
   },
 });
@@ -3561,5 +3567,9 @@ section {
   padding: 0.3rem;
   border-radius: 100px;
   border: 1px solid #f2f2f2;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 </style>
