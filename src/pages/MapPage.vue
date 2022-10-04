@@ -11,6 +11,7 @@ import CommunitiesCard from "../molecules/CommunitiesCard.vue";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
+import { EffectCreative } from 'swiper'
 import "swiper/css";
 
 export default defineComponent({
@@ -151,8 +152,10 @@ export default defineComponent({
     });
 
     const registerCommunity = () => {
-      window.location.assign("https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity")
-    }
+      window.location.assign(
+        "https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity"
+      );
+    };
     return {
       overRegion,
       currentRegion,
@@ -164,7 +167,8 @@ export default defineComponent({
       init,
       next,
       prev,
-      registerCommunity
+      registerCommunity,
+      EffectCreative
     };
   },
 });
@@ -186,7 +190,7 @@ export default defineComponent({
         class="w-full h-full flex items-center justify-center z-100 absolute"
       >
         <ul
-         v-if="communitiesToDisplay.length !== 0 && miniMap"
+          v-if="communitiesToDisplay.length !== 0 && miniMap"
           class="
             communities-wrapper
             relaitve
@@ -202,10 +206,23 @@ export default defineComponent({
             grab-cursor
             update-on-window-resize
             navigation
+            centered-slides
+            effect="creative"
             :pagination="{ clickable: true }"
             scrollbar
             :slides-per-view="isMobile ? 1 : 2"
             @swiper="init"
+            :creative-effect="{
+              prev: {
+                scale: 0.7,
+                translate: ['-130%', '-10%', -50],
+              },
+              next: {
+                scale: 0.7,
+                translate: ['130%', '-10%', -50],
+              },
+            }"
+            :modules="[EffectCreative]"
           >
             <SwiperSlide
               v-for="community in communitiesToDisplay"
@@ -224,21 +241,26 @@ export default defineComponent({
                 :twitter="community.twitter"
                 :website="community.website"
               />
-            </SwiperSlide >
+            </SwiperSlide>
             <SwiperSlide v-if="communitiesToDisplay.length >= 1 && miniMap">
-
               <div
-           class="no-communities-wrapper register-another-community text-center"
-           @click="registerCommunity()"
-           target="_blank"
-         >
-           <h2 class="p-4">Registra un'altra community in quetsa regione!</h2>
-           <button>Registra la tua!</button>
-         </div>
+                class="
+                  no-communities-wrapper
+                  register-another-community
+                  text-center
+                "
+                @click="registerCommunity()"
+                target="_blank"
+              >
+                <h2 class="p-4">
+                  Registra un'altra community in questa regione!
+                </h2>
+                <button>Registra la tua!</button>
+              </div>
             </SwiperSlide>
           </Swiper>
           <div
-            v-if="communitiesToDisplay.length >= 2"
+            v-if="communitiesToDisplay.length >= 1"
             class="
               swiper-btns-wrapper
               w-[7%]
@@ -265,7 +287,7 @@ export default defineComponent({
           target="_blank"
         >
           <svg
-          class="w-full h-full"
+            class="w-full h-full"
             version="1.1"
             id="Livello_1"
             xmlns="http://www.w3.org/2000/svg"
@@ -281,14 +303,16 @@ export default defineComponent({
               stroke-width="0.5"
               d="M60.9 74.2c0-5.8-6.7-10.6-14.9-10.6-2.2 0-4.3.4-6.2 1-1.8-3.3-5.9-5.5-10.6-5.5-5 0-9.3 2.5-10.9 6.1h-.8C8 65.2.2 69.6.2 75c0 5 6.6 9.1 15.1 9.7 1 7.1 9.3 12.7 19.4 12.7 10.8 0 19.5-6.3 19.5-14.1v-.2c4.1-2 6.7-5.2 6.7-8.9z"
             />
-            <path class="st1"
-            fill="#ff9c23"
+            <path
+              class="st1"
+              fill="#ff9c23"
               stroke="#000000"
               stroke-width="0.75"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-miterlimit="10"
-            d="m90.7 104-2.1 40.4 12.1 7.9 20.3-6.5V102z" />
+              d="m90.7 104-2.1 40.4 12.1 7.9 20.3-6.5V102z"
+            />
             <path
               class="st2"
               fill="#7474f4"
@@ -321,21 +345,26 @@ export default defineComponent({
             <path
               class="st4"
               fill="#00f0c1"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
               d="M68.6 73.4s-20.4 34-17.4 38.7c2.9 4.7 11.2 19.4 30.9-4.2L68.6 73.4zM144.3 73.4s20.4 34 17.4 38.7c-2.9 4.7-11.2 19.4-30.9-4.2l13.5-34.5z"
             />
-            <ellipse class="st4"
-            fill="#00f0c1"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-            cx="105.8" cy="80.7" rx="39.7" ry="36" />
+            <ellipse
+              class="st4"
+              fill="#00f0c1"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              cx="105.8"
+              cy="80.7"
+              rx="39.7"
+              ry="36"
+            />
             <path
               class="st1"
               fill="#ff9c23"
@@ -389,44 +418,46 @@ export default defineComponent({
             <path
               class="st5"
               fill="#ffffff"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
               d="M76.1 74.1s-3.6-5.3.7-10.5 12.5-2.9 12.5-2.9 4.9 2 4.3 7.7-4.6 6.7-4.6 6.7-8.6 3.3-12.9-1z"
             />
             <path
               class="st6"
               fill="#00cfff"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
               d="M71.1 79.3s1.5-5.6 8.6-5.7c7-.1 2.9.6 6.1 1.1s5.2 1.2 5 3.6c-.2 2.4-2.5 2.6-5.1 2.1s-6.5.1-7.1.8c-.6.7-3.1.7-3.1.7s-2.4 3.3-4.3 1-.1-3.6-.1-3.6z"
             />
             <path
               class="st5"
               fill="#ffffff"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
               d="M118.3 70s-1.5-6.3 4.3-8.8c5.8-2.5 11.5.4 12.4 2 .8 1.7 3.1 8 1.3 10.8-1.9 2.9-16.6 3.8-18-4z"
             />
-            <path class="st7"
-            fill="none"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-            d="M97.4 86.7c3.8-5.5 14.6-5 16.8 0" />
             <path
               class="st7"
               fill="none"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              d="M97.4 86.7c3.8-5.5 14.6-5 16.8 0"
+            />
+            <path
+              class="st7"
+              fill="none"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
               d="M102.6 83.8c0 .5-.4.9-.9.9s-.9-.4-.9-.9M110.8 83.8c0 .5-.4.9-.9.9s-.9-.4-.9-.9"
             />
             <circle cx="84.9" cy="67.4" r=".8" />
@@ -454,10 +485,10 @@ export default defineComponent({
             <path
               class="st6"
               fill="#00cfff"
-                stroke="#000000"
-                stroke-width="0.75"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
+              stroke="#000000"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
               d="M121.2 77.5s.5-2.5 5.9-2.9c0 0 8-4.4 13.1 2.9 5.1 7.3-2.1 5.7-4.5 4.5-2.4-1.2-5-1.8-5-1.8s-3.3 1.1-7.1.1c-3.8-.9-2.4-2.8-2.4-2.8z"
             />
             <path
@@ -3406,7 +3437,7 @@ section {
   }
 }
 
-.no-communities-wrapper{
+.no-communities-wrapper {
   background-color: #343536;
   height: 50%;
   padding: 1rem;
@@ -3416,10 +3447,9 @@ section {
   flex-direction: column;
   border-radius: 10px;
 
-  @media(max-width: 640px){
+  @media (max-width: 640px) {
     max-width: 90%;
   }
-
 
   & h2 {
     font-size: 1.4rem;
@@ -3428,21 +3458,21 @@ section {
   }
 
   & button {
-     background-color: #f99bc0;
-  color: #f2f2f2;
-  padding: 1rem;
-  font-weight: bold;
-  border-radius: 1rem;
-  transition: opacity .2s ease-in-out;
+    background-color: #f99bc0;
+    color: #f2f2f2;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 1rem;
+    transition: opacity 0.2s ease-in-out;
 
-  @media(max-width:640px){
-    padding: .7rem;
-    font-size: .8em;
-  }
+    @media (max-width: 640px) {
+      padding: 0.7rem;
+      font-size: 0.8em;
+    }
 
-  &:hover {
-    opacity: .8;
-  }
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 .map {
