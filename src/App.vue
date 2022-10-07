@@ -11,12 +11,12 @@ export default defineComponent({
   components: { MapPage, Navbar, Menu, MenuSlider },
   setup() {
     const navbarVisible = ref(false);
-    // const menuVisible = ref(false);
+    const menuVisible = ref(false);
 
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
     return {
-      // menuVisible,
+      menuVisible,
       navbarVisible,
       isMobile,
     };
@@ -27,12 +27,12 @@ export default defineComponent({
 <template>
   <div class="main-wrapper relative h-screen w-full">
     <Navbar :isVisible="navbarVisible" class="z-2" />
-    <!-- <Menu  @close-menu="menuVisible = $event" class="z-3" /> -->
+    <Menu v-if="menuVisible"  @close-menu="menuVisible = $event" class="z-3" />
     <MapPage @show-navbar="navbarVisible = $event" class="z-1" />
     <MenuSlider
       v-if="!isMobile"
       :isVisible="navbarVisible"
-
+      @openMenu="menuVisible = $event"
     />
   </div>
 </template>

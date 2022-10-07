@@ -1,15 +1,62 @@
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import gsap from "gsap";
 
 export default defineComponent({
   name: "Menu",
   emits: ["closeMenu"],
   setup(props, { emit }) {
-    const animation = gsap.timeline({ paused: true });
-
+    const animation = gsap.timeline();
+    onMounted(() => {
+      animation.fromTo(
+        ".menu-wrapper",
+        { x: "100%" },
+        {
+          x: 0,
+        }
+      );
+      animation.fromTo(
+        ".menu-list-wrapper li",
+        { opacity: 0, x:25 },
+        { opacity: 1, x:0, stagger:.2 },
+        ">"
+      );
+      animation.fromTo(
+        ".menu-label",
+        {  x:25 },
+        {  x:0},
+        "<"
+      );
+      animation.fromTo(
+        ".close-icon",
+        { opacity: 0, rotate: 0 },
+        { opacity: 1, rotate: 360 },
+        ">"
+      );
+    });
     const closeMenu = () => {
-      emit("closeMenu", false);
+      animation.fromTo(
+        ".close-icon",
+        { opacity: 1, rotate: 360 },
+        { opacity: 0, rotate: 0 },
+        ">"
+      );
+       animation.fromTo(
+        ".menu-list-wrapper li",
+        { opacity: 1, x:0 },
+        { opacity: 0, x:25, stagger:.2 },
+        ">"
+      );
+      animation.fromTo(
+        ".menu-wrapper",
+        { x: 0 },
+        {
+          x: "100%",
+          onComplete: () => {
+            emit("closeMenu", false);
+          },
+        }
+      );
     };
     return {
       closeMenu,
@@ -52,7 +99,7 @@ export default defineComponent({
             justify-center
           "
         >
-          <li>Home</li>
+          <li>Conference</li>
           <li>About</li>
           <li>Menu</li>
         </ul>
@@ -126,6 +173,10 @@ export default defineComponent({
     font-family: MonsterratBold;
     font-size: 5rem;
     cursor: pointer;
+
+    &:hover{
+      opacity: .8 !important;
+    }
   }
 }
 

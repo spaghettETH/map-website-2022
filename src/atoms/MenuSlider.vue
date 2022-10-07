@@ -8,13 +8,14 @@ export default defineComponent({
     const openMenu = () => {
       emit("openMenu", true);
     };
-     const registerCommunity = () => {
-      window.location.assign("https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity")
-    }
+    const registerCommunity = () => {
+      emit("openMenu", true);
+      // window.location.assign("https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity")
+    };
     return {
       props,
       openMenu,
-      registerCommunity
+      registerCommunity,
     };
   },
 });
@@ -26,15 +27,15 @@ export default defineComponent({
     class="menu-slider-wrapper absolute top-0 right-0 z-4"
   >
     <h2 class="menu-labels flex" @click="registerCommunity()">
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
-      <span>REGISTRA UNA COMMUNITY</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
+      <span>MENU</span>
     </h2>
   </div>
 </template>yarn 
