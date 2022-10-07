@@ -2226,7 +2226,7 @@ export default defineComponent({
   <div v-if="isMobile">
     <button
       @click="expandMap()"
-      class="back-btn absolute bottom-[5%] left-[5%] flex items-center justify-center"
+      class="back-btn absolute top-[5%] left-[5%] flex items-center justify-center"
     >
      <span class="mr-2"><img src="../assets/svg/backIcon.svg" /></span> Mappa 🇮🇹
     </button>
