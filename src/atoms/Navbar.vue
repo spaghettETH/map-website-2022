@@ -4,6 +4,7 @@ import { useBreakpoint } from "../functions/useBreakpoint";
 export default defineComponent({
   name: "Navbar",
   props: { isVisible: { type: Boolean, default: false } },
+  emits: ["openMenu"],
   setup(props, { emit }) {
     const openMenu = () => {
       emit("openMenu", true);
@@ -44,7 +45,7 @@ export default defineComponent({
         class="absolute top-0 left-0 w-full h-full"
       />
     </div>
-    <button v-if="isMobile" class="submit-com-btn" @click="registerCommunity()">Registra Community</button>
+    <button v-if="isMobile" class="submit-com-btn" @click="openMenu()">Menu</button>
   </nav>
 </template>
 

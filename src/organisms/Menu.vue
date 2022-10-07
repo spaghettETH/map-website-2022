@@ -1,11 +1,15 @@
 <script>
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, computed } from "vue";
 import gsap from "gsap";
+import { useBreakpoint } from "../functions/useBreakpoint";
 
 export default defineComponent({
   name: "Menu",
   emits: ["closeMenu"],
   setup(props, { emit }) {
+    const matches = useBreakpoint();
+    const isMobile = computed(() => matches.value?.beforeLg);
+
     const animation = gsap.timeline();
     onMounted(() => {
       animation.fromTo(
@@ -17,16 +21,11 @@ export default defineComponent({
       );
       animation.fromTo(
         ".menu-list-wrapper li",
-        { opacity: 0, x:25 },
-        { opacity: 1, x:0, stagger:.2 },
+        { opacity: 0, x: 25 },
+        { opacity: 1, x: 0, stagger: 0.2 },
         ">"
       );
-      animation.fromTo(
-        ".menu-label",
-        {  x:25 },
-        {  x:0},
-        "<"
-      );
+      animation.fromTo(".menu-label", { x: 25 }, { x: 0 }, "<");
       animation.fromTo(
         ".close-icon",
         { opacity: 0, rotate: 0 },
@@ -41,10 +40,10 @@ export default defineComponent({
         { opacity: 0, rotate: 0 },
         ">"
       );
-       animation.fromTo(
+      animation.fromTo(
         ".menu-list-wrapper li",
-        { opacity: 1, x:0 },
-        { opacity: 0, x:25, stagger:.2 },
+        { opacity: 1, x: 0 },
+        { opacity: 0, x: 25, stagger: 0.2 },
         ">"
       );
       animation.fromTo(
@@ -60,6 +59,7 @@ export default defineComponent({
     };
     return {
       closeMenu,
+      isMobile,
     };
   },
 });
@@ -105,10 +105,16 @@ export default defineComponent({
         </ul>
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
       </div>
-      <a class="absolute email-anchor" href="mailto:ciao@spaghett-eth.com"
+      <a
+        v-if="!isMobile"
+        class="absolute email-anchor"
+        href="mailto:ciao@spaghett-eth.com"
         >ciao@spaghett-eth.com</a
       >
-      <div class="social-wrapper absolute bottom-0 right-0 flex">
+      <div
+        v-if="!isMobile"
+        class="social-wrapper absolute bottom-0 right-0 flex"
+      >
         <img
           src="../assets/images/twitterIcon.png"
           class="social-image cursor-pointer"
@@ -125,6 +131,40 @@ export default defineComponent({
           src="../assets/images/telegramIcon.png"
           class="social-image cursor-pointer"
         />
+      </div>
+      <div
+        v-if="isMobile"
+        class="
+          menu-info-mobile-wrapper
+          absolute
+          bottom-[5%]
+          w-full
+          flex flex-col
+          items-center
+          justify-center
+        "
+      >
+        <a class="email-anchor mb-4" href="mailto:ciao@spaghett-eth.com"
+          >ciao@spaghett-eth.com</a
+        >
+        <div class="social-wrapper flex">
+          <img
+            src="../assets/images/twitterIcon.png"
+            class="social-image cursor-pointer"
+          />
+          <img
+            src="../assets/images/discordIcon.png"
+            class="social-image cursor-pointer"
+          />
+          <img
+            src="../assets/images/linkedinIcon.png"
+            class="social-image cursor-pointer"
+          />
+          <img
+            src="../assets/images/telegramIcon.png"
+            class="social-image cursor-pointer"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -167,6 +207,13 @@ export default defineComponent({
 .menu-label {
   font-size: 10rem;
   font-family: MonsterratBold;
+
+  @media (max-width: 1023px) {
+    font-size: 7rem;
+  }
+  @media (max-width: 670) {
+    font-size: 5rem;
+  }
 }
 .menu-list-wrapper {
   & li {
@@ -174,8 +221,15 @@ export default defineComponent({
     font-size: 5rem;
     cursor: pointer;
 
-    &:hover{
-      opacity: .8 !important;
+    @media (max-width: 1023px) {
+      font-size: 3rem;
+    }
+    @media (max-width: 670) {
+      font-size: 2rem;
+    }
+
+    &:hover {
+      opacity: 0.8 !important;
     }
   }
 }
@@ -185,8 +239,6 @@ export default defineComponent({
   font-size: 1rem;
   bottom: 1.5rem;
   left: 1.5rem;
-
-  /* line-height: 1; */
 
   &::before {
     position: absolute;
