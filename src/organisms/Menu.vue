@@ -1,5 +1,12 @@
 <script>
-import { defineComponent, onMounted, computed, reactive, ref, watch } from "vue";
+import {
+  defineComponent,
+  onMounted,
+  computed,
+  reactive,
+  ref,
+  watch,
+} from "vue";
 import gsap from "gsap";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
@@ -17,9 +24,9 @@ export default defineComponent({
       { social: "Linkedin", link: "" },
     ]);
 
-    watch(data,() => {
+    watch(data, () => {
       console.log(data.value);
-    })
+    });
 
     const animation = gsap.timeline();
     onMounted(() => {
@@ -112,14 +119,16 @@ export default defineComponent({
         >
           <li class="text-center">
             <a
-              href=" http://events.spaghett-eth.com/"
+              href="https://github.com/spaghettETH/map-website-2022#come-aggiungere-una-nuova-community"
               target="_blank"
             >
               Registra Community
             </a>
           </li>
           <li>
-            <a href="https://spaghett-eth.com/" target="_blank">Conference</a>
+            <a href=" http://events.spaghett-eth.com/" target="_blank"
+              >Conference</a
+            >
           </li>
           <li>Blog</li>
         </ul>
@@ -135,22 +144,30 @@ export default defineComponent({
         v-if="!isMobile"
         class="social-wrapper absolute bottom-0 right-0 flex"
       >
-        <img
-          src="../assets/images/twitterIcon.png"
-          class="social-image cursor-pointer"
-        />
-        <img
-          src="../assets/images/discordIcon.png"
-          class="social-image cursor-pointer"
-        />
-        <img
-          src="../assets/images/linkedinIcon.png"
-          class="social-image cursor-pointer"
-        />
-        <img
-          src="../assets/images/telegramIcon.png"
-          class="social-image cursor-pointer"
-        />
+        <a href="https://twitter.com/spaghettETH" target="_blank">
+          <img
+            src="../assets/images/twitterIcon.png"
+            class="social-image cursor-pointer"
+          />
+        </a>
+        <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
+          <img
+            src="../assets/images/discordIcon.png"
+            class="social-image cursor-pointer"
+          />
+        </a>
+        <a href="https://www.linkedin.com/company/spaghetteth/" target="_blank">
+          <img
+            src="../assets/images/linkedinIcon.png"
+            class="social-image cursor-pointer"
+          />
+        </a>
+        <a href="https://t.me/SpaghettETHchat" target="_blank">
+          <img
+            src="../assets/images/telegramIcon.png"
+            class="social-image cursor-pointer"
+          />
+        </a>
       </div>
       <div
         v-if="isMobile"
@@ -168,22 +185,33 @@ export default defineComponent({
           >ciao@spaghett-eth.com</a
         >
         <div class="social-wrapper flex">
-          <img
-            src="../assets/images/twitterIcon.png"
-            class="social-image cursor-pointer"
-          />
-          <img
-            src="../assets/images/discordIcon.png"
-            class="social-image cursor-pointer"
-          />
-          <img
-            src="../assets/images/linkedinIcon.png"
-            class="social-image cursor-pointer"
-          />
-          <img
-            src="../assets/images/telegramIcon.png"
-            class="social-image cursor-pointer"
-          />
+          <a href="https://twitter.com/spaghettETH" target="_blank">
+            <img
+              src="../assets/images/twitterIcon.png"
+              class="social-image cursor-pointer"
+            />
+          </a>
+          <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
+            <img
+              src="../assets/images/discordIcon.png"
+              class="social-image cursor-pointer"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/spaghetteth/"
+            target="_blank"
+          >
+            <img
+              src="../assets/images/linkedinIcon.png"
+              class="social-image cursor-pointer"
+            />
+          </a>
+          <a href="https://t.me/SpaghettETHchat" target="_blank">
+            <img
+              src="../assets/images/telegramIcon.png"
+              class="social-image cursor-pointer"
+            />
+          </a>
         </div>
       </div>
     </div>
@@ -200,6 +228,7 @@ export default defineComponent({
   width: 100%;
   height: 100vh;
   background: linear-gradient(112.79deg, #f97aab 35.93%, #6eccc9 64.79%);
+  cursor: url("../assets/images/editFile.png") 20 20, pointer;
 }
 
 .menu-content {
