@@ -112,7 +112,7 @@ export default defineComponent({
         >
           <li class="text-center">
             <a
-              href="https://github.com/spaghettETH/map-website-2022#come-aggiungere-una-nuova-community"
+              href=" http://events.spaghett-eth.com/"
               target="_blank"
             >
               Registra Community

@@ -10,17 +10,19 @@ export default defineComponent({
       emit("openMenu", true);
     };
 
-     const matches = useBreakpoint()
-    const isMobile = computed(() => matches.value?.beforeLg)
+    const matches = useBreakpoint();
+    const isMobile = computed(() => matches.value?.beforeLg);
 
     const registerCommunity = () => {
-      window.location.assign("https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity")
-    }
+      window.location.assign(
+        "https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity"
+      );
+    };
     return {
       props,
       openMenu,
       isMobile,
-      registerCommunity
+      registerCommunity,
     };
   },
 });
@@ -29,15 +31,7 @@ export default defineComponent({
 <template>
   <nav
     v-if="props.isVisible"
-    class="
-      navbar
-      flex
-      items-center
-      justify-between
-      w-full
-      p-4
-      h-32
-    "
+    class="navbar flex items-center justify-between w-full p-4 h-32"
   >
     <div class="logo-wrapper relative cursor-pointer">
       <img
@@ -45,12 +39,14 @@ export default defineComponent({
         class="absolute top-0 left-0 w-full h-full"
       />
     </div>
-    <button v-if="isMobile" class="submit-com-btn" @click="openMenu()">Menu</button>
+    <button v-if="isMobile" class="submit-com-btn" @click="openMenu()">
+      Menu
+    </button>
   </nav>
 </template>
 
 <style scoped lang="scss">
-.navbar{
+.navbar {
   background: transparent;
 }
 .logo-wrapper {
@@ -68,21 +64,21 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.submit-com-btn{
+.submit-com-btn {
   background-color: #f99bc0;
   color: white;
   padding: 1rem;
   font-weight: bold;
   border-radius: 1rem;
-  transition: opacity .2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 
-  @media(max-width:640px){
-    padding: .7rem;
-    font-size: .8em;
+  @media (max-width: 640px) {
+    padding: 0.7rem;
+    font-size: 0.8em;
   }
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
 }
 </style>

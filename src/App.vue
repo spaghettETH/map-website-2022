@@ -26,8 +26,12 @@ export default defineComponent({
 
 <template>
   <div class="main-wrapper relative h-screen w-full">
-    <Navbar :isVisible="navbarVisible" class="z-2" @openMenu="menuVisible = $event" />
-    <Menu v-if="menuVisible"  @close-menu="menuVisible = $event" class="z-3" />
+    <Navbar
+      :isVisible="navbarVisible"
+      class="z-2"
+      @openMenu="menuVisible = $event"
+    />
+    <Menu v-if="menuVisible" @close-menu="menuVisible = $event" class="z-3" />
     <MapPage @show-navbar="navbarVisible = $event" class="z-1" />
     <MenuSlider
       v-if="!isMobile"
