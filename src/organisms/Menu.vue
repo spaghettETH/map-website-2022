@@ -1,5 +1,5 @@
 <script>
-import { defineComponent, onMounted, computed } from "vue";
+import { defineComponent, onMounted, computed, reactive, ref, watch } from "vue";
 import gsap from "gsap";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
@@ -9,6 +9,17 @@ export default defineComponent({
   setup(props, { emit }) {
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
+
+    const data = ref([
+      { social: "Telegram", link: "" },
+      { social: "Discord", link: "" },
+      { social: "Twitter", link: "" },
+      { social: "Linkedin", link: "" },
+    ]);
+
+    watch(data,() => {
+      console.log(data.value);
+    })
 
     const animation = gsap.timeline();
     onMounted(() => {
@@ -99,9 +110,18 @@ export default defineComponent({
             justify-center
           "
         >
-          <li>Conference</li>
-          <li>About</li>
-          <li>Menu</li>
+          <li class="text-center">
+            <a
+              href="https://github.com/spaghettETH/map-website-2022#come-aggiungere-una-nuova-community"
+              target="_blank"
+            >
+              Registra Community
+            </a>
+          </li>
+          <li>
+            <a href="https://spaghett-eth.com/" target="_blank">Conference</a>
+          </li>
+          <li>Blog</li>
         </ul>
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
       </div>
@@ -220,6 +240,8 @@ export default defineComponent({
     font-family: MonsterratBold;
     font-size: 5rem;
     cursor: pointer;
+    line-height: 1;
+    margin-bottom: 2rem;
 
     @media (max-width: 1023px) {
       font-size: 3rem;
