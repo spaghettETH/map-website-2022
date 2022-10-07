@@ -17,7 +17,8 @@ import CommunitiesCard from "../molecules/CommunitiesCard.vue";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { EffectCreative } from "swiper";
+// import { EffectCreative } from "swiper";
+import { EffectCards } from "swiper";
 import "swiper/css";
 
 export default defineComponent({
@@ -174,7 +175,8 @@ export default defineComponent({
       next,
       prev,
       registerCommunity,
-      EffectCreative,
+      // EffectCreative,
+      EffectCards
     };
   },
 });
@@ -218,7 +220,7 @@ export default defineComponent({
             scrollbar
             :slides-per-view="isMobile ? 1 : 2"
             @swiper="init"
-            :creative-effect="{
+            :cards-effect="{
               prev: {
                 scale: 0.7,
                 translate: ['-130%', '-10%', -50],
@@ -228,12 +230,13 @@ export default defineComponent({
                 translate: ['130%', '-10%', -50],
               },
             }"
-            :modules="[EffectCreative]"
+            :modules="[EffectCards]"
           >
             <SwiperSlide
               v-for="community in communitiesToDisplay"
               :key="community.nome"
               class="flex items-center justify-center"
+              :virtual-index="1"
             >
               <CommunitiesCard
                 :name="community.nome"

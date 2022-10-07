@@ -224,7 +224,7 @@ export default defineComponent({
 <style scoped lang="scss">
 
   section {
-    cursor: url("../assets/images/fork.png") 20 20 , pointer;
+    cursor: url("../assets/images/fork.png") 40 40 , pointer;
   }
 .menu-wrapper {
   position: fixed;
@@ -238,7 +238,7 @@ export default defineComponent({
 }
 
 a {
-  cursor: url("../assets/images/fork.png") 20 20 , pointer;
+  cursor: url("../assets/images/fork.png") 40 40 , pointer;
 }
 
 .menu-content {
@@ -300,6 +300,7 @@ a {
   font-size: 1rem;
   bottom: 1.5rem;
   left: 1.5rem;
+  cursor: pointer;
 
   &::before {
     position: absolute;
