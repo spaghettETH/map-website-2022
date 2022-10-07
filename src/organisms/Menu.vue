@@ -9,10 +9,12 @@ import {
 } from "vue";
 import gsap from "gsap";
 import { useBreakpoint } from "../functions/useBreakpoint";
+import Fork from "../assets/svg/fork.svg"
 
 export default defineComponent({
   name: "Menu",
   emits: ["closeMenu"],
+  components: {Fork},
   setup(props, { emit }) {
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
@@ -78,6 +80,7 @@ export default defineComponent({
     return {
       closeMenu,
       isMobile,
+      Fork
     };
   },
 });
@@ -219,6 +222,10 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
+
+  section {
+    cursor: url("../assets/images/fork.png") 20 20 , pointer;
+  }
 .menu-wrapper {
   position: fixed;
   z-index: 100;
@@ -228,7 +235,10 @@ export default defineComponent({
   width: 100%;
   height: 100vh;
   background: linear-gradient(112.79deg, #f97aab 35.93%, #6eccc9 64.79%);
-  cursor: url("../assets/images/editFile.png") 20 20, pointer;
+}
+
+a {
+  cursor: url("../assets/images/fork.png") 20 20 , pointer;
 }
 
 .menu-content {
@@ -280,7 +290,7 @@ export default defineComponent({
     }
 
     &:hover {
-      opacity: 0.8 !important;
+      opacity: 0.5 !important;
     }
   }
 }
