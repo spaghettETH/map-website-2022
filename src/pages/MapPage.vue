@@ -163,6 +163,14 @@ export default defineComponent({
         "https://github.com/spaghettETH/map-website-2022#guidlines-to-upload-a-commuity"
       );
     };
+
+    const isDisabled = ref(true)
+    const enableBtn = () => {
+      isDisabled.value= false;
+    }
+    const disableBtn = () => {
+      isDisabled.value= true;
+    }
     return {
       overRegion,
       currentRegion,
@@ -176,7 +184,10 @@ export default defineComponent({
       prev,
       registerCommunity,
       // EffectCreative,
-      EffectCards
+      EffectCards,
+      enableBtn,
+      disableBtn,
+      isDisabled
     };
   },
 });
@@ -231,6 +242,8 @@ export default defineComponent({
               },
             }"
             :modules="[EffectCards]"
+            @reach-beginning="disableBtn()"
+            @slide-change="enableBtn()"
           >
             <SwiperSlide
               v-for="community in communitiesToDisplay"
@@ -281,7 +294,7 @@ export default defineComponent({
               right-[10%]
             "
           >
-            <button class="swiper-btn" @click="prev">
+            <button class="swiper-btn" @click="prev" :disabled="isDisabled">
               <img src="../assets/svg/prevIcon.svg" />
             </button>
             <button class="swiper-btn" @click="next">
