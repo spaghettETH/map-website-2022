@@ -295,10 +295,10 @@ export default defineComponent({
             "
           >
             <button class="swiper-btn" @click="prev" :disabled="isDisabled">
-              <img src="../assets/svg/prevIcon.svg" />
+              <img src="../assets/images/prevIcn.png" />
             </button>
             <button class="swiper-btn" @click="next">
-              <img src="../assets/svg/nextIcon.svg" />
+              <img src="../assets/images/nextIcn.png" />
             </button>
           </div>
         </ul>
@@ -3583,6 +3583,10 @@ section {
   padding: 0.3rem;
   border-radius: 100px;
   border: 1px solid #f2f2f2;
+
+  & img{
+    height: 20px;
+  }
 
   &:disabled {
     opacity: 0.5;

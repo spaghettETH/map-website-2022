@@ -2228,7 +2228,7 @@ export default defineComponent({
       @click="expandMap()"
       class="back-btn absolute top-[5%] left-[5%] flex items-center justify-center"
     >
-     <span class="mr-2"><img src="../assets/svg/backIcon.svg" /></span> Mappa 🇮🇹
+     <span class="back-icon mr-2"><img src="../assets/images/backIcn.png" /></span> Mappa 🇮🇹
     </button>
   </div>
 </template>
@@ -2273,5 +2273,13 @@ export default defineComponent({
   color: #f2f2f2;
   font-weight: bold;
   text-decoration: underline;
+
+  &:hover {
+    opacity: .8 !important;
+  }
+
+  & img {
+    height: 20px;
+  }
 }
 </style>

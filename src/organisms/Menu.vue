@@ -19,17 +19,6 @@ export default defineComponent({
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
 
-    const data = ref([
-      { social: "Telegram", link: "" },
-      { social: "Discord", link: "" },
-      { social: "Twitter", link: "" },
-      { social: "Linkedin", link: "" },
-    ]);
-
-    watch(data, () => {
-      console.log(data.value);
-    });
-
     const animation = gsap.timeline();
     onMounted(() => {
       animation.fromTo(
@@ -149,25 +138,25 @@ export default defineComponent({
       >
         <a href="https://twitter.com/spaghettETH" target="_blank">
           <img
-            src="../assets/images/twitterIcon.png"
+            src="../assets/images/tweetterIcn.png"
             class="social-image cursor-pointer"
           />
         </a>
         <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
           <img
-            src="../assets/images/discordIcon.png"
+            src="../assets/images/discordIcn.png"
             class="social-image cursor-pointer"
           />
         </a>
         <a href="https://www.linkedin.com/company/spaghetteth/" target="_blank">
           <img
-            src="../assets/images/linkedinIcon.png"
+            src="../assets/images/linkedinIcn.png"
             class="social-image cursor-pointer"
           />
         </a>
         <a href="https://t.me/SpaghettETHchat" target="_blank">
           <img
-            src="../assets/images/telegramIcon.png"
+            src="../assets/images/telegramIcn.png"
             class="social-image cursor-pointer"
           />
         </a>
@@ -190,13 +179,13 @@ export default defineComponent({
         <div class="social-wrapper flex">
           <a href="https://twitter.com/spaghettETH" target="_blank">
             <img
-              src="../assets/images/twitterIcon.png"
+              src="../assets/images/tweetterIcn.png"
               class="social-image cursor-pointer"
             />
           </a>
           <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
             <img
-              src="../assets/images/discordIcon.png"
+              src="../assets/images/discordIcn.png"
               class="social-image cursor-pointer"
             />
           </a>
@@ -205,13 +194,13 @@ export default defineComponent({
             target="_blank"
           >
             <img
-              src="../assets/images/linkedinIcon.png"
+              src="../assets/images/linkedinIcn.png"
               class="social-image cursor-pointer"
             />
           </a>
           <a href="https://t.me/SpaghettETHchat" target="_blank">
             <img
-              src="../assets/images/telegramIcon.png"
+              src="../assets/images/telegramIcn.png"
               class="social-image cursor-pointer"
             />
           </a>
