@@ -133,24 +133,13 @@ export default defineComponent({
       });
     });
 
-    watch(currentRegion, () => {
+    const selectRegion = (region) => {
+      communitiesToDisplay.value = []
       communities.forEach((c, i) => {
-        if (c.regione === currentRegion.value) {
+        if (c.regione === region) {
           communitiesToDisplay.value.push(c);
         }
-        if (
-          communitiesToDisplay.value.includes(c) &&
-          c.regione !== currentRegion.value
-        ) {
-          let index = communitiesToDisplay.value.indexOf(c.nome);
-          communitiesToDisplay.value.forEach((c) => {
-            communitiesToDisplay.value.splice(c[index]);
-          });
-        }
       });
-    });
-
-    const selectRegion = () => {
       miniMap.value = !miniMap.value;
     };
 
@@ -1099,7 +1088,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('abruzzo')"
           @mouseover="overRegion('abruzzo')"
         />
         <path
@@ -1108,7 +1097,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('basilicata')"
           @mouseover="overRegion('basilicata')"
         />
         <path
@@ -1117,7 +1106,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('calabria')"
           @mouseover="overRegion('calabria')"
         />
         <path
@@ -1126,7 +1115,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('campagna')"
           @mouseover="overRegion('campagna')"
         />
         <path
@@ -1135,7 +1124,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('emilia-romagna')"
           @mouseover="overRegion('emilia-romagna')"
         />
         <path
@@ -1144,7 +1133,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('friuli-venezia-giulia')"
           @mouseover="overRegion('friuli-venezia-giulia')"
         />
         <path
@@ -1153,7 +1142,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('lazio')"
           @mouseover="overRegion('lazio')"
         />
         <path
@@ -1162,7 +1151,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('liguria')"
           @mouseover="overRegion('liguria')"
         />
         <path
@@ -1171,7 +1160,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('lombardia')"
           @mouseover="overRegion('lombardia')"
         />
         <path
@@ -1180,7 +1169,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('marche')"
           @mouseover="overRegion('marche')"
         />
         <path
@@ -1189,7 +1178,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('molise')"
           @mouseover="overRegion('molise')"
         />
         <path
@@ -1198,7 +1187,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('piemonte')"
           @mouseover="overRegion('piemonte')"
         />
         <path
@@ -1207,7 +1196,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('puglia')"
           @mouseover="overRegion('puglia')"
         />
         <path
@@ -1216,7 +1205,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('sardegna')"
           @mouseover="overRegion('sardegna')"
         />
         <path
@@ -1225,7 +1214,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('sicilia')"
           @mouseover="overRegion('sicilia')"
         />
         <path
@@ -1234,7 +1223,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('toscana')"
           @mouseover="overRegion('toscana')"
         />
         <path
@@ -1243,7 +1232,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('trentino-alto-adige')"
           @mouseover="overRegion('trentino-alto-adige')"
         />
         <path
@@ -1252,7 +1241,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('umbria')"
           @mouseover="overRegion('umbria')"
         />
         <path
@@ -1261,7 +1250,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('valle-d-aosta')"
           @mouseover="overRegion('valle-d-aosta')"
         />
         <path
@@ -1270,7 +1259,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
-          @click="selectRegion()"
+          @click="selectRegion('veneto')"
           @mouseover="overRegion('veneto')"
         />
         <path
