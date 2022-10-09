@@ -39,16 +39,16 @@ export default defineComponent({
       </p>
       <div class="social-wrapper mt-[4%] flex justify-between">
         <a v-if="discord.length > 1" :href="discord" target="_blank">
-          <img class="discord-icon" src="../assets/svg/discordIcon.svg" />
+          <img class="discord-icon" src="../assets/images/discordIcon.png" />
         </a>
         <a v-if="telegram.length > 1" :href="telegram" target="_blank">
-          <img src="../assets/svg/telegramIcon.svg" />
+          <img src="../assets/images/telegramIcon.png" />
         </a>
         <a v-if="twitter.length > 1" :href="twitter" target="_blank">
-          <img src="../assets/svg/twitterIcon.svg" />
+          <img src="../assets/images/twitterIcon.png" />
         </a>
         <a v-if="website.length > 1" :href="website" target="_blank">
-          <img src="../assets/svg/websiteIcon.svg" />
+          <img src="../assets/images/websiteIcon.png" />
         </a>
       </div>
     </div>
