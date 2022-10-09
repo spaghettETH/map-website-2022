@@ -29,6 +29,28 @@ export default defineComponent({
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
     const communitiesToDisplay = ref([]);
+    const discordLinks = ref({
+      'abruzzo': 'https://discord.com/channels/885144315024789504/1027933657480048700',
+      'basilicata': 'https://discord.com/channels/885144315024789504/1027933842092339260',
+      'calabria': 'https://discord.com/channels/885144315024789504/1027933859079278722',
+      'campagna': 'https://discord.com/channels/885144315024789504/1027933872840786002',
+      'emilia-romagna': 'https://discord.com/channels/885144315024789504/1027933908685299784',
+      'friuli-venezia-giulia': 'https://discord.com/channels/885144315024789504/1027933926209097789',
+      'lazio': 'https://discord.com/channels/885144315024789504/1027933939500843018',
+      'liguria': 'https://discord.com/channels/885144315024789504/1027933952637415474',
+      'lombardia': 'https://discord.com/channels/885144315024789504/1027933968412196884',
+      'marche': 'https://discord.com/channels/885144315024789504/1027933982463107132',
+      'molise': 'https://discord.com/channels/885144315024789504/1027933995293495356',
+      'piemonte': 'https://discord.com/channels/885144315024789504/1027934015170293761',
+      'puglia': 'https://discord.com/channels/885144315024789504/1027934034384400424',
+      'sardegna': 'https://discord.com/channels/885144315024789504/1027934051518136412',
+      'sicilia': 'https://discord.com/channels/885144315024789504/1027934065212530728',
+      'toscana': 'https://discord.com/channels/885144315024789504/1027934079569645679',
+      'trentino-alto-adige': 'https://discord.com/channels/885144315024789504/1027934095596077217',
+      'umbria': 'https://discord.com/channels/885144315024789504/1027934108292218990',
+      'valle-d-aosta': 'https://discord.com/channels/885144315024789504/1027934122817093652',
+      'veneto': 'https://discord.com/channels/885144315024789504/1027934138830954556',
+    })
 
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
@@ -177,7 +199,8 @@ export default defineComponent({
       Mousewheel,
       enableBtn,
       disableBtn,
-      isDisabled
+      isDisabled,
+      discordLinks
     };
   },
 });
@@ -262,13 +285,19 @@ export default defineComponent({
                   register-another-community
                   text-center
                 "
-                @click="registerCommunity()"
                 target="_blank"
               >
                 <h2 class="p-4">
                   Registra un'altra community in questa regione!
                 </h2>
-                <button>Registra la tua!</button>
+                <button
+                  @click="registerCommunity()"
+                >
+                  Registra la tua!
+                </button>
+                <a target="_blank" :href="discordLinks[currentRegion]">
+                  oppure <br/> <u>trova amici nella tua regione</u>
+                </a>
               </div>
             </SwiperSlide>
           </Swiper>
@@ -296,7 +325,6 @@ export default defineComponent({
         <div
           v-if="communitiesToDisplay.length === 0 && miniMap"
           class="no-communities-wrapper text-center"
-          @click="registerCommunity()"
           target="_blank"
         >
           <svg
@@ -513,7 +541,18 @@ export default defineComponent({
             />
           </svg>
           <h2 class="p-4">Non ci sono ancora communities in questa regione!</h2>
-          <button>Registra la tua!</button>
+          <button
+            @click="registerCommunity()"
+          >
+            Registra la tua!
+          </button>
+          <a 
+            class=""
+            target="_blank"
+            :href="discordLinks[currentRegion]"
+          >
+            oppure <br/> <u>trova amici nella tua regione</u>
+          </a>
         </div>
       </div>
       <!-- BARCHETTA SINISTRA -->
@@ -3486,6 +3525,14 @@ section {
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  & a {
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 1rem;
+    transition: opacity 0.2s ease-in-out;
   }
 }
 .map {
