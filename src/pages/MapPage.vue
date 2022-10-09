@@ -17,9 +17,9 @@ import CommunitiesCard from "../molecules/CommunitiesCard.vue";
 import { useBreakpoint } from "../functions/useBreakpoint";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
-// import { EffectCreative } from "swiper";
-import { EffectCards } from "swiper";
+import { EffectCards, Mousewheel } from "swiper";
 import "swiper/css";
+import "swiper/css/mousewheel";
 
 export default defineComponent({
   name: "MapPage",
@@ -185,6 +185,7 @@ export default defineComponent({
       registerCommunity,
       // EffectCreative,
       EffectCards,
+      Mousewheel,
       enableBtn,
       disableBtn,
       isDisabled
@@ -241,9 +242,10 @@ export default defineComponent({
                 translate: ['130%', '-10%', -50],
               },
             }"
-            :modules="[EffectCards]"
+            :modules="[EffectCards, Mousewheel]"
             @reach-beginning="disableBtn()"
             @slide-change="enableBtn()"
+            :mousewheel="true"
           >
             <SwiperSlide
               v-for="community in communitiesToDisplay"
