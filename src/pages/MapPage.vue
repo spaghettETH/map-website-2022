@@ -228,7 +228,7 @@ export default defineComponent({
           class="
             communities-wrapper
             relaitve
-            w-[75%]
+            w-[100%]
             h-[50%]
             flex
             items-center
@@ -244,18 +244,8 @@ export default defineComponent({
             effect="creative"
             :pagination="{ clickable: true }"
             scrollbar
-            :slides-per-view="isMobile ? 1 : 2"
+            :slides-per-view="isMobile ? 1.2 : 3.8"
             @swiper="init"
-            :cards-effect="{
-              prev: {
-                scale: 0.7,
-                translate: ['-130%', '-10%', -50],
-              },
-              next: {
-                scale: 0.7,
-                translate: ['130%', '-10%', -50],
-              },
-            }"
             :modules="[EffectCards, Mousewheel]"
             @reach-beginning="disableBtn()"
             @slide-change="enableBtn()"
@@ -283,23 +273,29 @@ export default defineComponent({
             <SwiperSlide v-if="communitiesToDisplay.length >= 1 && miniMap">
               <div
                 class="
-                  no-communities-wrapper
-                  register-another-community
-                  text-center
+                  flex items-center justify-center
                 "
                 target="_blank"
               >
-                <h2 class="p-4">
-                  Registra un'altra community in questa regione!
-                </h2>
-                <button
-                  @click="registerCommunity()"
+                <div
+                  class="
+                    no-communities-wrapper
+                    register-another-community
+                    text-center
+                  "
                 >
-                  Registra la tua!
-                </button>
-                <a target="_blank" :href="discordLinks[currentRegion]">
-                  oppure <br/> <u>trova amici nella tua regione</u>
-                </a>
+                  <h2 class="p-4">
+                    Registra un'altra community in questa regione!
+                  </h2>
+                  <button
+                    @click="registerCommunity()"
+                  >
+                    Registra la tua!
+                  </button>
+                  <a target="_blank" :href="discordLinks[currentRegion]">
+                    oppure <br/> <u>trova amici nella tua regione</u>
+                  </a>
+                </div>
               </div>
             </SwiperSlide>
           </Swiper>
@@ -3266,8 +3262,6 @@ section {
 }
 
 .register-another-community {
-  max-width: 350px;
-  min-width: 350px;
   min-height: 450px;
   border-radius: 10px;
   color: #f2f2f2;
@@ -3289,8 +3283,12 @@ section {
   flex-direction: column;
   border-radius: 10px;
 
+  max-width: 350px;
+  min-width: 350px;
+
   @media (max-width: 640px) {
-    max-width: 90%;
+    max-width: 275px;
+    min-width: 275px;
   }
 
   & h2 {
