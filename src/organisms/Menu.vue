@@ -122,7 +122,11 @@ export default defineComponent({
               >Conference</a
             >
           </li>
-          <li>Blog</li>
+          <li>
+            <a href="/" target="_blank"
+              >Blog</a
+            >
+          </li>
         </ul>
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
       </div>
