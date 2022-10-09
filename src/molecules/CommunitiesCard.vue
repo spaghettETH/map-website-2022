@@ -48,7 +48,7 @@ export default defineComponent({
           <img src="../assets/images/twitterIcon.png" />
         </a>
         <a v-if="website.length > 1" :href="website" target="_blank">
-          <img src="../assets/images/websiteIcon.svg" />
+          <img src="../assets/svg/websiteIcon.svg" />
         </a>
       </div>
     </div>
