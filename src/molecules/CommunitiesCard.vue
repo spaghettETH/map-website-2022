@@ -25,16 +25,16 @@ export default defineComponent({
 <template>
   <li class="community-card p-4">
     <div class="content w-full h-full flex flex-col justify-between">
-      <h1 class="community-name capitalize">{{ name }}</h1>
-      <p class="community-focus capitalize">
+      <h1 class="community-name">{{ name }}</h1>
+      <p class="community-focus">
         <span>Membri:</span> {{ membri }}
       </p>
-      <p class="community-focus capitalize"><span>Focus:</span> {{ focus }}</p>
-      <p class="community-focus capitalize"><span>Meet:</span> {{ meet }}</p>
-      <p class="community-focus capitalize">
+      <p class="community-focus"><span>Focus:</span> {{ focus }}</p>
+      <p class="community-focus"><span>Meet:</span> {{ meet }}</p>
+      <p class="community-focus">
         <span>Format:</span> {{ format }}
       </p>
-      <p class="community-focus capitalize">
+      <p class="community-focus">
         <span>Progetti:</span> {{ progetti }}
       </p>
       <div class="social-wrapper mt-[4%] flex justify-between">
