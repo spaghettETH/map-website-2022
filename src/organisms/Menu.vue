@@ -140,6 +140,12 @@ export default defineComponent({
         v-if="!isMobile"
         class="social-wrapper absolute bottom-0 right-0 flex"
       >
+        <a href="https://medium.com/spaghetteth" target="_blank">
+          <img
+            src="../assets/images/medium-icon.png"
+            class="social-image cursor-pointer"
+          />
+        </a>
         <a href="https://twitter.com/spaghettETH" target="_blank">
           <img
             src="../assets/images/tweetterIcn.png"
@@ -181,6 +187,12 @@ export default defineComponent({
           >ciao@spaghett-eth.com</a
         >
         <div class="social-wrapper flex">
+          <a href="https://medium.com/spaghetteth" target="_blank">
+            <img
+              src="../assets/images/medium-icon.png"
+              class="social-image cursor-pointer"
+            />
+          </a>
           <a href="https://twitter.com/spaghettETH" target="_blank">
             <img
               src="../assets/images/tweetterIcn.png"
