@@ -140,5 +140,22 @@
     "website": "https://ethturin.eth.link/",
     "partnership": "Legal Hackers Torino, UniTO",
     "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba"
+  },
+  {
+    "città": "Roma",
+    "regione": "lazio",
+    "nome": "CRYPTOROMA",
+    "membri": 160,
+    "meet": "Incontri IRL mensili",
+    "format": "Meetup a temi diversificati - Panel discussions",
+    "focus": "Crypto & Web3 a 360°",
+    "progetti": "",
+    "twitter": "",
+    "github": "",
+    "telegram": "https://t.me/CRYPTOWEB3_ROMA",
+    "discord": "",
+    "website": "https://linktr.ee/cryptoroma",
+    "partnership": "",
+    "multisig": ""
   }
 ]
