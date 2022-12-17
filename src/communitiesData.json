@@ -140,5 +140,23 @@
     "website": "https://ethturin.eth.link/",
     "partnership": "Legal Hackers Torino, UniTO",
     "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba"
+  },
+  {
+    "città": "Ascoli Piceno",
+    "regione": "marche",
+    "nome": "Liminal Village",
+    "membri": "40+",
+    "meet": "In presenza e online a cadenza",
+    "format": "Co-working Co-Living Co-Creating",
+    "focus": "ReFi, Forward to Nature, Social Permaculture, Game~B, Resource Based Economy, Gift Economy",
+    "progetti": "theos.io, holons.io, regenerativa.io, xs.exchange, adacast.io",
+    "twitter": "https://twitter.com/liminalvillage",
+    "github": "https://github.com/liminalvillage",
+    "telegram": "@liminalvillage",
+    "discord": "https://discord.gg/fd3bNhD7t4",
+    "social": "facebook: https://www.facebook.com/legalhackers.civitanovamarche - linkedin: https://www.linkedin.com/company/legal-hackers-civitanova-marche/ - youtube: https://www.youtube.com/channel/UCaEhckt4uYwawSsxb_5nu8Q",
+    "partnership": "Fiori del Fiobbo, Regenerativa, Regen Civics Alliance, Co:Do, Social Systems Lab",
+    "multisig": "0x96bB7B429cF97131E624Fa32d27B45595d59b5B8",
+    "website": "www.liminalvillage.com"
   }
 ]
