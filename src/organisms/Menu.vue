@@ -119,7 +119,7 @@ export default defineComponent({
           </li>
           <li>
             <a href=" http://events.spaghett-eth.com/" target="_blank"
-              >Conference</a
+              >Conferences</a
             >
           </li>
           <li>
