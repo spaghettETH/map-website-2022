@@ -175,5 +175,23 @@
     "partnership": "Fiori del Fiobbo, Regenerativa, Regen Civics Alliance, Co:Do, Social Systems Lab",
     "multisig": "0x96bB7B429cF97131E624Fa32d27B45595d59b5B8",
     "website": "www.liminalvillage.com"
+  },
+  {
+    "città": "Napoli",
+    "regione": "campania",
+    "nome": "napul.eth",
+    "membri": 30+,
+    "meet": "Incontri IRL periodici",
+    "format": "Principalmente Meetups e discussioni in chat.",
+    "focus": "Web3, DeFi, MEV, infrastructure, investing, legal",
+    "progetti": "Estendere la community organizzando eventi quality-focused.",
+    "twitter": "",
+    "github": "",
+    "telegram": "https://t.me/napuleth",
+    "discord": "",
+    "social": "",
+    "partnership": "20squares, crypto FLUX, decripto",
+    "multisig": "napul.eth",
+    "website": "https://napul.eth.limo"
   }
 ]
