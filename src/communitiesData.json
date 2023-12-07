@@ -211,5 +211,22 @@
     "website": "http://www.ethna.rocks",
     "partnership": "mego.tickets, YOMI",
     "multisig": ""
+  },
+    {
+    "città": "Bologna",
+    "regione": "emilia-romagna",
+    "nome": "ETHBologna",
+    "membri": "10+",
+    "meet": "Incontri saltuari in presenza - Incontri saltuari virtuali",
+    "format": "Meetup",
+    "focus": "web3 e interazione con citta di Bologna",
+    "progetti": "",
+    "twitter": "",
+    "github": "",
+    "telegram": "https://t.me/ethbologna",
+    "discord": "",
+    "website": "https://www.ethbologna.com",
+    "partnership": "",
+    "multisig": ""
   }
 ]
