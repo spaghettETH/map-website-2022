@@ -15,7 +15,8 @@
     "social": "Instagram: web3mi_",
     "partnership": "Work in progress",
     "multisig": "web3mi.eth",
-    "website": ""
+    "website": "",
+    "logo": "./logos/web3mi.jpg"
   },
   {
     "città": "Roma",
@@ -33,7 +34,8 @@
     "social": "https://www.linkedin.com/company/urbe-eth",
     "partnership": "No",
     "multisig": "/",
-    "website": ""
+    "website": "",
+    "logo": "./logos/urbe.png"
   },
   {
     "città": "Milano",
@@ -51,7 +53,8 @@
     "social": "Linkedin http://bit.ly/2UVh0N6",
     "partnership": "Sponsorship con Knobs e Smoothie Lab",
     "multisig": "Nessuno",
-    "website": ""
+    "website": "",
+    "logo": "./logos/emilano.png"
   },
   {
     "città": "Venezia",
@@ -69,7 +72,8 @@
     "social": "Website: https://ethvenice.com , Instagram: https://instagram.com/ethvenice",
     "partnership": "Ethereum Foundation, ethereum.org, SpaghettETH, Nethermind, Web3 Italia",
     "multisig": "None atm.",
-    "website": ""
+    "website": "",
+    "logo": "./logos/ethvenice.png"
   },
   {
     "città": "Torino",
@@ -86,7 +90,8 @@
     "discord": "",
     "website": "",
     "partnership": "Sì",
-    "multisig": "No"
+    "multisig": "No",
+    "logo": "./logos/leghackto.png"
   },
   {
     "città": "Civitanova Marche",
@@ -104,7 +109,8 @@
     "social": "facebook: https://www.facebook.com/legalhackers.civitanovamarche - linkedin: https://www.linkedin.com/company/legal-hackers-civitanova-marche/ - youtube: https://www.youtube.com/channel/UCaEhckt4uYwawSsxb_5nu8Q",
     "partnership": "Sì con Dillo Facile (www.dillofacile.it), Empix Multimedia (www.empix.it) e Token Party (www.tokenparty.it)",
     "multisig": "no",
-    "website": ""
+    "website": "",
+    "logo": "./logos/leghackma.png"
   },
   {
     "città": "Cagliari",
@@ -122,7 +128,8 @@
     "social": "https://www.facebook.com/groups/748024539275429",
     "partnership": "no",
     "multisig": "n/a",
-    "website": ""
+    "website": "",
+    "logo": "./logos/cagliariethlab.png"
   },
   {
     "città": "Torino",
@@ -139,7 +146,8 @@
     "discord": "https://discord.gg/GEhgmxkrAZ",
     "website": "https://ethturin.eth.link/",
     "partnership": "Legal Hackers Torino, UniTO",
-    "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba"
+    "multisig": "eth:0xdF5F3eb665952DAa6De7E520B57BdA322E22D4ba",
+    "logo": "./logos/ethturin.png"
   },
   {
     "città": "Roma",
@@ -156,7 +164,8 @@
     "discord": "",
     "website": "https://linktr.ee/cryptoroma",
     "partnership": "",
-    "multisig": ""
+    "multisig": "",
+    "logo": "./logos/cryptoroma.png"
   },
   {
     "città": "Ascoli Piceno",
@@ -174,7 +183,8 @@
     "social": "facebook: https://www.facebook.com/legalhackers.civitanovamarche - linkedin: https://www.linkedin.com/company/legal-hackers-civitanova-marche/ - youtube: https://www.youtube.com/channel/UCaEhckt4uYwawSsxb_5nu8Q",
     "partnership": "Fiori del Fiobbo, Regenerativa, Regen Civics Alliance, Co:Do, Social Systems Lab",
     "multisig": "0x96bB7B429cF97131E624Fa32d27B45595d59b5B8",
-    "website": "www.liminalvillage.com"
+    "website": "www.liminalvillage.com",
+    "logo": "./logos/liminal.png"
   },
   {
     "città": "Napoli",
@@ -192,9 +202,10 @@
     "social": "",
     "partnership": "20squares, crypto FLUX, decripto",
     "multisig": "napul.eth",
-    "website": "https://napul.eth.limo"
+    "website": "https://napul.eth.limo",
+    "logo": "./logos/napuleth.png"
   },
-  
+
   {
     "città": "Catania",
     "regione": "sicilia",
@@ -210,9 +221,10 @@
     "discord": "",
     "website": "https://ethna.rocks/",
     "partnership": "mego.tickets, YOMI",
-    "multisig": ""
+    "multisig": "",
+    "logo": "./logos/ethna.png"
   },
-    {
+  {
     "città": "Bologna",
     "regione": "emilia-romagna",
     "nome": "ETHBologna",
@@ -227,7 +239,8 @@
     "discord": "",
     "website": "https://www.ethbologna.com",
     "partnership": "",
-    "multisig": ""
+    "multisig": "",
+    "logo": "./logos/ethbologna.png"
   },
   {
     "città": "Sanremo",
@@ -244,6 +257,7 @@
     "discord": "",
     "website": "https://www.linkedin.com/company/101641470",
     "partnership": "",
-    "multisig": ""
+    "multisig": "",
+    "logo": "./logos/sanr3mo.png"
   }
 ]

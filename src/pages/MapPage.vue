@@ -1,13 +1,7 @@
 <script>
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
-import {
-  defineComponent,
-  onMounted,
-  ref,
-  watch,
-  computed,
-} from "vue";
+import { defineComponent, onMounted, ref, watch, computed } from "vue";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
@@ -21,38 +15,65 @@ import { EffectCards, Mousewheel } from "swiper";
 import "swiper/css";
 import "swiper/css/mousewheel";
 
-import SadCarachter from "../assets/svg/sadCarachter.svg"
+import SadCarachter from "../assets/svg/sadCarachter.svg";
 
 export default defineComponent({
   name: "MapPage",
-  components: { ItalianMap, MobileMap, CommunitiesCard, Swiper, SwiperSlide, SadCarachter },
+  components: {
+    ItalianMap,
+    MobileMap,
+    CommunitiesCard,
+    Swiper,
+    SwiperSlide,
+    SadCarachter,
+  },
   emits: ["showNavbar"],
   setup(props, { emit }) {
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
     const communitiesToDisplay = ref([]);
     const discordLinks = ref({
-      'abruzzo': 'https://discord.com/channels/885144315024789504/1027933657480048700',
-      'basilicata': 'https://discord.com/channels/885144315024789504/1027933842092339260',
-      'calabria': 'https://discord.com/channels/885144315024789504/1027933859079278722',
-      'campania': 'https://discord.com/channels/885144315024789504/1027933872840786002',
-      'emilia-romagna': 'https://discord.com/channels/885144315024789504/1027933908685299784',
-      'friuli-venezia-giulia': 'https://discord.com/channels/885144315024789504/1027933926209097789',
-      'lazio': 'https://discord.com/channels/885144315024789504/1027933939500843018',
-      'liguria': 'https://discord.com/channels/885144315024789504/1027933952637415474',
-      'lombardia': 'https://discord.com/channels/885144315024789504/1027933968412196884',
-      'marche': 'https://discord.com/channels/885144315024789504/1027933982463107132',
-      'molise': 'https://discord.com/channels/885144315024789504/1027933995293495356',
-      'piemonte': 'https://discord.com/channels/885144315024789504/1027934015170293761',
-      'puglia': 'https://discord.com/channels/885144315024789504/1027934034384400424',
-      'sardegna': 'https://discord.com/channels/885144315024789504/1027934051518136412',
-      'sicilia': 'https://discord.com/channels/885144315024789504/1027934065212530728',
-      'toscana': 'https://discord.com/channels/885144315024789504/1027934079569645679',
-      'trentino-alto-adige': 'https://discord.com/channels/885144315024789504/1027934095596077217',
-      'umbria': 'https://discord.com/channels/885144315024789504/1027934108292218990',
-      'valle-d-aosta': 'https://discord.com/channels/885144315024789504/1027934122817093652',
-      'veneto': 'https://discord.com/channels/885144315024789504/1027934138830954556',
-    })
+      abruzzo:
+        "https://discord.com/channels/885144315024789504/1027933657480048700",
+      basilicata:
+        "https://discord.com/channels/885144315024789504/1027933842092339260",
+      calabria:
+        "https://discord.com/channels/885144315024789504/1027933859079278722",
+      campania:
+        "https://discord.com/channels/885144315024789504/1027933872840786002",
+      "emilia-romagna":
+        "https://discord.com/channels/885144315024789504/1027933908685299784",
+      "friuli-venezia-giulia":
+        "https://discord.com/channels/885144315024789504/1027933926209097789",
+      lazio:
+        "https://discord.com/channels/885144315024789504/1027933939500843018",
+      liguria:
+        "https://discord.com/channels/885144315024789504/1027933952637415474",
+      lombardia:
+        "https://discord.com/channels/885144315024789504/1027933968412196884",
+      marche:
+        "https://discord.com/channels/885144315024789504/1027933982463107132",
+      molise:
+        "https://discord.com/channels/885144315024789504/1027933995293495356",
+      piemonte:
+        "https://discord.com/channels/885144315024789504/1027934015170293761",
+      puglia:
+        "https://discord.com/channels/885144315024789504/1027934034384400424",
+      sardegna:
+        "https://discord.com/channels/885144315024789504/1027934051518136412",
+      sicilia:
+        "https://discord.com/channels/885144315024789504/1027934065212530728",
+      toscana:
+        "https://discord.com/channels/885144315024789504/1027934079569645679",
+      "trentino-alto-adige":
+        "https://discord.com/channels/885144315024789504/1027934095596077217",
+      umbria:
+        "https://discord.com/channels/885144315024789504/1027934108292218990",
+      "valle-d-aosta":
+        "https://discord.com/channels/885144315024789504/1027934122817093652",
+      veneto:
+        "https://discord.com/channels/885144315024789504/1027934138830954556",
+    });
 
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
@@ -79,8 +100,74 @@ export default defineComponent({
       );
     };
 
+    const loadLogos = () => {
+      // Remove existing logo containers
+      document.querySelectorAll('.logo-container').forEach(container => {
+        container.remove();
+      });
+      document.querySelectorAll(".region").forEach((region) => {
+        const rect = region.getBoundingClientRect();
+        // Get the communities for this region
+        const regionCommunities = communities.filter(
+          (c) => c.regione === region.id
+        );
+        // If there are communities for this region
+        if (regionCommunities.length > 0) {
+          // Create a container for the community logos
+          const container = document.createElement("div");
+          container.className = "logo-container";
+          container.style.opacity = "0";
+
+          // Add community logos to the container
+          regionCommunities.forEach((community) => {
+            const logoContainer = document.createElement("div");
+            logoContainer.className = "logo-container-img";
+
+            const logo = document.createElement("img");
+            logo.src = community.logo || "path/to/default/logo.png";
+            logo.alt = community.nome;
+            logo.style.width = "100%";
+            logo.style.height = "100%";
+            logo.style.objectFit = "cover";
+
+            logoContainer.appendChild(logo);
+            container.appendChild(logoContainer);
+          });
+
+          // Add the container to the body instead of the map
+          document.body.appendChild(container);
+
+          // Function to update logo positions
+          const updateLogoPositions = () => {
+            const rect = region.getBoundingClientRect();
+            const centerX = (rect.left + rect.right) / 2;
+            const centerY = (rect.top + rect.bottom) / 2;
+            container.style.left = `${centerX}px`;
+            container.style.top = `${centerY}px`;
+            container.style.transform = "translate(-50%, -50%)";
+          };
+
+          // Initial position update
+          updateLogoPositions();
+
+          // Add event listeners for window resize and scroll
+          window.addEventListener("resize", updateLogoPositions);
+          window.addEventListener("scroll", updateLogoPositions);
+
+          // Observe changes in the map element
+          const mapElement = document.querySelector(".map");
+          const observer = new MutationObserver(updateLogoPositions);
+          observer.observe(mapElement, {
+            attributes: true,
+            childList: true,
+            subtree: true,
+          });
+        }
+      });
+    }
     //Initial animation
     onMounted(() => {
+      loadLogos();
       const animation = gsap.timeline();
       animation.fromTo(
         ".welcome-label",
@@ -142,6 +229,7 @@ export default defineComponent({
         },
         ">"
       );
+      animation.fromTo(".logo-container", { opacity: 0 }, { opacity: 1 });
       animation.fromTo(".barchetta", { opacity: 0 }, { opacity: 1 });
     });
 
@@ -158,7 +246,7 @@ export default defineComponent({
     });
 
     const selectRegion = (region) => {
-      communitiesToDisplay.value = []
+      communitiesToDisplay.value = [];
       communities.forEach((c, i) => {
         if (c.regione === region) {
           communitiesToDisplay.value.push(c);
@@ -177,13 +265,13 @@ export default defineComponent({
       );
     };
 
-    const isDisabled = ref(true)
+    const isDisabled = ref(true);
     const enableBtn = () => {
-      isDisabled.value= false;
-    }
+      isDisabled.value = false;
+    };
     const disableBtn = () => {
-      isDisabled.value= true;
-    }
+      isDisabled.value = true;
+    };
     return {
       overRegion,
       currentRegion,
@@ -202,7 +290,7 @@ export default defineComponent({
       enableBtn,
       disableBtn,
       isDisabled,
-      discordLinks
+      discordLinks,
     };
   },
 });
@@ -225,15 +313,7 @@ export default defineComponent({
       >
         <ul
           v-if="communitiesToDisplay.length !== 0 && miniMap"
-          class="
-            communities-wrapper
-            relaitve
-            w-[100%]
-            h-[50%]
-            flex
-            items-center
-            justify-center
-          "
+          class="communities-wrapper relaitve w-[100%] h-[50%] flex items-center justify-center"
         >
           <Swiper
             class="w-full flex items-center justify-center"
@@ -271,29 +351,17 @@ export default defineComponent({
               />
             </SwiperSlide>
             <SwiperSlide v-if="communitiesToDisplay.length >= 1 && miniMap">
-              <div
-                class="
-                  flex items-center justify-center
-                "
-                target="_blank"
-              >
+              <div class="flex items-center justify-center" target="_blank">
                 <div
-                  class="
-                    no-communities-wrapper
-                    register-another-community
-                    text-center
-                  "
+                  class="no-communities-wrapper register-another-community text-center"
                 >
                   <h2 class="p-4">
                     Registra un'altra community in questa regione!
                   </h2>
-                  <button
-                    @click="registerCommunity()"
-                  >
-                    Registra la tua!
-                  </button>
+                  <button @click="registerCommunity()">Registra la tua!</button>
                   <a target="_blank" :href="discordLinks[currentRegion]">
-                    oppure <br/> <u>trova amici nella tua regione</u>
+                    oppure <br />
+                    <u>trova amici nella tua regione</u>
                   </a>
                 </div>
               </div>
@@ -301,16 +369,7 @@ export default defineComponent({
           </Swiper>
           <div
             v-if="communitiesToDisplay.length >= 1"
-            class="
-              swiper-btns-wrapper
-              w-[7%]
-              flex
-              items-center
-              justify-between
-              absolute
-              bottom-[5%]
-              right-[10%]
-            "
+            class="swiper-btns-wrapper w-[7%] flex items-center justify-between absolute bottom-[5%] right-[10%]"
           >
             <button class="swiper-btn" @click="prev" :disabled="isDisabled">
               <img src="../assets/images/prevIcn.png" />
@@ -325,19 +384,12 @@ export default defineComponent({
           class="no-communities-wrapper text-center"
           target="_blank"
         >
-        <SadCarachter class="h-full w-full" />
+          <SadCarachter class="h-full w-full" />
           <h2 class="p-4">Non ci sono ancora communities in questa regione!</h2>
-          <button
-            @click="registerCommunity()"
-          >
-            Registra la tua!
-          </button>
-          <a 
-            class=""
-            target="_blank"
-            :href="discordLinks[currentRegion]"
-          >
-            oppure <br/> <u>trova amici nella tua regione</u>
+          <button @click="registerCommunity()">Registra la tua!</button>
+          <a class="" target="_blank" :href="discordLinks[currentRegion]">
+            oppure <br />
+            <u>trova amici nella tua regione</u>
           </a>
         </div>
       </div>
@@ -905,7 +957,7 @@ export default defineComponent({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         class="map absolute z-3"
-        v-if="!miniMap"
+        v-show="!miniMap"
       >
         <path
           d="M327.9 266.2L329.1 271.7L331.1 276.5L336.6 286.3L342.7 293L349.9 298.4L350.7 300.4L353.9 303.5L354.2 304.7L359.1 307.9L363.6 309.5L363.8 313.7L366.8 315.8L365.8 317.4L366.6 318.1L364.1 319.8L362.1 322.3L361.4 325L359.3 326.5L357.8 329.8L353.6 334.3L351.8 334L352.5 333.4L351.6 329.7L350.6 328.8L348.5 327.4L347.6 328.6L347.1 328.4L346.2 326.5L345.1 326.6L344.3 325.5L341.8 327.6L340.6 329.5L338.7 329.6L338.3 330.4L339.4 333.5L340.7 334.3L340.3 335.2L339.6 335.1L339.4 334.2L338.8 335.3H337.1L336.6 337.6L335.9 335.8L334.9 335.9L334.1 338H332.9L332.7 339.3L331.1 338.4L329.3 338.9L327.1 336L325.4 336.2L323.3 335L322.4 335.6L321.2 335.2L319.7 332.3L318.5 332.9L317.6 331.9L316 331.5L315.1 333.3L311.6 334.5L310.3 333.7L309.7 332.1L308.1 331.7L306.8 330.5L305.3 329.9L304.1 331.1L303.2 327.9L304.3 325.9L303.4 324.7L302.5 324.9L300.8 322.9L300 323.2L293.3 319.3L291.5 318.7V319.8L289.4 319.2L288.2 317.2L288.3 312.9L289 313.2L290.8 311.6V309.5L292.3 309.4L298 312.5L299.1 311.8L300.6 312.3L301.5 310.4L302.8 310.1L302.3 309.5L303.9 309.2L302.2 308.1L301.9 306.7L299.8 306L297.5 303.8L296.9 300.9L293.6 298.7L295.4 296.7L291.9 293.4L294.7 291.3L294.6 289.2L293.7 287.6L294.6 287.1L295.3 284.7L297.7 285.6L298.2 285H299.4L299.9 285.9L301.2 285.2L303.2 285.5L304.4 284.5L305.1 281.5L303.4 280.9L302.4 279.7L302.9 278.2L304.4 278.6L306 277.4L306.5 277.8L307 275.7L309.1 275.4L309.4 273.2L310.6 271.9L310.8 270.6L312.6 271.6L314.7 270.6L315.3 271.4L316.5 271.3L318.3 270.5L318.7 268.6L319.3 268.3L321.7 268.1L323.5 266.9L327.9 266V266.2Z"
@@ -913,6 +965,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="abruzzo"
           @click="selectRegion('abruzzo')"
           @mouseover="overRegion('abruzzo')"
         />
@@ -922,6 +975,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="basilicata"
           @click="selectRegion('basilicata')"
           @mouseover="overRegion('basilicata')"
         />
@@ -931,6 +985,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="calabria"
           @click="selectRegion('calabria')"
           @mouseover="overRegion('calabria')"
         />
@@ -940,6 +995,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="campania"
           @click="selectRegion('campania')"
           @mouseover="overRegion('campania')"
         />
@@ -949,6 +1005,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="emilia-romagna"
           @click="selectRegion('emilia-romagna')"
           @mouseover="overRegion('emilia-romagna')"
         />
@@ -958,6 +1015,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="friuli-venezia-giulia"
           @click="selectRegion('friuli-venezia-giulia')"
           @mouseover="overRegion('friuli-venezia-giulia')"
         />
@@ -967,6 +1025,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="lazio"
           @click="selectRegion('lazio')"
           @mouseover="overRegion('lazio')"
         />
@@ -976,6 +1035,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="liguria"
           @click="selectRegion('liguria')"
           @mouseover="overRegion('liguria')"
         />
@@ -985,6 +1045,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="lombardia"
           @click="selectRegion('lombardia')"
           @mouseover="overRegion('lombardia')"
         />
@@ -994,6 +1055,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="marche"
           @click="selectRegion('marche')"
           @mouseover="overRegion('marche')"
         />
@@ -1003,6 +1065,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="molise"
           @click="selectRegion('molise')"
           @mouseover="overRegion('molise')"
         />
@@ -1012,6 +1075,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="piemonte"
           @click="selectRegion('piemonte')"
           @mouseover="overRegion('piemonte')"
         />
@@ -1021,6 +1085,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="puglia"
           @click="selectRegion('puglia')"
           @mouseover="overRegion('puglia')"
         />
@@ -1030,6 +1095,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="sardegna"
           @click="selectRegion('sardegna')"
           @mouseover="overRegion('sardegna')"
         />
@@ -1039,6 +1105,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="sicilia"
           @click="selectRegion('sicilia')"
           @mouseover="overRegion('sicilia')"
         />
@@ -1048,6 +1115,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="toscana"
           @click="selectRegion('toscana')"
           @mouseover="overRegion('toscana')"
         />
@@ -1057,6 +1125,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="trentino-alto-adige"
           @click="selectRegion('trentino-alto-adige')"
           @mouseover="overRegion('trentino-alto-adige')"
         />
@@ -1066,6 +1135,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="umbria"
           @click="selectRegion('umbria')"
           @mouseover="overRegion('umbria')"
         />
@@ -1075,6 +1145,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="valle-d-aosta"
           @click="selectRegion('valle-d-aosta')"
           @mouseover="overRegion('valle-d-aosta')"
         />
@@ -1084,6 +1155,7 @@ export default defineComponent({
           stroke="white"
           stroke-width="0.5"
           class="region"
+          id="veneto"
           @click="selectRegion('veneto')"
           @mouseover="overRegion('veneto')"
         />
@@ -3207,21 +3279,12 @@ export default defineComponent({
       </svg>
       <MobileMap
         v-if="miniMap"
-        @expand-map="miniMap = $event"
-        @reset-array="communitiesToDisplay = $event"
+        @expand-map="miniMap = $event;"
+        @reset-array="communitiesToDisplay = $event;"
       />
       <div class="welcome-labels-wrapper absolute w-[50%] z-90">
         <div
-          class="
-            welcome-labels-wrapper-two
-            relative
-            w-full
-            h-full
-            flex
-            items-center
-            justify-center
-            pb-32
-          "
+          class="welcome-labels-wrapper-two relative w-full h-full flex items-center justify-center pb-32"
         >
           <p class="welcome-label welcome-label-first absolute text-center">
             Welcome to the SpaghettETH website!
@@ -3410,7 +3473,7 @@ section {
   border-radius: 100px;
   border: 1px solid #f2f2f2;
 
-  & img{
+  & img {
     height: 20px;
   }
 
