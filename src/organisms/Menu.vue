@@ -118,24 +118,14 @@ export default defineComponent({
             </a>
           </li>
           <li>
-            <a href="/" target="_blank"
-              >Cos'è SpaghettETH</a>
+            <a href=" http://events.spaghett-eth.com/" target="_blank"
+              >Conferences</a
+            >
           </li>
           <li>
             <a href="/" target="_blank"
-              >Progetti</a>
-          </li>
-          <li>
-            <a href="/" target="_blank"
-              >Partners & Ecosistema</a>
-          </li>
-          <li>
-            <a href="/" target="_blank"
-              >News (soon)</a>
-          </li>
-          <li>
-            <a href="/" target="_blank"
-              >Blog (soon)</a>
+              >Blog</a
+            >
           </li>
         </ul>
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
