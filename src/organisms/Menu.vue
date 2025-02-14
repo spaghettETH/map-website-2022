@@ -118,7 +118,7 @@ export default defineComponent({
             </a>
           </li>
           <li>
-            <a href="#" target="_blank">Cos'è SpaghettETH</a>
+            <a href="#" target="_blank">Cosa è SpaghettETH</a>
           </li>
           <li>
             <a href="#" target="_blank">Progetti</a>
