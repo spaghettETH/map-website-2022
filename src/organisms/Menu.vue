@@ -136,7 +136,7 @@ export default defineComponent({
         @click="closeMenu()"
       />
       <div
-        class="content-wrapper flex items-center justify-center w-[75%] h-[50%]"
+        class="content-wrapper flex items-center justify-center w-[75%] h-[75%]"
       >
         <ul
           class="
@@ -172,11 +172,15 @@ export default defineComponent({
             <a @click="navigateToHistory" class="cursor-pointer">Storia</a>
           </li>
         </ul>
-        <div v-if="isMobile" class="menu-info-mobile-wrapper absolute bottom-[5%] w-full flex flex-col items-start justify-center px-8">
-          <a class="email-anchor mb-4" href="mailto:ciao@spaghett-eth.com">
+        
+        <div v-if="isMobile" 
+             class="menu-info-mobile-wrapper fixed bottom-0 left-0 w-full 
+                    flex flex-col items-start justify-center px-8 py-4 
+                    bg-gradient-to-t from-black/20 to-transparent">
+          <a class="email-anchor mb-2" href="mailto:ciao@spaghett-eth.com">
             ciao@spaghett-eth.com
           </a>
-          <div class="social-wrapper flex mb-8">
+          <div class="social-wrapper flex mb-4">
             <a href="https://medium.com/spaghetteth" target="_blank">
               <img
                 src="../assets/images/medium-icon.png"
@@ -215,25 +219,24 @@ export default defineComponent({
             → back to Map
           </a>
         </div>
-        <a 
-          v-if="!isMobile" 
-          @click="navigateToMap" 
-          class="back-to-map absolute bottom-8 cursor-pointer"
-        >
+
+        <a v-if="!isMobile" 
+           @click="navigateToMap" 
+           class="back-to-map fixed bottom-8 right-8 cursor-pointer z-10">
           → back to Map
         </a>
+        
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
       </div>
-      <a
-        v-if="!isMobile"
-        class="absolute email-anchor"
-        href="mailto:ciao@spaghett-eth.com"
-        >ciao@spaghett-eth.com</a
-      >
-      <div
-        v-if="!isMobile"
-        class="social-wrapper absolute bottom-0 right-0 flex"
-      >
+
+      <a v-if="!isMobile"
+         class="email-anchor fixed bottom-8 left-8"
+         href="mailto:ciao@spaghett-eth.com">
+        ciao@spaghett-eth.com
+      </a>
+
+      <div v-if="!isMobile"
+           class="social-wrapper fixed bottom-8 right-32 flex gap-4">
         <a href="https://medium.com/spaghetteth" target="_blank">
           <img
             src="../assets/images/medium-icon.png"
@@ -312,29 +315,23 @@ a {
 }
 
 .menu-label {
-  font-size: 10rem;
-  font-family: MonsterratBold;
-
-  @media (max-width: 1023px) {
-    font-size: 7rem;
-  }
-  @media (max-width: 670) {
-    font-size: 5rem;
+  font-size: clamp(5rem, 10vw, 10rem);
+  
+  @media (max-height: 700px) {
+    font-size: clamp(4rem, 8vw, 7rem);
   }
 }
 .menu-list-wrapper {
   & li {
     font-family: MonsterratBold;
-    font-size: 5rem;
+    font-size: clamp(2rem, 5vw, 5rem);
     cursor: pointer;
-    line-height: 1;
-    margin-bottom: 2rem;
+    line-height: 1.2;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
 
-    @media (max-width: 1023px) {
-      font-size: 3rem;
-    }
-    @media (max-width: 670) {
-      font-size: 2rem;
+    @media (max-height: 700px) {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      margin-bottom: 0.8rem;
     }
 
     &:hover {
@@ -414,19 +411,8 @@ a {
   }
 }
 
-@media (max-width: 768px) {
-  .menu-list-wrapper {
-    align-items: flex-start;
-    padding-left: 2rem;
-  }
-
-  .back-to-map {
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .menu-info-mobile-wrapper {
-    align-items: flex-start;
-  }
+.menu-info-mobile-wrapper {
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 </style>

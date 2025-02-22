@@ -28,7 +28,7 @@ export default defineComponent({
         description: 'La prima radio decentralizzata italiana. Una proof of concept funzionante di community-curated radio che utilizza gli smart contract per gestire le playlist e le dirette audio dal vivo.',
         image: new URL('../assets/images/projects/web3radio.webp', import.meta.url).href,
         links: [
-          { text: 'Ascolta Web3Radio', url: 'https://web3radio.it' }
+          { text: 'Coming Soon', url: '#' }
         ],
         tags: ['Media', 'Music', 'Community']
       },
