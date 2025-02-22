@@ -7,6 +7,7 @@ import {
   ref,
   watch,
 } from "vue";
+import { useRouter } from 'vue-router';
 import gsap from "gsap";
 import { useBreakpoint } from "../functions/useBreakpoint";
 import Fork from "../assets/svg/fork.svg"
@@ -16,6 +17,7 @@ export default defineComponent({
   emits: ["closeMenu"],
   components: {Fork},
   setup(props, { emit }) {
+    const router = useRouter();
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
 
@@ -66,10 +68,47 @@ export default defineComponent({
         }
       );
     };
+
+    const navigateToBlog = () => {
+      router.push('/blog');
+      closeMenu();
+    };
+
+    const navigateToIntro = () => {
+      router.push('/intro');
+      closeMenu();
+    };
+
+    const navigateToEcosystem = () => {
+      router.push('/ecosystem');
+      closeMenu();
+    };
+
+    const navigateToProjects = () => {
+      router.push('/projects');
+      closeMenu();
+    };
+
+    const navigateToMap = () => {
+      router.push('/');
+      closeMenu();
+    };
+
+    const navigateToHistory = () => {
+      router.push('/history');
+      closeMenu();
+    };
+
     return {
       closeMenu,
       isMobile,
-      Fork
+      Fork,
+      navigateToBlog,
+      navigateToIntro,
+      navigateToEcosystem,
+      navigateToProjects,
+      navigateToMap,
+      navigateToHistory
     };
   },
 });
@@ -109,7 +148,7 @@ export default defineComponent({
             justify-center
           "
         >
-          <li class="text-center">
+          <li>
             <a
               href="https://github.com/spaghettETH/map-website-2022#come-aggiungere-una-nuova-community"
               target="_blank"
@@ -118,21 +157,71 @@ export default defineComponent({
             </a>
           </li>
           <li>
-            <a href="#" target="_blank">Cosa è SpaghettETH</a>
+            <a @click="navigateToIntro" class="cursor-pointer">Cos'è SpaghettETH</a>
           </li>
           <li>
-            <a href="#" target="_blank">Progetti</a>
+            <a @click="navigateToProjects" class="cursor-pointer">Progetti</a>
           </li>
           <li>
-            <a href="#" target="_blank">Partners & Ecosystem</a>
+            <a @click="navigateToBlog" class="cursor-pointer">Blog</a>
           </li>
           <li>
-            <a href="#" target="_blank">Flash News</a>
+            <a @click="navigateToEcosystem" class="cursor-pointer">Ecosystem</a>
           </li>
           <li>
-            <a href="#" target="_blank">Blog</a>
+            <a @click="navigateToHistory" class="cursor-pointer">Storia</a>
           </li>
         </ul>
+        <div v-if="isMobile" class="menu-info-mobile-wrapper absolute bottom-[5%] w-full flex flex-col items-start justify-center px-8">
+          <a class="email-anchor mb-4" href="mailto:ciao@spaghett-eth.com">
+            ciao@spaghett-eth.com
+          </a>
+          <div class="social-wrapper flex mb-8">
+            <a href="https://medium.com/spaghetteth" target="_blank">
+              <img
+                src="../assets/images/medium-icon.png"
+                class="social-image cursor-pointer"
+              />
+            </a>
+            <a href="https://twitter.com/spaghettETH" target="_blank">
+              <img
+                src="../assets/images/tweetterIcn.png"
+                class="social-image cursor-pointer"
+              />
+            </a>
+            <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
+              <img
+                src="../assets/images/discordIcn.png"
+                class="social-image cursor-pointer"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/spaghetteth/"
+              target="_blank"
+            >
+              <img
+                src="../assets/images/linkedinIcn.png"
+                class="social-image cursor-pointer"
+              />
+            </a>
+            <a href="https://t.me/SpaghettETHchat" target="_blank">
+              <img
+                src="../assets/images/telegramIcn.png"
+                class="social-image cursor-pointer"
+              />
+            </a>
+          </div>
+          <a @click="navigateToMap" class="back-to-map cursor-pointer">
+            → back to Map
+          </a>
+        </div>
+        <a 
+          v-if="!isMobile" 
+          @click="navigateToMap" 
+          class="back-to-map absolute bottom-8 cursor-pointer"
+        >
+          → back to Map
+        </a>
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
       </div>
       <a
@@ -175,57 +264,6 @@ export default defineComponent({
             class="social-image cursor-pointer"
           />
         </a>
-      </div>
-      <div
-        v-if="isMobile"
-        class="
-          menu-info-mobile-wrapper
-          absolute
-          bottom-[5%]
-          w-full
-          flex flex-col
-          items-center
-          justify-center
-        "
-      >
-        <a class="email-anchor mb-4" href="mailto:ciao@spaghett-eth.com"
-          >ciao@spaghett-eth.com</a
-        >
-        <div class="social-wrapper flex">
-          <a href="https://medium.com/spaghetteth" target="_blank">
-            <img
-              src="../assets/images/medium-icon.png"
-              class="social-image cursor-pointer"
-            />
-          </a>
-          <a href="https://twitter.com/spaghettETH" target="_blank">
-            <img
-              src="../assets/images/tweetterIcn.png"
-              class="social-image cursor-pointer"
-            />
-          </a>
-          <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
-            <img
-              src="../assets/images/discordIcn.png"
-              class="social-image cursor-pointer"
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/spaghetteth/"
-            target="_blank"
-          >
-            <img
-              src="../assets/images/linkedinIcn.png"
-              class="social-image cursor-pointer"
-            />
-          </a>
-          <a href="https://t.me/SpaghettETHchat" target="_blank">
-            <img
-              src="../assets/images/telegramIcn.png"
-              class="social-image cursor-pointer"
-            />
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -359,6 +397,36 @@ a {
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.back-to-map {
+  color: #01fbc5;
+  font-family: MonsterratBold;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+
+  &:hover {
+    color: white;
+    transform: translateX(5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-list-wrapper {
+    align-items: flex-start;
+    padding-left: 2rem;
+  }
+
+  .back-to-map {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .menu-info-mobile-wrapper {
+    align-items: flex-start;
   }
 }
 </style>

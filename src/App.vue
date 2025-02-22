@@ -5,6 +5,7 @@ import Navbar from "./atoms/Navbar.vue";
 import Menu from "./organisms/Menu.vue";
 import MenuSlider from "./atoms/MenuSlider.vue";
 import { useBreakpoint } from "./functions/useBreakpoint";
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: "App",
@@ -12,13 +13,26 @@ export default defineComponent({
   setup() {
     const navbarVisible = ref(false);
     const menuVisible = ref(false);
+    const route = useRoute();
 
     const matches = useBreakpoint();
     const isMobile = computed(() => matches.value?.beforeLg);
+    
+    // Mostra la navbar solo nella home page
+    const showNavbarAndSlider = computed(() => {
+      return route.path === '/';
+    });
+
+    const updateNavbarVisibility = (value) => {
+      navbarVisible.value = value;
+    };
+
     return {
       menuVisible,
       navbarVisible,
       isMobile,
+      showNavbarAndSlider,
+      updateNavbarVisibility
     };
   },
 });
@@ -27,14 +41,14 @@ export default defineComponent({
 <template>
   <div class="main-wrapper relative h-screen w-full">
     <Navbar
-      :isVisible="navbarVisible"
+      :isVisible="showNavbarAndSlider && navbarVisible"
       class="z-2"
       @openMenu="menuVisible = $event"
     />
     <Menu v-if="menuVisible" @close-menu="menuVisible = $event" class="z-3" />
-    <MapPage @show-navbar="navbarVisible = $event" class="z-1" />
+    <router-view @showNavbar="updateNavbarVisibility"></router-view>
     <MenuSlider
-      v-if="!isMobile"
+      v-if="!isMobile && showNavbarAndSlider && navbarVisible"
       :isVisible="navbarVisible"
       @openMenu="menuVisible = $event"
     />
