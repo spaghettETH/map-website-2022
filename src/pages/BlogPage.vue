@@ -67,7 +67,7 @@ export default defineComponent({
   <div class="blog-page min-h-screen bg-black text-white p-8 overflow-y-auto">
     <button 
       @click="goToHome" 
-      class="back-btn mb-8 flex items-center text-white sticky top-8 z-10"
+      class="back-btn mb-12 flex items-center text-white"
     >
       <span class="back-icon mr-2">
         <img src="../assets/images/backIcn.png" />
@@ -75,9 +75,7 @@ export default defineComponent({
       Torna al Menu
     </button>
 
-    <div class="max-w-4xl mx-auto pb-20">
-      <h1 class="text-4xl font-bold mb-12">Blog</h1>
-      
+    <div class="max-w-4xl mx-auto">
       <div v-if="loading" class="text-center py-8">
         Caricamento...
       </div>
@@ -91,10 +89,10 @@ export default defineComponent({
           v-for="post in posts" 
           :key="post.slug"
           @click="goToPost(post.slug)"
-          class="post-card cursor-pointer"
+          class="event-card cursor-pointer"
         >
           <h2 class="text-2xl font-bold mb-2">{{ post.title }}</h2>
-          <div class="text-gray-400 mb-4">
+          <div class="event-date mb-4">
             <span>{{ new Date(post.date).toLocaleDateString() }}</span>
             <span class="mx-2">•</span>
             <span>{{ post.author }}</span>
@@ -118,13 +116,6 @@ export default defineComponent({
   font-weight: bold;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  position: sticky;
-  top: 2rem;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  z-index: 10;
 
   &:hover {
     opacity: 0.8;
@@ -135,18 +126,25 @@ export default defineComponent({
   }
 }
 
-.post-card {
+.event-card {
   background: rgba(20, 20, 20, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1.5rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
+    transform: translateX(10px);
     background: rgba(25, 25, 25, 0.9);
-    transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
+}
+
+.event-date {
+  font-family: MonsterratBold;
+  color: #f99bc0;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 </style>
