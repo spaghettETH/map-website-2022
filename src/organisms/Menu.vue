@@ -143,18 +143,22 @@ export default defineComponent({
             flex flex-col
             items-center
             justify-center
+            text-center
           "
         >
-          <li>
+          <li class="w-full">
             <a
               href="https://github.com/spaghettETH/map-website-2022#come-aggiungere-una-nuova-community"
               target="_blank"
+              class="inline-block w-full text-center"
             >
               Registra Community
             </a>
           </li>
-          <li>
-            <a @click="navigateToIntro" class="cursor-pointer">Cos'è SpaghettETH</a>
+          <li class="w-full">
+            <a @click="navigateToIntro" class="cursor-pointer inline-block w-full text-center">
+              Cos'è SpaghettETH
+            </a>
           </li>
           <li>
             <a @click="navigateToProjects" class="cursor-pointer">Progetti</a>
@@ -165,8 +169,15 @@ export default defineComponent({
           <li>
             <a @click="navigateToEcosystem" class="cursor-pointer">Ecosystem</a>
           </li>
-          <li>
-            <a @click="navigateToHistory" class="cursor-pointer">Storia</a>
+          <li class="w-full">
+            <a @click="navigateToHistory" class="cursor-pointer inline-block w-full text-center">
+              Storia
+            </a>
+          </li>
+          <li class="back-to-map-item w-full">
+            <a @click="closeMenu(true)" class="cursor-pointer inline-block w-full text-center">
+              → back to Map
+            </a>
           </li>
         </ul>
         
@@ -237,9 +248,9 @@ export default defineComponent({
             class="social-image cursor-pointer"
           />
         </a>
-        <a href="https://discord.gg/eYMQ2Xz4Sr" target="_blank">
+        <a href="https://github.com/spaghettETH" target="_blank">
           <img
-            src="../assets/images/discordIcn.png"
+            src="../assets/images/github-mark-white.png"
             class="social-image cursor-pointer"
           />
         </a>
@@ -316,6 +327,12 @@ a {
     cursor: pointer;
     line-height: 1.2;
     margin-bottom: clamp(1rem, 2vw, 2rem);
+    text-align: center;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      padding: 0 1rem;
+    }
 
     @media (max-height: 700px) {
       font-size: clamp(1.5rem, 4vw, 3rem);
@@ -324,6 +341,36 @@ a {
 
     &:hover {
       opacity: 0.5 !important;
+    }
+
+    a {
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    &.back-to-map-item {
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      margin-top: 1rem;
+      opacity: 0.7;
+      
+      @media (max-height: 700px) {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        margin-top: 0.5rem;
+      }
+
+      &:hover {
+        opacity: 1 !important;
+      }
+
+      a {
+        color: #0ef9c2;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #ffffff;
+        }
+      }
     }
   }
 }
