@@ -44,7 +44,7 @@ export default defineComponent({
         ">"
       );
     });
-    const closeMenu = () => {
+    const closeMenu = (redirectToMap = true) => {
       animation.fromTo(
         ".close-icon",
         { opacity: 1, rotate: 360 },
@@ -64,6 +64,9 @@ export default defineComponent({
           x: "100%",
           onComplete: () => {
             emit("closeMenu", false);
+            if (redirectToMap) {
+              router.push('/');
+            }
           },
         }
       );
@@ -71,32 +74,27 @@ export default defineComponent({
 
     const navigateToBlog = () => {
       router.push('/blog');
-      closeMenu();
+      closeMenu(false);
     };
 
     const navigateToIntro = () => {
       router.push('/intro');
-      closeMenu();
+      closeMenu(false);
     };
 
     const navigateToEcosystem = () => {
       router.push('/ecosystem');
-      closeMenu();
+      closeMenu(false);
     };
 
     const navigateToProjects = () => {
       router.push('/projects');
-      closeMenu();
-    };
-
-    const navigateToMap = () => {
-      router.push('/');
-      closeMenu();
+      closeMenu(false);
     };
 
     const navigateToHistory = () => {
       router.push('/history');
-      closeMenu();
+      closeMenu(false);
     };
 
     return {
@@ -107,7 +105,6 @@ export default defineComponent({
       navigateToIntro,
       navigateToEcosystem,
       navigateToProjects,
-      navigateToMap,
       navigateToHistory
     };
   },
@@ -215,17 +212,8 @@ export default defineComponent({
               />
             </a>
           </div>
-          <a @click="navigateToMap" class="back-to-map cursor-pointer">
-            → back to Map
-          </a>
         </div>
 
-        <a v-if="!isMobile" 
-           @click="navigateToMap" 
-           class="back-to-map fixed bottom-8 right-8 cursor-pointer z-10">
-          → back to Map
-        </a>
-        
         <h2 class="menu-label absolute opacity-10 pointer-events-none">MENU</h2>
       </div>
 
@@ -394,20 +382,6 @@ a {
 
   &:hover {
     opacity: 0.8;
-  }
-}
-
-.back-to-map {
-  color: #01fbc5;
-  font-family: MonsterratBold;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 1.1rem;
-
-  &:hover {
-    color: white;
-    transform: translateX(5px);
   }
 }
 

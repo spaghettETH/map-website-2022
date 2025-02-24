@@ -229,6 +229,10 @@ export default defineComponent({
     transform: scaleX(1);
     transform-origin: left;
   }
+
+  .back-icon img {
+    height: 20px;
+  }
 }
 
 .tag {
