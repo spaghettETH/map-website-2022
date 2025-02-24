@@ -41,22 +41,24 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="blog-post min-h-screen bg-black text-white p-8">
-    <button @click="goBack" class="back-btn mb-8 flex items-center text-white">
+  <div class="blog-post min-h-screen bg-black text-white p-8 overflow-y-auto relative">
+    <button @click="goBack" class="back-btn mb-8 flex items-center text-white sticky top-8 z-10">
       <span class="back-icon mr-2">
         <img src="../assets/images/backIcn.png" />
       </span>
       Torna al Blog
     </button>
 
-    <article v-if="post" class="max-w-4xl mx-auto">
+    <article v-if="post" class="max-w-4xl mx-auto pb-20">
       <h1 class="text-4xl font-bold mb-4">{{ post.title }}</h1>
       <div class="mb-8 text-gray-400">
         <span>{{ new Date(post.date).toLocaleDateString() }}</span>
         <span class="mx-2">•</span>
         <span>{{ post.author }}</span>
       </div>
-      <div class="prose prose-invert max-w-none" v-html="content"></div>
+      <div class="prose prose-invert max-w-none prose-img:rounded-xl prose-img:w-full">
+        <div v-html="content"></div>
+      </div>
     </article>
   </div>
 </template>
@@ -71,6 +73,8 @@ export default defineComponent({
   left: 0;
   right: 0;
   bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gradient-text {
@@ -92,29 +96,16 @@ export default defineComponent({
   font-weight: bold;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  position: relative;
-  padding-bottom: 2px;
+  position: sticky;
+  top: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  z-index: 10;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      #f99bc0,
-      #0ef9c2
-    );
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  &:hover {
+    opacity: 0.8;
   }
 
   .back-icon img {
@@ -140,6 +131,7 @@ export default defineComponent({
 
   p {
     font-family: MonsterratRegular;
+    margin: 1.5rem 0;
   }
 
   strong {
@@ -195,6 +187,12 @@ export default defineComponent({
     background: rgba(249, 155, 192, 0.1);
     border-radius: 0 8px 8px 0;
     padding: 1rem 1.5rem;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 0.75rem;
+    margin: 2rem 0;
   }
 }
 </style> 
