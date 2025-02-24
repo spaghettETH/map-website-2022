@@ -1,7 +1,7 @@
 <script>
 //I had to paste the SVG into the code instead of importing it as a component due to a problem
 //I wan't able to solve. I'll check into it anyway
-import { defineComponent, onMounted, ref, watch, computed } from "vue";
+import { defineComponent, onMounted, onUnmounted, ref, watch, computed } from "vue";
 import ItalianMap from "../assets/svg/italianMap.svg";
 import gsap from "gsap";
 import { useMouseParallax } from "../utils/useMouseParallax.js";
@@ -165,6 +165,12 @@ export default defineComponent({
         }
       });
     }
+    onUnmounted(() => {
+      // Remove all logo containers
+      document.querySelectorAll('.logo-container').forEach(container => {
+        container.remove();
+      });
+    })
     //Initial animation
     onMounted(() => {
       loadLogos();
