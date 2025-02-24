@@ -76,6 +76,10 @@ export default defineComponent({
     </button>
 
     <div class="max-w-4xl mx-auto">
+      <h1 class="blog-title text-5xl font-black mb-12">
+        Blog<br/>SpaghettETH
+      </h1>
+
       <div v-if="loading" class="text-center py-8">
         Caricamento...
       </div>
@@ -92,12 +96,12 @@ export default defineComponent({
           class="event-card cursor-pointer"
         >
           <h2 class="text-2xl font-bold mb-2">{{ post.title }}</h2>
-          <div class="event-date mb-4">
+          <p class="text-gray-400 mb-4">{{ post.description }}</p>
+          <div class="event-date">
             <span>{{ new Date(post.date).toLocaleDateString() }}</span>
             <span class="mx-2">•</span>
             <span>{{ post.author }}</span>
           </div>
-          <p class="text-gray-300">{{ post.description }}</p>
         </div>
       </div>
     </div>
@@ -111,19 +115,11 @@ export default defineComponent({
   -webkit-overflow-scrolling: touch;
 }
 
-.back-btn {
-  font-family: MonsterratBold;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  .back-icon img {
-    height: 20px;
-  }
+.blog-title {
+  background: linear-gradient(85.18deg, #f99bc0 0%, #0ef9c2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .event-card {
@@ -143,8 +139,22 @@ export default defineComponent({
 
 .event-date {
   font-family: MonsterratBold;
-  color: #f99bc0;
-  margin-bottom: 0.5rem;
+  color: #0ef9c2;
   font-size: 0.9rem;
+}
+
+.back-btn {
+  font-family: MonsterratBold;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .back-icon img {
+    height: 20px;
+  }
 }
 </style>
