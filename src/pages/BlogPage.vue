@@ -1,5 +1,5 @@
 <script>
-import { defineComponent, onMounted, ref, computed } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useRouter } from 'vue-router';
 import { matter } from '../utils/markdown';
 
@@ -13,37 +13,39 @@ export default defineComponent({
 
     onMounted(async () => {
       try {
-        console.log('Iniziando il caricamento dei post...');
-        const postFiles = import.meta.glob('/public/blogposts/*.md', { as: 'raw', eager: true });
-        console.log('File trovati:', Object.keys(postFiles));
+        const postFiles = import.meta.glob('/public/blogposts/*.md', { 
+          as: 'raw',
+          eager: true 
+        });
         
         const postEntries = Object.entries(postFiles).map(([path, content]) => {
-          console.log('Elaborazione file:', path);
           const slug = path.split('/').pop().replace('.md', '');
-          console.log('Contenuto raw:', content);
-          const { data: frontmatter } = matter(content);
-          console.log('Frontmatter:', frontmatter);
+          const { data: frontmatter, content: postContent } = matter(content);
           
           return {
             slug,
             ...frontmatter,
             date: new Date(frontmatter.date),
-            tags: frontmatter.tags || []
+            tags: frontmatter.tags || [],
+            content: postContent
           };
         });
         
         posts.value = postEntries.sort((a, b) => b.date - a.date);
-        console.log('Post caricati:', posts.value);
-      } catch (error) {
-        console.error('Errore nel caricamento dei post:', error);
-        error.value = error;
+        localStorage.setItem('blogPosts', JSON.stringify(posts.value));
+      } catch (err) {
+        console.error('Errore nel caricamento dei post:', err);
+        error.value = err;
       } finally {
         loading.value = false;
       }
     });
 
     const goToPost = (slug) => {
-      router.push(`/blog/${slug}`);
+      router.push({
+        name: 'BlogPost',
+        params: { slug }
+      });
     };
 
     const goToHome = () => {

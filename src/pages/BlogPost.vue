@@ -1,69 +1,62 @@
 <script>
 import { defineComponent, onMounted, ref } from "vue";
 import { useRouter, useRoute } from 'vue-router';
-import { matter } from '../utils/markdown';
 import { marked } from 'marked';
 
 export default defineComponent({
   name: "BlogPost",
   setup() {
-    const router = useRouter();
     const route = useRoute();
+    const router = useRouter();
     const post = ref(null);
+    const content = ref('');
 
-    onMounted(async () => {
+    onMounted(() => {
       try {
-        const slug = route.params.slug;
-        const postModule = await import(/* @vite-ignore */ `/public/blogposts/${slug}.md?raw`);
-        const content = postModule.default;
-        const { data: frontmatter, content: markdownContent } = matter(content);
+        const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+        post.value = posts.find(p => p.slug === route.params.slug);
         
-        post.value = {
-          ...frontmatter,
-          content: marked(markdownContent)
-        };
+        if (post.value) {
+          content.value = marked(post.value.content);
+        } else {
+          router.push('/blog');
+        }
       } catch (error) {
-        console.error('Errore nel caricamento del post:', error);
+        console.error('Errore nel recupero del post:', error);
         router.push('/blog');
       }
     });
 
-    const goToBlog = () => {
+    const goBack = () => {
       router.push('/blog');
     };
 
     return {
       post,
-      goToBlog
+      content,
+      goBack
     };
   }
 });
 </script>
 
 <template>
-  <div v-if="post" class="blog-post min-h-screen bg-black text-white p-8 overflow-y-auto">
-    <button 
-      @click="goToBlog" 
-      class="back-btn mb-12 flex items-center text-white"
-    >
+  <div class="blog-post min-h-screen bg-black text-white p-8">
+    <button @click="goBack" class="back-btn mb-8 flex items-center text-white">
       <span class="back-icon mr-2">
         <img src="../assets/images/backIcn.png" />
       </span>
       Torna al Blog
     </button>
 
-    <article class="max-w-4xl mx-auto">
-      <h1 class="text-5xl font-black mb-6 gradient-text">{{ post.title }}</h1>
-      
-      <div class="mb-12 text-gray-400 flex items-center space-x-6">
-        <span class="text-pink-400 font-thin">{{ new Date(post.date).toLocaleDateString('it-IT') }}</span>
-        <span class="text-cyan-400 font-regular">{{ post.author }}</span>
+    <article v-if="post" class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4">{{ post.title }}</h1>
+      <div class="mb-8 text-gray-400">
+        <span>{{ new Date(post.date).toLocaleDateString() }}</span>
+        <span class="mx-2">•</span>
+        <span>{{ post.author }}</span>
       </div>
-
-      <div 
-        class="prose prose-invert prose-lg max-w-none"
-        v-html="post.content"
-      ></div>
+      <div class="prose prose-invert max-w-none" v-html="content"></div>
     </article>
   </div>
 </template>
