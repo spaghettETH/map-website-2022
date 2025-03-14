@@ -6,7 +6,7 @@ description: Gli obiettivi e i progetti di SpaghettETH per il 2025
 keywords: ["Web3", "Decentralizzazione", "Comunità", "DeFi", "Ethereum"]
 ---
 
-![Roadmap SpaghettETH 2025](https://imgur.com/a/7SxOzWk)
+![Roadmap SpaghettETH 2025](https://i.imgur.com/KyDJcu7.jpg))
 
 Il 2025 sarà un anno fondamentale per SpaghettETH, con numerose iniziative volte a rafforzare la community e a innovare nel panorama Web3 italiano. Ecco i nostri principali obiettivi e progetti in arrivo:
 
