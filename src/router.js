@@ -6,7 +6,7 @@ import Intro from './pages/Intro.vue';
 import Ecosystem from './pages/Ecosystem.vue';
 import Projects from './pages/Projects.vue';
 import Menu from './organisms/Menu.vue';
-import History from './pages/History.vue';
+import Membership from './pages/Membership.vue';
 
 const routes = [
   {
@@ -45,9 +45,9 @@ const routes = [
     component: Menu
   },
   {
-    path: '/history',
-    name: 'History',
-    component: History
+    path: '/membership',
+    name: 'Membership',
+    component: Membership
   }
 ];
 

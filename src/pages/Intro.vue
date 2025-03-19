@@ -7,11 +7,94 @@ export default defineComponent({
   setup() {
     const router = useRouter();
 
+    const timeline = [
+      {
+        year: 2025,
+        events: [
+          {
+            date: "Febbraio 2025",
+            title: "Urbe.eth Hub e WorldRadioDay",
+            description: "Media partner di Worldradioday.it a Milano e partecipazione all'inaugurazione dell'Urbe.eth Hub",
+            tags: ["Event", "Media", "Community"]
+          },
+          {
+            date: "Gennaio 2025",
+            title: "Radio Decentralizzata e Passport dApp",
+            description: "Continuano i lavori alla prima web radio decentralizzata e rilascio open source della dApp passport.spaghett-eth.com",
+            tags: ["Innovation", "Open Source", "DApp"]
+          }
+        ]
+      },
+      {
+        year: 2024,
+        events: [
+          {
+            date: "Dicembre 2024",
+            title: "ETHVenice II",
+            description: "Sponsorizzazione e supporto alla seconda edizione di ETHVenice",
+            tags: ["Event", "Community"]
+          },
+          {
+            date: "Ottobre 2024",
+            title: "Devcon Bangkok e Linecheck",
+            description: "Partecipazione a Devcon Bangkok e organizzazione della sibling conference Web3 per Linecheck.it",
+            tags: ["Event", "Community", "Music", "Technology"]
+          }
+        ]
+      },
+      {
+        year: 2023,
+        events: [
+          {
+            date: "Dicembre 2023",
+            title: "ETHVenice e ETHBologna",
+            description: "Prima edizione di ETHVenice, workshop all'Università di Bologna e nascita di ETHBologna",
+            tags: ["Event", "Education", "Community"]
+          },
+          {
+            date: "Novembre 2023",
+            title: "Devconnect Istanbul",
+            description: "Meetup degli ESP Grantee e ospiti su theherd.radio",
+            tags: ["Event", "Media"]
+          }
+        ]
+      },
+      {
+        year: 2022,
+        events: [
+          {
+            date: "Dicembre 2022",
+            title: "Educational Initiatives",
+            description: "Workshop NFT all'Accademia di Belle Arti di Torino e co-organizzazione dell'evento genesis di ETHRome rivolto a studenti universitari, Talen Garden Roma",
+            tags: ["Education", "NFT"]
+          },
+          {
+            date: "Ottobre 2022",
+            title: "Devcon Bogotà",
+            description: "Presentazione globale della community, lancio del sito-mappa open source e organizzazione della Chiva Lounge con la Open Source Orchestra",
+            tags: ["Event", "Community", "Open Source", "Music"]
+          }
+        ]
+      },
+      {
+        year: 2021,
+        events: [
+          {
+            date: "Luglio 2021",
+            title: "ETHcc Parigi Genesis Meeting",
+            description: "Il team ESP incontra Maria e Matteo per discutere il lancio di una community italiana",
+            tags: ["Event", "Community", "Genesis"]
+          }
+        ]
+      }
+    ];
+
     const goToHome = () => {
       router.push('/menu');
     };
 
     return {
+      timeline,
       goToHome
     };
   }
@@ -82,6 +165,46 @@ export default defineComponent({
             <a href="mailto:ciao@spaghett-eth.com" class="text-cyan-400 hover:text-cyan-300 transition-colors">ciao@spaghett-eth.com</a>
           </div>
         </div>
+
+        <div class="mt-24">
+          <h2 class="text-4xl font-black mb-16 gradient-text text-center">La Nostra Storia</h2>
+          
+          <div class="timeline-wrapper">
+            <div 
+              v-for="period in timeline" 
+              :key="period.year"
+              class="year-section mb-24"
+            >
+              <div class="year-marker">
+                <h2 class="text-6xl font-black gradient-text-secondary mb-12">{{ period.year }}</h2>
+                <div class="year-line"></div>
+              </div>
+
+              <div class="events-container">
+                <div 
+                  v-for="event in period.events" 
+                  :key="event.date"
+                  class="event-card"
+                >
+                  <div class="event-date">{{ event.date }}</div>
+                  <div class="event-content">
+                    <h3 class="text-2xl font-bold mb-3 gradient-text-hover">{{ event.title }}</h3>
+                    <p class="text-gray-300 mb-4">{{ event.description }}</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span 
+                        v-for="tag in event.tags" 
+                        :key="tag"
+                        class="tag"
+                      >
+                        #{{ tag }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </article>
   </div>
@@ -111,6 +234,38 @@ export default defineComponent({
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.gradient-text-secondary {
+  font-family: MonsterratBold;
+  background: linear-gradient(
+    85.18deg,
+    #f99bc0 0%,
+    #0ef9c2 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-hover {
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    85.18deg,
+    #f99bc0 0%,
+    #f99bc0 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  &:hover {
+    background: linear-gradient(
+      85.18deg,
+      #f99bc0 0%,
+      #0ef9c2 100%
+    );
+  }
 }
 
 .back-btn {
@@ -191,6 +346,104 @@ export default defineComponent({
     &:hover::after {
       transform: scaleX(1);
       transform-origin: left;
+    }
+  }
+}
+
+.year-section {
+  position: relative;
+}
+
+.year-marker {
+  position: relative;
+  margin-bottom: 2rem;
+
+  .year-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      #f99bc0,
+      transparent 80%
+    );
+    margin-top: -1rem;
+  }
+}
+
+.events-container {
+  padding-left: 2rem;
+  border-left: 1px solid rgba(249, 155, 192, 0.2);
+}
+
+.event-card {
+  position: relative;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 2.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: #f99bc0;
+    border-radius: 50%;
+    border: 2px solid black;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateX(10px);
+    background: rgba(25, 25, 25, 0.9);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+    &::before {
+      background: #0ef9c2;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.event-date {
+  font-family: MonsterratBold;
+  color: #f99bc0;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(249, 155, 192, 0.1);
+  border: 1px solid rgba(249, 155, 192, 0.2);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: #0ef9c2;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: rgba(249, 155, 192, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .events-container {
+    padding-left: 1.5rem;
+  }
+
+  .event-card {
+    &::before {
+      left: -2rem;
     }
   }
 }

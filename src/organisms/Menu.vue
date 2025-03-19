@@ -92,8 +92,8 @@ export default defineComponent({
       closeMenu(false);
     };
 
-    const navigateToHistory = () => {
-      router.push('/history');
+    const navigateToMembership = () => {
+      router.push('/membership');
       closeMenu(false);
     };
 
@@ -105,7 +105,7 @@ export default defineComponent({
       navigateToIntro,
       navigateToEcosystem,
       navigateToProjects,
-      navigateToHistory
+      navigateToMembership
     };
   },
 });
@@ -170,8 +170,8 @@ export default defineComponent({
             <a @click="navigateToEcosystem" class="cursor-pointer">Ecosystem</a>
           </li>
           <li class="w-full">
-            <a @click="navigateToHistory" class="cursor-pointer inline-block w-full text-center">
-              Storia
+            <a @click="navigateToMembership" class="cursor-pointer inline-block w-full text-center">
+              Membership
             </a>
           </li>
           <li class="back-to-map-item w-full">
