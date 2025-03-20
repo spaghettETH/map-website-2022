@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from "vue";
 import { useRouter } from 'vue-router';
+import MembershipCard from '../assets/images/projects/MembershipCard_Speth.png';
 
 export default defineComponent({
   name: "Membership",
@@ -30,7 +31,8 @@ export default defineComponent({
 
     return {
       benefits,
-      goToHome
+      goToHome,
+      MembershipCard
     };
   }
 });
@@ -49,6 +51,14 @@ export default defineComponent({
     </button>
 
     <article class="max-w-4xl mx-auto">
+      <div class="card-image-wrapper mb-12">
+        <img 
+          :src="MembershipCard"
+          alt="SpaghettETH Membership Card"
+          class="membership-card"
+        />
+      </div>
+
       <h1 class="text-5xl font-black mb-8 gradient-text text-center">SpaghettETH Impact Membership Campaign</h1>
       
       <div class="prose prose-invert prose-lg max-w-none">
@@ -222,5 +232,44 @@ export default defineComponent({
     font-family: MonsterratRegular;
     line-height: 1.8;
   }
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: linear-gradient(
+      85.18deg,
+      #f99bc0 0%,
+      #0ef9c2 100%
+    );
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(15px);
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 0.7;
+  }
+}
+
+.membership-card {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 </style>
