@@ -18,7 +18,7 @@ export default defineComponent({
         description: 'Passport è un libretto accademico digitale decentralizzato. Ti permette di tracciare i tuoi percorsi di apprendimento nelle conferenze Web3, raccogliendo "checkpoint" basati sui talk a cui partecipi e creando così nel tempo un albero unico del tuo percorso formativo. Il Passport è anche la chiave di accesso per utilizzare le altre dapps di SpaghettETH.',
         image: new URL('../assets/images/projects/passport.webp', import.meta.url).href,
         links: [
-          { text: 'Visita Passport', url: 'https://passport.spaghett-eth.com' },
+          { text: 'Vai a Passport', url: 'https://passport.spaghett-eth.com' },
           { text: '→ repo', url: 'https://github.com/spaghettETH/passport-spaghett-eth-main' }
         ],
         tags: ['Education', 'DApp', 'Web3']
@@ -28,7 +28,7 @@ export default defineComponent({
         description: 'La prima radio decentralizzata italiana. Una proof of concept funzionante di community-curated radio che utilizza gli smart contract per gestire le playlist e le dirette audio dal vivo.',
         image: new URL('../assets/images/projects/web3radio.webp', import.meta.url).href,
         links: [
-          { text: 'Coming Soon', url: '#' }
+          { text: 'Vai a Web3radio.it ', url: 'https://web3radio.it' }
         ],
         tags: ['Media', 'Music', 'Community']
       },
