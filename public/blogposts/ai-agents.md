@@ -6,8 +6,6 @@ description: Gli AI Agents semplificano la DeFi, aprendo la strada alla mass ado
 keywords: ["AI", "Agents", "DeFi", "Crypto", "Trading"]
 ---
 
-# AI Agents e la semplificazione della DeFi
-
 Da anni il settore della DeFi promette un imminente adozione di massa da parte degli utenti meno tecnici e privi di quella voglia di sperimentare che ha contraddistinto questo settore dai suoi albori. Tuttavia, a parte qualche segnale di democratizzazione del settore, la realtà è che la DeFi rimane tutt’oggi ancora un ecosistema per addetti ai lavori, principalmente a causa della sua complessità intrinseca.
 
 <img width="708" alt="Screenshot 2025-03-25 alle 15 31 46" src="https://github.com/user-attachments/assets/25526c86-e91b-4aab-8a30-27d407e00a75" />
