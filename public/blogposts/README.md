@@ -12,6 +12,7 @@ Ogni articolo deve iniziare con un blocco **YAML frontmatter**, seguito dal cont
 
 ### ✅ Frontmatter obbligatorio
 
+```yaml
 ---
 title: Titolo dell’articolo
 date: YYYY-MM-DD
