@@ -20,6 +20,7 @@ author: Nome autore/autrice o team
 description: Breve descrizione per anteprime e SEO
 keywords: ["ParolaChiave1", "ParolaChiave2", "ParolaChiave3"]
 ---
+```
 
 ### 🧾 Convenzioni per il nome dei file
 
@@ -43,6 +44,8 @@ Le immagini possono essere ospitate pubblicamente oppure draggate direttamente s
 
 ### ✅ Checklist prima del commit
 
+```
+
 Il file ha il frontmatter corretto e completo
 
 Il titolo è coerente con il contenuto
@@ -56,6 +59,8 @@ Le immagini si caricano correttamente
 Non ci sono link rotti
 
 Il contenuto è coerente con il tono e la missione di SpaghettETH
+
+```
 
 
 ### Per dubbi, revisioni o suggerimenti, apri una pull request o contatta il team di redazione SpaghettETH.
