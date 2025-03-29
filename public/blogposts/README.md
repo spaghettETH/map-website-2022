@@ -36,13 +36,12 @@ Esempio: 2025-02-17-roadmap-spaghetteth.md
 ```
 
 ### 🖼️ Immagini
-
+```
     Per immagini di copertina o interne, usa la sintassi Markdown standard:
 
 ![Alt text](https://url-dell-immagine.com/immagine.jpg)
-
+```
 Le immagini possono essere ospitate pubblicamente oppure draggate direttamente sull'articolo (es. su Imgur o IPFS)
-
 
 ### ✅ Checklist prima del commit
 
