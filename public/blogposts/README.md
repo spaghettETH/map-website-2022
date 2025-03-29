@@ -24,6 +24,8 @@ keywords: ["ParolaChiave1", "ParolaChiave2", "ParolaChiave3"]
 
 ### 🧾 Convenzioni per il nome dei file
 
+```
+
     Tutti i file devono avere estensione .md
 
     Si consiglia il formato:
@@ -31,7 +33,7 @@ keywords: ["ParolaChiave1", "ParolaChiave2", "ParolaChiave3"]
 YYYY-MM-DD-titolo-breve.md
 
 Esempio: 2025-02-17-roadmap-spaghetteth.md
-
+```
 
 ### 🖼️ Immagini
 
