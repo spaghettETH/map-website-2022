@@ -18,18 +18,21 @@ export default defineComponent({
           eager: true 
         });
         
-        const postEntries = Object.entries(postFiles).map(([path, content]) => {
-          const slug = path.split('/').pop().replace('.md', '');
-          const { data: frontmatter, content: postContent } = matter(content);
-          
-          return {
-            slug,
-            ...frontmatter,
-            date: new Date(frontmatter.date),
-            tags: frontmatter.tags || [],
-            content: postContent
-          };
-        });
+        const postEntries = Object.entries(postFiles)
+          // Filtriamo README.md
+          .filter(([path]) => !path.includes('README.md'))
+          .map(([path, content]) => {
+            const slug = path.split('/').pop().replace('.md', '');
+            const { data: frontmatter, content: postContent } = matter(content);
+            
+            return {
+              slug,
+              ...frontmatter,
+              date: new Date(frontmatter.date),
+              tags: frontmatter.tags || [],
+              content: postContent
+            };
+          });
         
         posts.value = postEntries.sort((a, b) => b.date - a.date);
         localStorage.setItem('blogPosts', JSON.stringify(posts.value));
@@ -76,9 +79,21 @@ export default defineComponent({
     </button>
 
     <div class="max-w-4xl mx-auto">
-      <h1 class="blog-title text-5xl font-black mb-12">
+      <h1 class="blog-title text-5xl font-black mb-4">
         Blog<br/>SpaghettETH
       </h1>
+
+      <p class="text-sm text-gray-400 mb-12">
+        Vuoi pubblicare un articolo sul nostro blog? Segui le indicazioni su 
+        <a 
+          href="https://github.com/spaghettETH/map-website-2022/tree/develop/public/blogposts" 
+          target="_blank"
+          class="text-cyan-400 hover:text-cyan-300 transition-colors"
+        >
+          github
+        </a> 
+        e inviaci una email
+      </p>
 
       <div v-if="loading" class="text-center py-8">
         Caricamento...
