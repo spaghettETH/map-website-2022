@@ -73,7 +73,7 @@ export default defineComponent({
     };
 
     const navigateToBlog = () => {
-      router.push('/blog');
+      window.open('https://paragraph.com/@spaghetteth', '_blank');
       closeMenu(false);
     };
 
