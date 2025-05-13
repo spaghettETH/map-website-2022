@@ -1,51 +1,56 @@
-# 📚 Blogposts – Linee guida per la pubblicazione
+# 📚 Archivio Slides SpaghettETH - Contribuisci con i tuoi contenuti!
 
-Questa cartella contiene gli articoli del blog di **SpaghettETH**.
+Questa cartella contiene l'archivio delle presentazioni della community **SpaghettETH** in formato markdown.
 
-Ogni file `.md` rappresenta un post, ed è strutturato per essere caricato e visualizzato correttamente sul sito. Segui queste indicazioni per mantenere coerenza, accessibilità e qualità editoriale.
+Ogni file `.md` rappresenta una presentazione, convertita per essere visualizzata correttamente sul nostro sito. Contribuire è semplice: segui le linee guida qui sotto per condividere le tue slide con la community.
 
 ---
 
-## 🧩 Struttura dell’articolo
+## 🔄 Come convertire le tue presentazioni in Markdown
 
-Ogni articolo deve iniziare con un blocco **YAML frontmatter**, seguito dal contenuto in **Markdown**.
+Prima di contribuire, dovrai convertire le tue slide PowerPoint o PDF in formato Markdown:
+
+1. Visita [ppt.to-markdown.com](https://ppt.to-markdown.com/)
+2. Carica il tuo file PPT o PPTX 
+3. Scarica o copia il risultato in formato Markdown
+4. Aggiungi il frontmatter YAML richiesto (vedi sotto)
+5. Crea un nuovo file nella cartella `slideposts`
+
+## 🧩 Struttura del file
+
+Ogni slide deve iniziare con un blocco **YAML frontmatter**, seguito dal contenuto in **Markdown**.
 
 ### ✅ Frontmatter obbligatorio
 
 ```yaml
 ---
-title: Titolo dell’articolo
+title: Titolo della presentazione
 date: YYYY-MM-DD
 author: Nome autore/autrice o team
-description: Breve descrizione per anteprime e SEO
-keywords: ["ParolaChiave1", "ParolaChiave2", "ParolaChiave3"]
+description: Breve descrizione della presentazione
+tags: ["Tag1", "Tag2", "Tag3"]
 ---
 ```
 
 ### 🧾 Convenzioni per il nome dei file
 
-```
+Tutti i file devono avere estensione `.md`
 
-    Tutti i file devono avere estensione .md
-
-    Si consiglia il formato:
+Formato consigliato:
 
 YYYY-MM-DD-titolo-breve.md
 
 Esempio: 2025-02-17-roadmap-spaghetteth.md
-```
 
 ### 🖼️ Immagini
-```
-    Per immagini di copertina o interne, usa la sintassi Markdown standard:
+
+Per immagini di copertina o interne, usa la sintassi Markdown standard:
 
 ![Alt text](https://url-dell-immagine.com/immagine.jpg)
-```
+
 Le immagini possono essere ospitate pubblicamente oppure draggate direttamente sull'articolo (es. su Imgur o IPFS)
 
 ### ✅ Checklist prima del commit
-
-```
 
 Il file ha il frontmatter corretto e completo
 
@@ -60,9 +65,6 @@ Le immagini si caricano correttamente
 Non ci sono link rotti
 
 Il contenuto è coerente con il tono e la missione di SpaghettETH
-
-```
-
 
 ### Per dubbi, revisioni o suggerimenti, apri una pull request o contatta il team di redazione SpaghettETH.
 
