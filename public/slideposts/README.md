@@ -10,7 +10,7 @@ Ogni file `.md` rappresenta una presentazione, convertita per essere visualizzat
 
 Prima di contribuire, dovrai convertire le tue slide PowerPoint o PDF in formato Markdown:
 
-1. Visita [ppt.to-markdown.com](https://ppt.to-markdown.com/)
+1. Visita [ppt.to-markdown.com](https://ppt.to-markdown.com/), [Pandoc](https://pandoc.org/) o altro tool per convertire slides in markdown
 2. Carica il tuo file PPT o PPTX 
 3. Scarica o copia il risultato in formato Markdown
 4. Aggiungi il frontmatter YAML richiesto (vedi sotto)
