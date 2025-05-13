@@ -66,7 +66,7 @@ Non ci sono link rotti
 
 Il contenuto è coerente con il tono e la missione di SpaghettETH
 
-### Per dubbi, revisioni o suggerimenti, apri una pull request o contatta il team di redazione SpaghettETH.
+### Per dubbi, revisioni o suggerimenti, apri una pull request o contatta il team di redazione SpaghettETH - ciao@spaghett-eth.com.
 
 🍝 Buona scrittura!
 — Il team SpaghettETH
