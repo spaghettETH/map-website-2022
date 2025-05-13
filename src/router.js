@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import MapPage from './pages/MapPage.vue';
-import BlogPage from './pages/BlogPage.vue';
-import BlogPost from './pages/BlogPost.vue';
+import SlidesArchive from './pages/SlidesArchive.vue';
+import SlidePost from './pages/SlidePost.vue';
 import Intro from './pages/Intro.vue';
 import Ecosystem from './pages/Ecosystem.vue';
 import Projects from './pages/Projects.vue';
@@ -15,14 +15,14 @@ const routes = [
     component: MapPage
   },
   {
-    path: '/blog',
-    name: 'Blog',
-    component: BlogPage
+    path: '/slides-archive',
+    name: 'SlidesArchive',
+    component: SlidesArchive
   },
   {
-    path: '/blog/:slug',
-    name: 'BlogPost',
-    component: BlogPost
+    path: '/slides-archive/:slug',
+    name: 'SlidePost',
+    component: SlidePost
   },
   {
     path: '/intro',

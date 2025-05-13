@@ -51,6 +51,15 @@ export default defineComponent({
           { text: 'Vedi la Repo su github', url: 'https://github.com/spaghettETH/map-website-2022' }
         ],
         tags: ['Community', 'Maps', 'Public Good']
+      },
+      {
+        title: 'Slides Archive',
+        description: 'Un archivio di presentazioni e slide dai nostri eventi, workshop e conferenze. Qui troverai materiale educativo sui vari aspetti di Web3, Ethereum e tecnologie blockchain, raccolto dalle diverse attività ed eventi organizzati dalla community SpaghettETH in tutta Italia.',
+        image: new URL('../assets/images/projects/slideArchive.webp', import.meta.url).href,
+        links: [
+          { text: 'Vai all\'Archivio Slides', url: '/slides-archive' }
+        ],
+        tags: ['Education', 'Archive', 'Community']
       }
     ];
 
