@@ -39,6 +39,12 @@ export default defineComponent({
             title: "Devcon Bangkok e Linecheck",
             description: "Partecipazione a Devcon Bangkok e organizzazione della sibling conference Web3 per Linecheck.it",
             tags: ["Event", "Community", "Music", "Technology"]
+          },
+          {
+            date: "Settembre 2024",
+            title: "Italian Ethereum Grand Tour",
+            description: "Educational and Logistical Support to all ETH Events in Italy and Digitalia Network State pilot. Launch of Passport Dapp",
+            tags: ["Event", "Community", "Music", "Technology"]
           }
         ]
       },
@@ -56,6 +62,12 @@ export default defineComponent({
             title: "Devconnect Istanbul",
             description: "Meetup degli ESP Grantee e ospiti su theherd.radio",
             tags: ["Event", "Media"]
+          },
+          {
+            date: "May 2023",
+            title: "SpaghettETH II - Naples",
+            description: "Seconda conferenza nazionale e genesi delle community NapulETH e ETHna",
+            tags: ["Event", "Community"]
           }
         ]
       },
@@ -73,6 +85,12 @@ export default defineComponent({
             title: "Devcon Bogotà",
             description: "Presentazione globale della community, lancio del sito-mappa open source e organizzazione della Chiva Lounge con la Open Source Orchestra",
             tags: ["Event", "Community", "Open Source", "Music"]
+          },
+          {
+            date: "May 2022",
+            title: "SpaghettETH I - Milan",
+            description: "Prima conferenza nazionale e genesis delle community Urbe.eth e ETHMilan",
+            tags: ["Event", "Community"]
           }
         ]
       },
