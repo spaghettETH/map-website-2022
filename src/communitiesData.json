@@ -1,5 +1,23 @@
 [
   {
+    "città": "Bari",
+    "regione": "puglia",
+    "nome": "ETH Bari",
+    "membri": "10+",
+    "meet": "Incontri online e IRL periodici",
+    "format": "Conference, meetup e workshops",
+    "focus": "Ethereum, DeFi, blockchain development",
+    "progetti": "",
+    "twitter": "https://x.com/ethereumbari",
+    "github": "",
+    "telegram": "https://t.me/ethbari",
+    "discord": "",
+    "website": "http://ethbari.org/",
+    "partnership": "woopwidget.com",
+    "multisig": "",
+    "logo": "./logos/ethbari.png"
+  },
+  {
     "città": "Milano",
     "regione": "lombardia",
     "nome": "Web3Mi",
