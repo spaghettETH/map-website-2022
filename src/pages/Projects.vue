@@ -39,7 +39,7 @@ export default defineComponent({
         links: [
           { text: 'Zine#1', url: 'https://spaghetteth.mypinata.cloud/ipfs/bafybeigho7543eqdd5yl3zhfo3cjvzwdpwdylaafalgncffwcbposoh2py' },
           { text: 'Zine#2', url: 'https://spaghetteth.mypinata.cloud/ipfs/bafybeiaux26nuvahpq3vpbwhtitsu4v7vspcm4srlz2horumgvd26hatae' },
-          { text: 'Candida un articolo per la Zine #3', url: 'https://docs.google.com/forms/d/1j5ml7bvkbGXJyF502y8HlLkN-IurLMZCOOe8nb2Vsl0/preview' }
+          { text: 'Candida un articolo per la Zine #3', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeUzcmpyOv5D03wGZoJsWIrba9HlgO3MDD7cDSotT2BTnFwFw/viewform?usp=preview' }
         ],
         tags: ['Publishing', 'Community', 'Education']
       },
