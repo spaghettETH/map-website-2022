@@ -32,6 +32,7 @@ export default defineComponent({
     const currentRegion = ref("ITALIAN MAP");
     const miniMap = ref(false);
     const communitiesToDisplay = ref([]);
+    const showNewsletterModal = ref(false);
     const discordLinks = ref({
       abruzzo:
         "https://discord.com/channels/885144315024789504/1027933657480048700",
@@ -231,6 +232,10 @@ export default defineComponent({
             document
               .querySelector(".welcome-labels-wrapper")
               .classList.add("cancel");
+            // Mostra il modale della newsletter dopo 1 secondo
+            setTimeout(() => {
+              showNewsletterModal.value = true;
+            }, 1000);
           },
         },
         ">"
@@ -278,6 +283,11 @@ export default defineComponent({
     const disableBtn = () => {
       isDisabled.value = true;
     };
+    
+    const closeNewsletterModal = () => {
+      showNewsletterModal.value = false;
+    };
+    
     return {
       overRegion,
       currentRegion,
@@ -297,6 +307,8 @@ export default defineComponent({
       disableBtn,
       isDisabled,
       discordLinks,
+      showNewsletterModal,
+      closeNewsletterModal,
     };
   },
 });
@@ -3314,6 +3326,52 @@ export default defineComponent({
         </div>
       </div>
     </div>
+    
+    <!-- Newsletter Modal -->
+    <div 
+      v-if="showNewsletterModal" 
+      class="newsletter-modal-overlay fixed inset-0 z-50 flex items-center justify-center"
+      @click="closeNewsletterModal"
+    >
+      <div 
+        class="newsletter-modal-content relative mx-4"
+        @click.stop
+      >
+        <div class="modal-glow"></div>
+        <div class="modal-inner">
+          <button 
+            @click="closeNewsletterModal"
+            class="close-btn absolute top-4 right-4"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          
+          <div class="modal-header mb-8 text-center">
+            <div class="logo-container mb-4">
+              <div class="pulse-ring"></div>
+              <div class="pulse-ring-2"></div>
+              <div class="logo-inner">🍝</div>
+            </div>
+            <h2 class="modal-title mb-3">Resta aggiornato!</h2>
+            <p class="modal-subtitle">Iscriviti alla newsletter di SpaghettETH<br/>per non perdere nessun aggiornamento</p>
+          </div>
+          
+          <div class="iframe-container">
+            <iframe 
+              src="https://paragraph.com/@spaghetteth/embed" 
+              width="480" 
+              height="360" 
+              style="border:none; background:transparent;" 
+              frameborder="0" 
+              scrolling="no"
+              class="newsletter-iframe"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -3485,6 +3543,220 @@ section {
 
   &:disabled {
     opacity: 0.5;
+  }
+}
+
+.newsletter-modal-overlay {
+  background: radial-gradient(circle at center, rgba(255, 114, 185, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.newsletter-modal-content {
+  max-width: 560px;
+  width: 100%;
+  position: relative;
+  animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  @media (max-width: 640px) {
+    max-width: 95%;
+  }
+}
+
+.modal-glow {
+  position: absolute;
+  inset: -20px;
+  background: linear-gradient(45deg, #ff72b9, #27f3c4, #ff72b9, #27f3c4);
+  background-size: 400% 400%;
+  border-radius: 24px;
+  filter: blur(20px);
+  opacity: 0.6;
+  animation: gradientShift 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+.modal-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 2px solid rgba(255, 114, 185, 0.3);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff72b9, #27f3c4, #ff72b9);
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+  
+  @media (max-width: 640px) {
+    padding: 2rem;
+  }
+}
+
+.logo-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.pulse-ring, .pulse-ring-2 {
+  position: absolute;
+  border: 3px solid #ff72b9;
+  border-radius: 50%;
+  animation: pulse 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+.pulse-ring {
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.pulse-ring-2 {
+  width: 80px;
+  height: 80px;
+  border-color: #27f3c4;
+  animation-delay: 1s;
+}
+
+.logo-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  background: linear-gradient(45deg, #ff72b9, #27f3c4);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(255, 114, 185, 0.4);
+}
+
+.modal-title {
+  font-family: MonsterratBlack;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #ff72b9, #27f3c4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.modal-subtitle {
+  font-family: MonsterratRegular;
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.iframe-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 114, 185, 0.1), rgba(39, 243, 196, 0.1));
+  padding: 1px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #ff72b9, #27f3c4, #ff72b9);
+    background-size: 300% 300%;
+    border-radius: 16px;
+    animation: gradientShift 4s ease-in-out infinite;
+    z-index: -1;
+  }
+}
+
+.newsletter-iframe {
+  width: 100%;
+  border-radius: 15px;
+  background: white;
+  
+  @media (max-width: 640px) {
+    width: 100%;
+    height: 320px;
+  }
+}
+
+.close-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 114, 185, 0.1);
+  color: #ff72b9;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 114, 185, 0.3);
+  
+  &:hover {
+    background: linear-gradient(45deg, #ff72b9, #27f3c4);
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 114, 185, 0.4);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
   }
 }
 </style>
