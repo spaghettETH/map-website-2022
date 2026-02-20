@@ -37,9 +37,9 @@ export default defineComponent({
         description: 'Ogni anno curiamo una raccolta di articoli e approfondimenti della community italiana, con l\'obiettivo di introdurre il Web3 a chi ne è ancora fuori e offrire nuove prospettive a chi già ne fa parte. Questo lavoro prende forma nella nostra Zine, un free-press cartaceo a tiratura limitata, distribuito durante le conferenze Ethereum italiane.',
         image: new URL('../assets/images/projects/zine.webp', import.meta.url).href,
         links: [
-          { text: 'Zine#1', url: 'https://spaghetteth.mypinata.cloud/ipfs/bafybeigho7543eqdd5yl3zhfo3cjvzwdpwdylaafalgncffwcbposoh2py' },
-          { text: 'Zine#2', url: 'https://spaghetteth.mypinata.cloud/ipfs/bafybeiaux26nuvahpq3vpbwhtitsu4v7vspcm4srlz2horumgvd26hatae' },
-          { text: 'Zine #3', url: 'https://spaghetteth.mypinata.cloud/ipfs/bafybeidv5dxfjh2g7yf7u62eu5lsujzejzbvtg6srilqwgdeg6i27b64bq' }
+          { text: 'Zine#1', url: 'https://drive.google.com/file/d/1VLN9mQZOzOIVmbpCx0786sToh6E3MuTD/view?usp=sharing' },
+          { text: 'Zine#2', url: 'https://drive.google.com/file/d/1Umfk8Py2kuO_qQabU_TZC8fAXz0D8ITj/view?usp=sharing' },
+          { text: 'Zine #3', url: 'https://drive.google.com/file/d/1Q4xkNCtXOZVkI0sbhT9PvkbMZywHqpvR/view?usp=sharing' }
         ],
         tags: ['Publishing', 'Community', 'Education']
       },
